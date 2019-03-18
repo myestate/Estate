@@ -1,1 +1,1 @@
-# Estate
+Some stuff about project and how to launch it
