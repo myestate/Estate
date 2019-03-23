@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Domain\\MyEstate.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj",
       "projectName": "MyEstate.Domain",
-      "projectPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Domain\\MyEstate.Domain.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Domain\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

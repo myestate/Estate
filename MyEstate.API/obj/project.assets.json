@@ -4438,6 +4438,43 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "MyEstate.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "MyEstate.Domain": "1.0.0",
+          "Persistence": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MyEstate.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyEstate.Application.dll": {}
+        }
+      },
+      "MyEstate.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/MyEstate.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyEstate.Domain.dll": {}
+        }
+      },
+      "Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "MyEstate.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Persistence.dll": {}
+        }
       }
     }
   },
@@ -12095,13 +12132,29 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "MyEstate.Application/1.0.0": {
+      "type": "project",
+      "path": "../MyEstate.Application/MyEstate.Application.csproj",
+      "msbuildProject": "../MyEstate.Application/MyEstate.Application.csproj"
+    },
+    "MyEstate.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MyEstate.Domain/MyEstate.Domain.csproj",
+      "msbuildProject": "../MyEstate.Domain/MyEstate.Domain.csproj"
+    },
+    "Persistence/1.0.0": {
+      "type": "project",
+      "path": "../Persistence/Persistence.csproj",
+      "msbuildProject": "../Persistence/Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "MyEstate.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12111,11 +12164,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "projectName": "MyEstate.API",
-      "projectPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.API\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12133,7 +12186,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

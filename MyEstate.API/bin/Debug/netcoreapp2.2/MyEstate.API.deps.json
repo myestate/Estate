@@ -26,13 +26,45 @@
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
-          "Microsoft.NETCore.App": "2.2.0"
+          "Microsoft.NETCore.App": "2.2.0",
+          "MyEstate.Application": "1.0.0"
         },
         "runtime": {
           "MyEstate.API.dll": {}
         },
         "compile": {
           "MyEstate.API.dll": {}
+        }
+      },
+      "MyEstate.Application/1.0.0": {
+        "dependencies": {
+          "MyEstate.Domain": "1.0.0",
+          "Persistence": "1.0.0"
+        },
+        "runtime": {
+          "MyEstate.Application.dll": {}
+        },
+        "compile": {
+          "MyEstate.Application.dll": {}
+        }
+      },
+      "MyEstate.Domain/1.0.0": {
+        "runtime": {
+          "MyEstate.Domain.dll": {}
+        },
+        "compile": {
+          "MyEstate.Domain.dll": {}
+        }
+      },
+      "Persistence/1.0.0": {
+        "dependencies": {
+          "MyEstate.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Persistence.dll": {}
+        },
+        "compile": {
+          "Persistence.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3233,6 +3265,21 @@
   },
   "libraries": {
     "MyEstate.API/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyEstate.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyEstate.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Persistence/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

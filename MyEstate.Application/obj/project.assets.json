@@ -207,6 +207,29 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "MyEstate.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/MyEstate.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyEstate.Domain.dll": {}
+        }
+      },
+      "Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "MyEstate.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Persistence.dll": {}
+        }
       }
     }
   },
@@ -680,11 +703,23 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "MyEstate.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MyEstate.Domain/MyEstate.Domain.csproj",
+      "msbuildProject": "../MyEstate.Domain/MyEstate.Domain.csproj"
+    },
+    "Persistence/1.0.0": {
+      "type": "project",
+      "path": "../Persistence/Persistence.csproj",
+      "msbuildProject": "../Persistence/Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "MyEstate.Domain >= 1.0.0",
+      "Persistence >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -694,11 +729,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
       "projectName": "MyEstate.Application",
-      "projectPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Estate\\MyEstate\\MyEstate.Application\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -716,7 +751,14 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj"
+            },
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
