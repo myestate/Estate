@@ -651,7 +651,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http/2.2.0": {
+      "Microsoft.AspNetCore.Http/2.2.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -4467,6 +4467,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.2.2",
           "MyEstate.Domain": "1.0.0"
         },
         "compile": {
@@ -4941,16 +4942,16 @@
         "microsoft.aspnetcore.html.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http/2.2.0": {
-      "sha512": "YogBSMotWPAS/X5967pZ+yyWPQkThxhmzAwyCHCSSldzYBkW5W5d6oPfBaPqQOnSHYTpSOSOkpZoAce0vwb6+A==",
+    "Microsoft.AspNetCore.Http/2.2.2": {
+      "sha512": "BAibpoItxI5puk7YJbIGj95arZueM8B8M5xT1fXBn3hb3L2G3ucrZcYXv1gXdaroLbntUs8qeV8iuBrpjQsrKw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http/2.2.0",
+      "path": "microsoft.aspnetcore.http/2.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.xml",
-        "microsoft.aspnetcore.http.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
         "microsoft.aspnetcore.http.nuspec"
       ]
     },
@@ -12152,6 +12153,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
+      "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "MyEstate.Application >= 1.0.0"
@@ -12164,11 +12166,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectUniqueName": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "projectName": "MyEstate.API",
-      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\obj\\",
+      "outputPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12187,8 +12189,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj"
+            "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj": {
+              "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj"
             }
           }
         }
@@ -12207,6 +12209,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Http": {
+            "target": "Package",
+            "version": "[2.2.2, )"
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
