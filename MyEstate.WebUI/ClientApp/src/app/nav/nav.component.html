@@ -1,47 +1,47 @@
-<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
-  <a href="index.html" class="navbar-brand">MyEstate</a>
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a href="index.html" class="nav-link">Home</a>
-    </li>
-    <li class="nav-item">
-      <a href="index.html" class="nav-link">Rent</a>
-    </li>
-    <li class="nav-item">
-      <a href="index.html" class="nav-link">Buy</a>
-    </li>
-    <li class="nav-item">
-      <a href="#contact" class="nav-link">Contact</a>
-    </li>
-    <li class="nav-item">
-      <a href="#about" class="nav-link">About</a>
-    </li>
-     <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
-      </li>
-    <div *ngIf="loggedIn()" class="dropdown">
-      <a class="dropdown-toggle text-light">
-        Welcome user
-      </a>
-    
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#"> <i class="fa fa-user"></i> Edit Profile</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a>
-      </div>
-    </div>
+<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-danger">
+  <div class="container">
 
-    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-      <input class="form-control mr-sm-2" type="text" name="username" 
-        placeholder="Username" required [(ngModel)]="model.username">
-      <input class="form-control mr-sm-2" type="password" name="password" 
-        placeholder="Password" required [(ngModel)]="model.password">
-      <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-    </form>
-        </ul>
-    </div>
+    <a href="index.html" class="navbar-brand">MyEstate</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul *ngIf="loggedIn()" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Rent</a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Buy</a>
+      </li>
+      <li class="nav-item">
+        <a href="#contact" class="nav-link">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a href="#about" class="nav-link">About</a>
+      </li>
+       </ul>
+      <div *ngIf="loggedIn()" class="dropdown" dropdown>
+        <a class="dropdown-toggle text-light" dropdownToggle>
+          Welcome {{authService.decodedToken?.unique_name | titlecase}}
+        </a>
+  
+        <div class="dropdown-menu mt-3" *dropdownMenu>
+          <a class="dropdown-item" href="#"> <i class="fa fa-user"></i> Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">
+            <i class="fa fa-sign-out" ></i> Logout</a>
+        </div>
+      </div>
+      <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+        <input class="form-control mr-sm-2" type="text" name="username" 
+          placeholder="Username" required [(ngModel)]="model.username">
+        <input class="form-control mr-sm-2" type="password" name="password" 
+          placeholder="Password" required [(ngModel)]="model.password">
+        <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+      </form>
+  </div>
+</div>
