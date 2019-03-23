@@ -1191,11 +1191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
       "projectName": "MyEstate.Application",
-      "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1214,11 +1214,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj": {
-              "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj"
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj"
             },
-            "c:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj": {
-              "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj"
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj"
             }
           }
         }

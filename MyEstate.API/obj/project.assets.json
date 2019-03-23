@@ -12166,11 +12166,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "projectName": "MyEstate.API",
-      "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\MyEstate.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12189,8 +12189,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj": {
-              "projectPath": "c:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj"
+            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj"
             }
           }
         }
