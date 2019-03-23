@@ -9,9 +9,7 @@
     <Folder Include="Customers\Commands\DeleteCustomer\" />
     <Folder Include="Customers\Commands\UpdateCustomer\" />
     <Folder Include="Customers\Queries\GetCustomerDetail\" />
-    <Folder Include="Customers\Queries\GetCustomersList\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="Customers\Queries\GetCustomerList\" />
   </ItemGroup>
 
 </Project>

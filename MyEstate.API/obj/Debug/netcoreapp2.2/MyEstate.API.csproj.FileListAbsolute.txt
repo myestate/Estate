@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\bin\Debug\netcoreapp2.2\MyEstate.API.deps.json
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\bin\Debug\netcoreapp2.2\MyEstate.API.runtimeconfig.json
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\bin\Debug\netcoreapp2.2\MyEstate.API.runtimeconfig.dev.json
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\bin\Debug\netcoreapp2.2\MyEstate.API.dll
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\bin\Debug\netcoreapp2.2\MyEstate.API.pdb
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.RazorAssemblyInfo.cache
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.RazorAssemblyInfo.cs
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.AssemblyInfo.cs
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.RazorTargetAssemblyInfo.cache
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.dll
+C:\Users\User\Desktop\Estate\MyEstate\MyEstate.API\obj\Debug\netcoreapp2.2\MyEstate.API.pdb
