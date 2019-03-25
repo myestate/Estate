@@ -12,9 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/Alertify.service';
-import { MessagesComponent } from './messages/messages.component';
-import { MemberListComponent } from './member-list/member-list.component';
-import { ListsComponent } from './lists/lists.component';
 import { appRoutes } from './routes';
 
 @NgModule({
@@ -23,10 +20,6 @@ import { appRoutes } from './routes';
       NavComponent,
       HomeComponent,
       RegisterComponent,
-      ListsComponent,
-      MessagesComponent,
-      MemberListComponent,
-      ListsComponent
    ],
    imports: [
       BrowserModule,
