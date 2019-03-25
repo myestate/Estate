@@ -5783,11 +5783,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain.Tests\\MyEstate.Domain.Tests.csproj",
+      "projectUniqueName": "c:\\Users\\User\\Desktop\\Estate-eaa086d9dc38be52686ded965fa4378101de7064\\MyEstate.Domain.Tests\\MyEstate.Domain.Tests.csproj",
       "projectName": "MyEstate.Domain.Tests",
-      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain.Tests\\MyEstate.Domain.Tests.csproj",
+      "projectPath": "c:\\Users\\User\\Desktop\\Estate-eaa086d9dc38be52686ded965fa4378101de7064\\MyEstate.Domain.Tests\\MyEstate.Domain.Tests.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain.Tests\\obj\\",
+      "outputPath": "c:\\Users\\User\\Desktop\\Estate-eaa086d9dc38be52686ded965fa4378101de7064\\MyEstate.Domain.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
