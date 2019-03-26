@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/Alertify.service';
 import { appRoutes } from './routes';
+import { EstatesComponent } from './estates/estates.component';
 
 @NgModule({
    declarations: [
@@ -20,6 +21,7 @@ import { appRoutes } from './routes';
       NavComponent,
       HomeComponent,
       RegisterComponent,
+      EstatesComponent
    ],
    imports: [
       BrowserModule,

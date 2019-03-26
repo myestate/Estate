@@ -8,8 +8,8 @@
       
       <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a href="index.html" class="nav-link">Selling</a>
+      <li class="nav-item"  routerLinkActive="router-link-active">
+        <a [routerLink]="['/estates']" class="nav-link">Selling</a>
       </li>
       <li class="nav-item">
         <a href="#contact" class="nav-link">Rent</a>
@@ -17,8 +17,12 @@
       <li class="nav-item">
         <a href="#about" class="nav-link">Daily rent</a>
       </li>
+      <li class="nav-item">
+          <a href="#about" class="nav-link">Estate agents</a>
+        </li>
+        
       <li class="nav-item" *ngIf="loggedIn()">
-        <a href="#about" class="nav-link">Add</a>
+        <a href="#about" class="nav-link">Add estate</a>
       </li>
        </ul>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
