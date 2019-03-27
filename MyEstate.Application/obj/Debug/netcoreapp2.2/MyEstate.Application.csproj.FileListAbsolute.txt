@@ -47,3 +47,17 @@ C:\Users\User\Desktop\Estate-eaa086d9dc38be52686ded965fa4378101de7064\MyEstate.A
 C:\Users\User\Desktop\Estate-eaa086d9dc38be52686ded965fa4378101de7064\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.csproj.CopyComplete
 C:\Users\User\Desktop\Estate-eaa086d9dc38be52686ded965fa4378101de7064\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.dll
 C:\Users\User\Desktop\Estate-eaa086d9dc38be52686ded965fa4378101de7064\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.pdb
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.dll
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.pdb
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\MyEstate.Application.deps.json
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\MyEstate.Application.dll
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\MyEstate.Application.pdb
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\MyEstate.Domain.dll
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\Persistence.dll
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\MyEstate.Domain.pdb
+D:\EPAM_Course\Estate\MyEstate.Application\bin\Debug\netcoreapp2.2\Persistence.pdb
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.csprojAssemblyReference.cache
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.csproj.CoreCompileInputs.cache
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.AssemblyInfoInputs.cache
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.AssemblyInfo.cs
+D:\EPAM_Course\Estate\MyEstate.Application\obj\Debug\netcoreapp2.2\MyEstate.Application.csproj.CopyComplete
