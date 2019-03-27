@@ -15,6 +15,8 @@ import { AlertifyService } from './_services/Alertify.service';
 import { appRoutes } from './routes';
 import { EstatesComponent } from './estates/estates.component';
 import { Estate_agentsComponent } from './estate_agents/estate_agents.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
    declarations: [
@@ -23,7 +25,8 @@ import { Estate_agentsComponent } from './estate_agents/estate_agents.component'
       HomeComponent,
       RegisterComponent,
       EstatesComponent,
-      Estate_agentsComponent
+      Estate_agentsComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -35,7 +38,8 @@ import { Estate_agentsComponent } from './estate_agents/estate_agents.component'
    providers: [
       AuthService,
       ErrorInterceptorProvider,
-      AlertifyService
+      AlertifyService,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent
