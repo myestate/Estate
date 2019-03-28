@@ -17,6 +17,7 @@ import { EstatesComponent } from './estates/estates.component';
 import { Estate_agentsComponent } from './estate_agents/estate_agents.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { SingInComponent } from './sing-in/sing-in.component';
 
 @NgModule({
    declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from './_guards/auth.guard';
       RegisterComponent,
       EstatesComponent,
       Estate_agentsComponent,
-      MessagesComponent
+      MessagesComponent,
+      SingInComponent
    ],
    imports: [
       BrowserModule,

@@ -445,7 +445,7 @@
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0": {
-      "sha512": "2xMk9LHz1EY+7gVG0lG4qBvkUiVjg8QNPqd2HYmEP5+PL7Ayo96EhBieAhd++Gx4yM+xN8kNqmhZdFMBHeG0HQ==",
+      "sha512": "f9hstgjVmr6rmrfGSpfsVOl2irKAgr1QjrSi3FgnS7kulxband50f2brRLwySAQTADPZeTdow0mpSMcoAdadCw==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection.abstractions/2.2.0",
       "files": [
@@ -471,7 +471,7 @@
       ]
     },
     "Microsoft.Extensions.Options/2.2.0": {
-      "sha512": "67zpvElD/YPcfRs1Qm58LSntnSm+kYSA+0PA4+0Abo7NEH4RAvUkV54krspsa0+S4yBZ/m39gUOdn3PSzffazQ==",
+      "sha512": "UpZLNLBpIZ0GTebShui7xXYh6DmBHjWM8NxGxZbdQh/bPZ5e6YswqI+bru6BnEL5eWiOdodsXtEz3FROcgi/qg==",
       "type": "package",
       "path": "microsoft.extensions.options/2.2.0",
       "files": [
@@ -484,7 +484,7 @@
       ]
     },
     "Microsoft.Extensions.Primitives/2.2.0": {
-      "sha512": "vpH+o7f8obVx65PiEtBXxTwL5RosK60fNIMy/y8WGE4/r4IvAqQGukOzMhxsp//Accvd7kmukyQTVkqVYdaDyA==",
+      "sha512": "azyQtqbm4fSaDzZHD/J+V6oWMFaf2tWP4WEGIYePLCMw3+b2RQdj9ybgbQyjCshcitQKQ4lEDOZjmSlTTrHxUg==",
       "type": "package",
       "path": "microsoft.extensions.primitives/2.2.0",
       "files": [
@@ -851,7 +851,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -1185,23 +1185,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\bahda\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "projectUniqueName": "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
       "projectName": "MyEstate.Application",
-      "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Application\\obj\\",
+      "projectPath": "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\MyEstate.Application\\MyEstate.Application.csproj",
+      "packagesPath": "C:\\Users\\bahda\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\MyEstate.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bahda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1214,11 +1214,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj"
+            "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj": {
+              "projectPath": "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\MyEstate.Domain\\MyEstate.Domain.csproj"
             },
-            "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Develop\\Estate\\Persistence\\Persistence.csproj"
+            "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\bahda\\Desktop\\ComandProject\\Estate\\Persistence\\Persistence.csproj"
             }
           }
         }
