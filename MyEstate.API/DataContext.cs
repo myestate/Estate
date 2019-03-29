@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyEstate.Domain.Entities;
 
-namespace Persistence
+namespace MyEstate.API
 {
     public class DataContext : DbContext
     {
