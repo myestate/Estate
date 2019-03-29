@@ -26,8 +26,7 @@ import { AuthGuard } from './_guards/auth.guard';
       RegisterComponent,
       EstatesComponent,
       Estate_agentsComponent,
-      MessagesComponent,
-      SingInComponent
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
