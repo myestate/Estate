@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -37,6 +38,7 @@ namespace MyEstate.API
             });
             services.AddCors();
             // services.AddTransient<Seed>();
+            services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
