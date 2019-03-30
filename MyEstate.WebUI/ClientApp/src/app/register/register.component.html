@@ -1,27 +1,31 @@
-<form #regiserForm="ngForm" (ngSubmit)="register()">
-  <h2 class="text-center text-primary">Sign Up</h2>
-  <hr>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username" required>
-  </div>
+<div class="register-form">
+  <form #regiserForm="ngForm" (ngSubmit)="register()">
+    <h2 class="text-center text-primary">Sign Up</h2>
+    <br/>
   
-  <div class="form-group">
-    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password" required>
-  </div>
- 
-  <div id="sotial-network">
-     <button class="loginBtn loginBtn--facebook">
-      Login with Facebook
-    </button>
+    <div class="form-group">
+      <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username" required autofocus>
+    </div>
     
-    <button class="loginBtn loginBtn--google">
-      Login with Google
-    </button>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password" required>
+    </div>
+   
+    <div id="sotial-network">
+       <button class="loginBtn loginBtn--facebook">
+        Login with Facebook
+      </button>
+      
+      <button class="loginBtn loginBtn--google">
+        Login with Google
+      </button>
+    </div>
+    <br><br>
+    <div class="form-group text-center">
+      <br/>
+      <button class="btn btn--register" [disabled]="!regiserForm.valid" type="submit">Register</button>
+      <br/>
+      <button class="btn btn-default" [routerLink]="['/home']" routerLinkActive="router-link-active"  type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
   </div>
-  <br><br>
-  <div class="form-group text-center">
-    <button class="btn btn-success" [disabled]="!regiserForm.valid" type="submit">Register</button>
-    <button class="btn btn-default" [routerLink]="['/home']" routerLinkActive="router-link-active"  type="button" (click)="cancel()">Cancel</button>
-  </div>
-</form>
