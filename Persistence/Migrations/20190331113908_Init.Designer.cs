@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Persistence;
 
-namespace  Persistence.Migrations
+namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContext))]
-    [Migration("20190329085455_ExtendedUserClass")]
-    partial class ExtendedUserClass
+    [DbContext(typeof(MyEstateContext))]
+    [Migration("20190331113908_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
