@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MyEstate.API.Helpers;
 using MyEstate.Application;
 using MyEstate.Application.Interfaces;
 using Persistence;
@@ -40,7 +41,7 @@ namespace MyEstate.API
                 });
             services.AddCors();
             // services.AddTransient<Seed>();
-            services.configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();

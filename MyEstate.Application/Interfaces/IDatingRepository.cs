@@ -10,5 +10,7 @@ namespace MyEstate.Application.Interfaces
         Task<bool> SaveAll();
         Task<IEnumerable<MyEstate.Domain.Entities.User>> GetUsers();
         Task<MyEstate.Domain.Entities.User> GetUser(int id);
+
+        Task<MyEstate.Domain.Entities.Photo> GetPhoto(int id); 
     }
 }

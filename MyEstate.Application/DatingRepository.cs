@@ -24,6 +24,13 @@ namespace MyEstate.Application
             _context.Remove(entity);
         }
 
+        public async Task<Domain.Entities.Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+
+            return photo;
+        }
+
         public async Task<Domain.Entities.User> GetUser(int id)
         {
             var user = await _context.Users.Include(p => p.Photos)
