@@ -11,9 +11,9 @@ namespace MyEstate.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly MyEstateContext _context;
 
-        public ValuesController(DataContext context)
+        public ValuesController(MyEstateContext context)
         {
             _context = context;
         }

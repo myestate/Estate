@@ -9,8 +9,8 @@ namespace MyEstate.Application
 {
     public class DatingRepository : IDatingRepository
     {
-        private readonly DataContext _context;
-        public DatingRepository(DataContext context)
+        private readonly MyEstateContext _context;
+        public DatingRepository(MyEstateContext context)
         {
             _context = context;
         }
