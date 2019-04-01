@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyEstate.Application.Interfaces;
+using MyEstate.Application.User.Models;
 
 namespace MyEstate.API.Controllers
 {
@@ -11,36 +12,33 @@ namespace MyEstate.API.Controllers
     [ApiController]
     public class EstatesController : ControllerBase
     {
-        // GET: api/Estates
+        private readonly IDatingRepository _repo;
+        private readonly IMapper _mapper;
+
+        public EstatesController(IDatingRepository repo, IMapper mapper)
+        {
+            _mapper = mapper;
+            _repo = repo;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetEstates()
         {
-            return new string[] { "value1", "value2" };
+            var users = await _repo.GetUsers();
+
+            var estatesToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            return Ok(estatesToReturn);
         }
 
-        // GET: api/Estates/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEstate(int id)
         {
-            return "value";
-        }
+            var estate = await _repo.GetUser(id);
 
-        // POST: api/Estates
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+            var estateToReturn = _mapper.Map<UserForDetailedDto>(estate);
 
-        // PUT: api/Estates/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(estateToReturn);
         }
     }
 }
