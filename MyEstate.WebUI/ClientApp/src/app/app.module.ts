@@ -14,7 +14,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/Alertify.service';
 import { appRoutes } from './routes';
 import { EstatesComponent } from './estates/estates.component';
-import { Estate_agentsComponent } from './estate_agents/estate_agents.component';
+import { Estate_agentsComponent } from './estate_agent/estate_agentsList/estate_agents.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
@@ -24,6 +24,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolve } from './_resolvers/member-detail.resolver';
 import { MemberListResolve } from './_resolvers/member-list.resolver';
+import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/estate_agentsCard.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -37,6 +38,7 @@ export function tokenGetter() {
       RegisterComponent,
       EstatesComponent,
       Estate_agentsComponent,
+      Estate_agentsCardComponent,
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
