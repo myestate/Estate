@@ -19,6 +19,43 @@ namespace Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Floors");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<int?>("OwnerId");
+
+                    b.Property<double>("Price");
+
+                    b.Property<int>("Rooms");
+
+                    b.Property<double>("Square");
+
+                    b.Property<string>("Street");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Estates");
+                });
+
             modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -29,6 +66,8 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("EstateId");
+
                     b.Property<bool>("IsMain");
 
                     b.Property<string>("PublicId");
@@ -38,6 +77,8 @@ namespace Persistence.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EstateId");
 
                     b.HasIndex("UserId");
 
@@ -94,8 +135,19 @@ namespace Persistence.Migrations
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
+                {
+                    b.HasOne("MyEstate.Domain.Entities.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+                });
+
             modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
                 {
+                    b.HasOne("MyEstate.Domain.Entities.Estate")
+                        .WithMany("Photos")
+                        .HasForeignKey("EstateId");
+
                     b.HasOne("MyEstate.Domain.Entities.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
