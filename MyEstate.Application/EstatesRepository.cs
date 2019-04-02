@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
@@ -7,10 +7,10 @@ using Persistence;
 
 namespace MyEstate.Application
 {
-    public class DatingRepository : IDatingRepository
+    class EstatesRepository : IEstatesRepository
     {
         private readonly MyEstateContext _context;
-        public DatingRepository(MyEstateContext context)
+        public EstatesRepository(MyEstateContext context)
         {
             _context = context;
         }
@@ -24,26 +24,19 @@ namespace MyEstate.Application
             _context.Remove(entity);
         }
 
-        public async Task<Domain.Entities.Photo> GetPhoto(int id)
+        public async Task<Domain.Entities.Estate> GetEstate(int id)
         {
-            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
-
-            return photo;
-        }
-
-        public async Task<Domain.Entities.User> GetUser(int id)
-        {
-            var user = await _context.Users.Include(p => p.Photos)
+            var estate = await _context.Estates.Include(p => p.Photos).Include(p => p.Owner)
                              .FirstOrDefaultAsync(u => u.Id == id);
 
-            return user;
+            return estate;
         }
 
-        public async Task<IEnumerable<Domain.Entities.User>> GetUsers()
+        public async Task<IEnumerable<Domain.Entities.Estate>> GetEstates()
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var estates = await _context.Estates.Include(p => p.Photos).Include(p => p.Owner).ToListAsync();
 
-            return users;
+            return estates;
         }
 
         public async Task<bool> SaveAll()

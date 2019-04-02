@@ -25,6 +25,10 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberDetailResolve } from './_resolvers/member-detail.resolver';
 import { MemberListResolve } from './_resolvers/member-list.resolver';
 import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/estate_agentsCard.component';
+import { SellingComponent } from './selling/selling.component';
+import { RentComponent } from './rent/rent.component';
+import { Daily_rentComponent } from './daily_rent/daily_rent.component';
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -42,7 +46,10 @@ export function tokenGetter() {
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      SellingComponent,
+      RentComponent,
+      Daily_rentComponent
    ],
    imports: [
       BrowserModule,
@@ -72,4 +79,6 @@ export function tokenGetter() {
       AppComponent
    ]
 })
-export class AppModule { }
+export class AppModule {
+
+}

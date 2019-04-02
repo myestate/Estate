@@ -9,6 +9,9 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolve } from './_resolvers/member-detail.resolver';
 import { MemberListResolve } from './_resolvers/member-list.resolver';
+import { SellingComponent } from './selling/selling.component';
+import { RentComponent } from './rent/rent.component';
+import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -27,5 +30,9 @@ export const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'estates', component: EstatesComponent},
     {path: 'estate_agent/estate_agentsList', component: Estate_agentsComponent},
+    {path: 'selling', component: SellingComponent},
+    {path: 'rent', component: RentComponent},
+    {path: 'daily-rent', component: Daily_rentComponent},
+    {path: 'estate_agents', component: Estate_agentsComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
