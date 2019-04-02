@@ -24,6 +24,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolve } from './_resolvers/member-detail.resolver';
 import { MemberListResolve } from './_resolvers/member-list.resolver';
+import { SellingComponent } from './selling/selling.component';
+import { RentComponent } from './rent/rent.component';
+import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -40,7 +43,10 @@ export function tokenGetter() {
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      SellingComponent,
+      RentComponent,
+      Daily_rentComponent
    ],
    imports: [
       BrowserModule,
@@ -70,4 +76,6 @@ export function tokenGetter() {
       AppComponent
    ]
 })
-export class AppModule { }
+export class AppModule {
+
+}
