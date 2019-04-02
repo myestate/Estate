@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyEstate.Application.Interfaces;
-using MyEstate.Application.User.Models;
+using MyEstate.Application.Estate.Models;
+using MyEstate.Domain.Entities;
 
 namespace MyEstate.API.Controllers
 {
@@ -12,10 +14,10 @@ namespace MyEstate.API.Controllers
     [ApiController]
     public class EstatesController : ControllerBase
     {
-        private readonly IDatingRepository _repo;
+        private readonly IEstatesRepository _repo;
         private readonly IMapper _mapper;
 
-        public EstatesController(IDatingRepository repo, IMapper mapper)
+        public EstatesController(IEstatesRepository repo, IMapper mapper)
         {
             _mapper = mapper;
             _repo = repo;
@@ -24,9 +26,9 @@ namespace MyEstate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEstates()
         {
-            var users = await _repo.GetUsers();
+            var estates = await _repo.GetEstates();
 
-            var estatesToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+            var estatesToReturn = _mapper.Map<IEnumerable<EstateForListDto>>(estates);
 
             return Ok(estatesToReturn);
         }
@@ -34,11 +36,34 @@ namespace MyEstate.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEstate(int id)
         {
-            var estate = await _repo.GetUser(id);
+            var estate = await _repo.GetEstate(id);
 
-            var estateToReturn = _mapper.Map<UserForDetailedDto>(estate);
+            var estateToReturn = _mapper.Map<EstateForListDto>(estate);
 
             return Ok(estateToReturn);
+        }
+
+        [HttpPost("addestate")]
+        public async Task<IActionResult> AddEstate(EstateForAddDto estate)
+        {
+            var estateToCreate = new Estate
+            {
+                Title = estate.Title,
+                Description = estate.Description,
+                Price = estate.Price,
+                Square = estate.Square,
+                Rooms = estate.Rooms,
+                Floors = estate.Floors,
+                Country = estate.Country,
+                City = estate.City,
+                Street = estate.Street,
+                IsActive = estate.IsActive,
+                Created = DateTime.Now
+            };
+
+            var creatEstate = await _repo.AddEstate(estateToCreate);
+
+            return StatusCode(201);
         }
     }
 }

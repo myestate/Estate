@@ -43,5 +43,14 @@ namespace MyEstate.Application
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<Domain.Entities.Estate> AddEstate(Domain.Entities.Estate estate)
+        {
+
+            await _context.Estates.AddAsync(estate);
+            await _context.SaveChangesAsync();
+
+            return estate;
+        }
     }
 }
