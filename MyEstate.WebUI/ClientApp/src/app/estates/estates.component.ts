@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-estates',
@@ -6,16 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./estates.component.css']
 })
 export class EstatesComponent implements OnInit {
+  @Input() type: string;
+
   items = [
-    new Advertisement("../../assets/summerhouse.jpg", "Summerhouse", 10000, "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-    new Advertisement("../../assets/brickhouse.jpg", "Brickhouse", 7000, "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-    new Advertisement("../../assets/renovated.jpg", "Renovated", 9000, "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+    new Advertisement('../../assets/summerhouse.jpg', 'Summerhouse', 10000,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+    new Advertisement('../../assets/brickhouse.jpg', 'Brickhouse', 7000,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+    new Advertisement('../../assets/renovated.jpg', 'Renovated', 9000,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
   ];
 
   newsList = [
-    new News("Metro in Lviv!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-    new News("New feature in program", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-    new News("Hello world", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+// tslint:disable-next-line: max-line-length
+    new News('Metro in Lviv!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+// tslint:disable-next-line: max-line-length
+    new News('New feature in program', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+// tslint:disable-next-line: max-line-length
+    new News('Hello world', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
   ];
   constructor() { }
 
@@ -25,23 +33,23 @@ export class EstatesComponent implements OnInit {
 }
 
 export class Advertisement {
-  imageUrl: string
-  title: string
-  price: number
-  description: string
-  constructor(im, tit, pr, des) {
-    this.imageUrl = im
-    this.title = tit
-    this.price = pr
-    this.description=des
+  imageUrl: string;
+  title: string;
+  price: number;
+  description: string;
+  constructor(image: string, title: string, price: number, description: string) {
+    this.imageUrl = image;
+    this.title = title;
+    this.price = price;
+    this.description = description;
   }
 }
 
 export class News {
-  title: string
-  content: string
-  constructor(tit, con) {
-    this.title = tit
-    this.content = con
+  title: string;
+  content: string;
+  constructor(title: string, content: string) {
+    this.title = title;
+    this.content = content;
   }
 }

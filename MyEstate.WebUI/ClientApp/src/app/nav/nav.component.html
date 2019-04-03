@@ -9,27 +9,26 @@
       <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ml-auto">
       <li class="nav-item"  routerLinkActive="active">
-        <a [routerLink]="['/estates']" class="nav-link">Selling</a>
+        <a [routerLink]="['/selling']" class="nav-link">Selling</a>
       </li>
       <li class="nav-item">
-        <a href="#contact" class="nav-link">Rent</a>
+        <a [routerLink]="['/rent']" class="nav-link">Rent</a>
       </li>
       <li class="nav-item">
-        <a href="#about" class="nav-link">Daily rent</a>
+        <a [routerLink]="['/daily-rent']" class="nav-link">Daily rent</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="['/estate_agents']"  class="nav-link">Estate agents</a>
+          <a [routerLink]="['/estate_agent/estate_agentsList']"  class="nav-link">Estate agents</a>
         </li>
-        
       <li class="nav-item" *ngIf="loggedIn()">
         <a href="#about" class="nav-link">Add estate</a>
       </li>
       <li class="nav-item" routerLinkActive="active"  *ngIf="loggedIn()">
         <a [routerLink]="['/messages']" class="nav-link">Messages</a>
       </li>
-      <li class="nav-item" routerLinkActive="active"  *ngIf="loggedIn()">
+      <!-- <li class="nav-item" routerLinkActive="active"  *ngIf="loggedIn()">
         <a [routerLink]="['/members']" class="nav-link">Members</a>
-      </li>
+      </li> -->
        </ul>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle>
@@ -53,4 +52,9 @@
      </form>
         <button *ngIf="!loggedIn()" style="margin: 5px" [routerLink]="['/register']" 
         routerLinkActive="router-link-active"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
-</div>
+      </div>
+
+      <div>
+           <button class="btn"> <i style="font-size: 25px" class="fa">&#xf041;</i></button>
+      </div>
+     

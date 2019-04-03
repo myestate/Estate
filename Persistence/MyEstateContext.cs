@@ -3,14 +3,16 @@ using MyEstate.Domain.Entities;
 
 namespace Persistence
 {
-    public class DataContext : DbContext
+    public class MyEstateContext : DbContext
     {
-        public DataContext(DbContextOptions options) : base(options)
+        public MyEstateContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<Value> Values { get; set; }
+
         public DbSet<User> Users { get; set; }
+
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Estate> Estates { get; set; }
     }

@@ -9,8 +9,8 @@ namespace MyEstate.Application
 {
     public class DatingRepository : IDatingRepository
     {
-        private readonly DataContext _context;
-        public DatingRepository(DataContext context)
+        private readonly MyEstateContext _context;
+        public DatingRepository(MyEstateContext context)
         {
             _context = context;
         }
@@ -22,6 +22,13 @@ namespace MyEstate.Application
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        public async Task<Domain.Entities.Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+
+            return photo;
         }
 
         public async Task<Domain.Entities.User> GetUser(int id)

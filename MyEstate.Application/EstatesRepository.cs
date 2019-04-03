@@ -9,8 +9,8 @@ namespace MyEstate.Application
 {
     class EstatesRepository : IEstatesRepository
     {
-        private readonly DataContext _context;
-        public EstatesRepository(DataContext context)
+        private readonly MyEstateContext _context;
+        public EstatesRepository(MyEstateContext context)
         {
             _context = context;
         }

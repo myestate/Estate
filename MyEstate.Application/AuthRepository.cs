@@ -9,13 +9,13 @@ namespace MyEstate.Application
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly DataContext _context;
+        private readonly MyEstateContext _context;
 
-        public AuthRepository(DataContext context)
+        public AuthRepository(MyEstateContext context)
         {
             _context = context;
         }
-
+        
         public async Task<Domain.Entities.User> Login(string username, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);

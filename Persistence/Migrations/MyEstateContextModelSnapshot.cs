@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Persistence;
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MyEstateContext))]
+    partial class MyEstateContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -17,6 +18,43 @@ namespace Persistence.Migrations
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Floors");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<int?>("OwnerId");
+
+                    b.Property<double>("Price");
+
+                    b.Property<int>("Rooms");
+
+                    b.Property<double>("Square");
+
+                    b.Property<string>("Street");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Estates");
+                });
 
             modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
                 {
@@ -28,13 +66,19 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("EstateId");
+
                     b.Property<bool>("IsMain");
+
+                    b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EstateId");
 
                     b.HasIndex("UserId");
 
@@ -91,8 +135,19 @@ namespace Persistence.Migrations
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
+                {
+                    b.HasOne("MyEstate.Domain.Entities.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+                });
+
             modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
                 {
+                    b.HasOne("MyEstate.Domain.Entities.Estate")
+                        .WithMany("Photos")
+                        .HasForeignKey("EstateId");
+
                     b.HasOne("MyEstate.Domain.Entities.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
