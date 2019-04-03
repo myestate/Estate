@@ -7,7 +7,7 @@ using Persistence;
 
 namespace MyEstate.Application
 {
-    class EstatesRepository : IEstatesRepository
+    public class EstatesRepository : IEstatesRepository
     {
         private readonly MyEstateContext _context;
         public EstatesRepository(MyEstateContext context)

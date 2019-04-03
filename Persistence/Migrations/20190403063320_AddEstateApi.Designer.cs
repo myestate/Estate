@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(MyEstateContext))]
-    [Migration("20190402082848_AdPhotoAPI")]
-    partial class AdPhotoAPI
+    [Migration("20190403063320_AddEstateApi")]
+    partial class AddEstateApi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

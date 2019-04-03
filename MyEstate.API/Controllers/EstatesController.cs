@@ -44,7 +44,7 @@ namespace MyEstate.API.Controllers
         }
 
         [HttpPost("addestate")]
-        public async Task<IActionResult> AddEstate(EstateForAddDto estate)
+        public async Task<IActionResult> AddEstate([FromBody]EstateForAddDto estate)
         {
             var estateToCreate = new Estate
             {
