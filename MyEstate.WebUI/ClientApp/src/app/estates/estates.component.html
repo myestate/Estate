@@ -49,13 +49,13 @@
   <div class="row">
     <div class="col-md-6">
       <h3 class="text-center">Advertisement</h3>
-      <div class="row mb-3" *ngFor="let item of items">
-        <img class="float-left" src="{{item.imageUrl}}" />
+      <div class="row mb-3" *ngFor="let item of estates()">
+        <img class="float-left" src="{{item.Photos.url}}" />
         <div class="caption">
-          <h4 id="homeTitle">{{item.title}}</h4>
-          <h5 id="price">{{item.price}}$</h5>
+          <h4 id="homeTitle">{{item.Title}}</h4>
+          <h5 id="price">{{item.Price}}$</h5>
           <p id="description">
-            {{item.description}}
+            {{item.Description}}
           </p>
         </div>
         <button class="btn btn-primary">More</button>

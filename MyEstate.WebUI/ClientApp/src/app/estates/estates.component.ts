@@ -1,21 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { EstateService } from '../_services/estate.service';
 
 @Component({
   selector: 'app-estates',
   templateUrl: './estates.component.html',
   styleUrls: ['./estates.component.css']
 })
+
 export class EstatesComponent implements OnInit {
   @Input() type: string;
 
-  items = [
-    new Advertisement('../../assets/summerhouse.jpg', 'Summerhouse', 10000,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-    new Advertisement('../../assets/brickhouse.jpg', 'Brickhouse', 7000,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-    new Advertisement('../../assets/renovated.jpg', 'Renovated', 9000,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-  ];
+  constructor(private estateService: EstateService) { }
+  
+  estates(){
+    return this.estateService.getEstates();
+  }
 
   newsList = [
 // tslint:disable-next-line: max-line-length
@@ -25,24 +24,10 @@ export class EstatesComponent implements OnInit {
 // tslint:disable-next-line: max-line-length
     new News('Hello world', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
   ];
-  constructor() { }
 
   ngOnInit() {
   }
 
-}
-
-export class Advertisement {
-  imageUrl: string;
-  title: string;
-  price: number;
-  description: string;
-  constructor(image: string, title: string, price: number, description: string) {
-    this.imageUrl = image;
-    this.title = title;
-    this.price = price;
-    this.description = description;
-  }
 }
 
 export class News {

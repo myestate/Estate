@@ -28,6 +28,7 @@ import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/est
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
+import { EstateService } from './_services/estate.service';
 
 
 export function tokenGetter() {
@@ -40,7 +41,7 @@ export function tokenGetter() {
       NavComponent,
       HomeComponent,
       RegisterComponent,
-      EstatesComponent,
+     EstatesComponent,
       Estate_agentsComponent,
       Estate_agentsCardComponent,
       MessagesComponent,
@@ -71,7 +72,8 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService,
+     UserService,
+     EstateService,
       MemberDetailResolve,
       MemberListResolve
    ],
