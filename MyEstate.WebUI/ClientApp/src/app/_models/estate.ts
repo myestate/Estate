@@ -1,19 +1,19 @@
-import { Photo } from './photo';
 import { User } from './user';
+import { Photo } from './photo';
 
 export interface Estate {
-  Id: number;
-  Title: string;
-  Description: string;
-  Price: number;
-  Owner: User;
-  double: number;
-  Rooms: number;
-  Floors: number;
-  Country: string;
-  City: string;
-  Street: string;
-  Photos: Photo[];
-  Created: Date;
-  IsActive: Boolean;
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    owner: User;
+    square: number;
+    rooms: number;
+    floors: number;
+    country: string;
+    city: string;
+    street: string;
+    photos: Photo[];
+    created: Date;
+    isActive: Boolean;
 }
