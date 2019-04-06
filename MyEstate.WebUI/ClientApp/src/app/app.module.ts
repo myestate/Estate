@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -29,6 +30,8 @@ import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { Add_estateComponent } from './add_estate/add_estate.component';
+import { environment } from 'src/environments/environment';
+import { MapComponent } from './map/map.component';
 
 
 export function tokenGetter() {
@@ -51,7 +54,8 @@ export function tokenGetter() {
       SellingComponent,
       RentComponent,
       Daily_rentComponent,
-      Add_estateComponent
+      Add_estateComponent,
+      MapComponent
    ],
    imports: [
       BrowserModule,
@@ -66,6 +70,9 @@ export function tokenGetter() {
             whitelistedDomains: ['localhost:5000'],
             blacklistedRoutes: ['localhost:5000/api/auth']
          }
+      }),
+      AgmCoreModule.forRoot({
+         apiKey: environment.googleMapAPIKey
       })
    ],
    providers: [

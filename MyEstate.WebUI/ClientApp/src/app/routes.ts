@@ -13,6 +13,7 @@ import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { Add_estateComponent } from './add_estate/add_estate.component';
+import { MapComponent } from './map/map.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -36,5 +37,6 @@ export const appRoutes: Routes = [
     {path: 'daily-rent', component: Daily_rentComponent},
     {path: 'estate_agents', component: Estate_agentsComponent},
     {path: 'add_estate', component: Add_estateComponent},
+    {path: 'map', component: MapComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
