@@ -28,6 +28,7 @@ import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/est
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
+import { Add_estateComponent } from './add_estate/add_estate.component';
 
 
 export function tokenGetter() {
@@ -49,7 +50,8 @@ export function tokenGetter() {
       MemberDetailComponent,
       SellingComponent,
       RentComponent,
-      Daily_rentComponent
+      Daily_rentComponent,
+      Add_estateComponent
    ],
    imports: [
       BrowserModule,

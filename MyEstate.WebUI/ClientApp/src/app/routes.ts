@@ -12,6 +12,7 @@ import { MemberListResolve } from './_resolvers/member-list.resolver';
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
+import { Add_estateComponent } from './add_estate/add_estate.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -34,5 +35,6 @@ export const appRoutes: Routes = [
     {path: 'rent', component: RentComponent},
     {path: 'daily-rent', component: Daily_rentComponent},
     {path: 'estate_agents', component: Estate_agentsComponent},
+    {path: 'add_estate', component: Add_estateComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
