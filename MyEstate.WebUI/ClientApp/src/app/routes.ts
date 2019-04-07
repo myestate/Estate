@@ -17,7 +17,7 @@ import { MapComponent } from './map/map.component';
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {
-        path: '',
+        path: 'home',
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
@@ -36,5 +36,5 @@ export const appRoutes: Routes = [
     {path: 'daily-rent', component: Daily_rentComponent},
     {path: 'estate_agents', component: Estate_agentsComponent},
     {path: 'map', component: MapComponent},
-    {path: '**', redirectTo: '', pathMatch: 'full'},
+    {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
