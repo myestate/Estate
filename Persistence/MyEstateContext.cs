@@ -15,5 +15,7 @@ namespace Persistence
 
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Estate> Estates { get; set; }
+
+         public DbSet<EstateAgent> EstateAgents { get; set; }
     }
 }

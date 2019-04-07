@@ -12,11 +12,13 @@ import { MemberListResolve } from './_resolvers/member-list.resolver';
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
+import { Add_estateComponent } from './add_estate/add_estate.component';
+import { MapComponent } from './map/map.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {
-        path: '',
+        path: 'home',
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
@@ -34,5 +36,7 @@ export const appRoutes: Routes = [
     {path: 'rent', component: RentComponent},
     {path: 'daily-rent', component: Daily_rentComponent},
     {path: 'estate_agents', component: Estate_agentsComponent},
-    {path: '**', redirectTo: '', pathMatch: 'full'},
+    {path: 'add_estate', component: Add_estateComponent},
+    {path: 'map', component: MapComponent},
+    {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
