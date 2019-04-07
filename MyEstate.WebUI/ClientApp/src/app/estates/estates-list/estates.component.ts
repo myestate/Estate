@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Estate } from '../_models/estate';
-import { EstateService } from '../_services/estate/estate.service';
-import { AlertifyService } from '../_services/alertify/Alertify.service';
+import { Estate } from '../../_models/estate';
+import { EstateService } from '../../_services/estate/estate.service';
+import { AlertifyService } from '../../_services/alertify/Alertify.service';
 
 @Component({
   selector: 'app-estates',
