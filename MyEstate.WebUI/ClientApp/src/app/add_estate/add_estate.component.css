@@ -1,0 +1,7 @@
+span
+{
+    color: red;
+}
+.btn-add:enabled {
+    box-shadow: 0 0 6px #DD4B39;
+}

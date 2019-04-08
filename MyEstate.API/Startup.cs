@@ -45,6 +45,8 @@ namespace MyEstate.API
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<IEstatesRepository, EstatesRepository>();
+            services.AddScoped<IEstateAgentsRepository, EstateAgentsRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

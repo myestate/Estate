@@ -6,7 +6,7 @@ using MyEstate.Domain.Entities;
 
 namespace MyEstate.Application.Estate.Models
 {
-    class EstateForListDto
+    public class EstateForListDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

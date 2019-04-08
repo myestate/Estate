@@ -10,5 +10,6 @@ namespace MyEstate.Application.Interfaces
         Task<bool> SaveAll();
         Task<IEnumerable<MyEstate.Domain.Entities.Estate>> GetEstates();
         Task<MyEstate.Domain.Entities.Estate> GetEstate(int id);
+        Task<Domain.Entities.Estate> AddEstate(Domain.Entities.Estate estate);
     }
 }

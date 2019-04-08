@@ -7,7 +7,7 @@ using Persistence;
 
 namespace MyEstate.Application
 {
-    class EstatesRepository : IEstatesRepository
+    public class EstatesRepository : IEstatesRepository
     {
         private readonly MyEstateContext _context;
         public EstatesRepository(MyEstateContext context)
@@ -42,6 +42,15 @@ namespace MyEstate.Application
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<Domain.Entities.Estate> AddEstate(Domain.Entities.Estate estate)
+        {
+
+            await _context.Estates.AddAsync(estate);
+            await _context.SaveChangesAsync();
+
+            return estate;
         }
     }
 }
