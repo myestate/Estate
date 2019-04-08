@@ -26,7 +26,7 @@ namespace MyEstate.Application
         
         public async Task<Domain.Entities.EstateAgent> GetEstateAgent(int id)
         {
-            var estateAgent = await _context.EstateAgents.Include(p => p.PhotoUrl)
+            var estateAgent = await _context.EstateAgents.Include(p => p.Photos)
                              .FirstOrDefaultAsync(u => u.Id == id);
 
             return estateAgent;
@@ -34,7 +34,7 @@ namespace MyEstate.Application
 
         public async Task<IEnumerable<Domain.Entities.EstateAgent>> GetEstateAgents()
         {
-            var estateAgents = await _context.EstateAgents.Include(p => p.PhotoUrl).ToListAsync();
+            var estateAgents = await _context.EstateAgents.Include(p => p.Photos).ToListAsync();
 
             return estateAgents;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MyEstate.Application.Photo.Model;
 
 namespace MyEstate.Application.EstateAgent.Models
 {
@@ -13,6 +14,6 @@ namespace MyEstate.Application.EstateAgent.Models
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
         public string City { get; set; } 
-        public string PhotoUrl { get; set; } 
+        public ICollection<PhotosForDetailedDto> Photos { get; set; }
     }
 }
