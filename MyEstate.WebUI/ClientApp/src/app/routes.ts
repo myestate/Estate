@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { EstatesComponent } from './estates/estates-list/estates.component';
+import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { Estate_agentsComponent } from './estate_agent/estate_agentsList/estate_agents.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -30,7 +31,8 @@ export const appRoutes: Routes = [
         ]
     },
     {path: 'register', component: RegisterComponent},
-    {path: 'estates', component: EstatesComponent},
+    {path: 'estates', component: EstatesComponent },
+    {path: 'estates-detail/:id', component: EstatesDetailComponent},
     {path: 'estate_agent/estate_agentsList', component: Estate_agentsComponent},
     {path: 'selling', component: SellingComponent},
     {path: 'rent', component: RentComponent},

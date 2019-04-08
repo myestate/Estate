@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <img class="float-left" src="{{estate.photos}}" />
+
+      <img class="float-left" *ngFor="let photo of estate.photos" src="{{photo.url}}" />
       <div class="caption">
         <h4 id="homeTitle">{{estate.title}}</h4>
         <h5 id="price">{{estate.price}}$</h5>

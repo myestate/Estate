@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Estate } from '../../_models/estate';
 import { EstateService } from '../../_services/estate/estate.service';
 import { AlertifyService } from '../../_services/alertify/Alertify.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-estates-detail',
@@ -17,8 +17,8 @@ export class EstatesDetailComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.id = data['id'];
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
     });
     this.loadEstate(this.id);
   }
