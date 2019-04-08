@@ -14,7 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify/Alertify.service';
 import { appRoutes } from './routes';
-import { EstatesComponent } from './estates/estates.component';
+import { EstatesComponent } from './estates/estates-list/estates.component';
 import { Estate_agentsComponent } from './estate_agent/estate_agentsList/estate_agents.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -32,6 +32,8 @@ import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { Add_estateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
+import { EstateService } from './_services/estate.service';
+import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
 
 
@@ -45,7 +47,7 @@ export function tokenGetter() {
       NavComponent,
       HomeComponent,
       RegisterComponent,
-      EstatesComponent,
+     EstatesComponent,
       Estate_agentsComponent,
       Estate_agentsCardComponent,
       MessagesComponent,
@@ -56,7 +58,8 @@ export function tokenGetter() {
       RentComponent,
       Daily_rentComponent,
       Add_estateComponent,
-      MapComponent
+      MapComponent,
+      EstatesDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -81,6 +84,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+     EstateService,
       UserService,
       MapService,
       MemberDetailResolve,
