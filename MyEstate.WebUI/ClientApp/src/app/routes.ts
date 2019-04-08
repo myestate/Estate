@@ -16,6 +16,7 @@ import { Add_estateComponent } from './add_estate/add_estate.component';
 import { MapComponent } from './map/map.component';
 
 export const appRoutes: Routes = [
+    {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {
         path: '',

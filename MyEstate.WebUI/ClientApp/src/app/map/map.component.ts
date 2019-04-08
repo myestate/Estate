@@ -14,6 +14,7 @@ import { MapService } from '../_services/map/map.service';
 export class MapComponent implements OnInit {
   lat: any;
   lng: any;
+  address: string;
   constructor(private alertify: AlertifyService, private mapService: MapService) {
     if (navigator) {
       navigator.geolocation.getCurrentPosition( pos => {
@@ -24,13 +25,11 @@ export class MapComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.getCoordinate('Львів, Лукаша, 4');
+    // this.getCoordinate('Львів,вул. Степана Бандери, 4');
   }
 
   getCoordinate(address: string) {
     this.mapService.getCoordinate(address).subscribe((response) => {
-      console.log(response.results[0].geometry.location.lat);
-      console.log(response.results[0].geometry.location.lng);
       this.lat = response.results[0].geometry.location.lat;
       this.lng = response.results[0].geometry.location.lng;
     });
