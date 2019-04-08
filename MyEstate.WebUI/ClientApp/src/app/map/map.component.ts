@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { google, LatLng, Geometry, GoogleMap } from '@agm/core/services/google-maps-types';
+import { AlertifyService } from '../_services/alertify/Alertify.service';
+import { google, LatLng } from '@agm/core/services/google-maps-types';
+import { Observable } from 'rxjs';
+import { MapService } from '../_services/map/map.service';
 
 @Component({
   selector: 'app-map',
@@ -11,9 +14,7 @@ import { google, LatLng, Geometry, GoogleMap } from '@agm/core/services/google-m
 export class MapComponent implements OnInit {
   lat: any;
   lng: any;
-  baseUrl =  environment.googleMapAPIUrl;
-
-  constructor(private http: HttpClient) {
+  constructor(private alertify: AlertifyService, private mapService: MapService) {
     if (navigator) {
       navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
@@ -27,9 +28,11 @@ export class MapComponent implements OnInit {
   }
 
   getCoordinate(address: string) {
-    this.http.get<GoogleMap>(this.baseUrl + 'address=' + address + '&key=' + environment.googleMapAPIKey)
-      .subscribe((res: GoogleMap) => {
-        console.log(res);
-      });
+    this.mapService.getCoordinate(address).subscribe((response) => {
+      console.log(response.results[0].geometry.location.lat);
+      console.log(response.results[0].geometry.location.lng);
+      this.lat = response.results[0].geometry.location.lat;
+      this.lng = response.results[0].geometry.location.lng;
+    });
   }
 }

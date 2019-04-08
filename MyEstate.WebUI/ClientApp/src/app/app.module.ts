@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {BsDropdownModule, TabsModule} from 'ngx-bootstrap';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -32,6 +32,7 @@ import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { Add_estateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
+import { MapService } from './_services/map/map.service';
 
 
 export function tokenGetter() {
@@ -81,6 +82,7 @@ export function tokenGetter() {
       AlertifyService,
       AuthGuard,
       UserService,
+      MapService,
       MemberDetailResolve,
       MemberListResolve
    ],

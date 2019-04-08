@@ -18,7 +18,7 @@ import { MapComponent } from './map/map.component';
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {
-        path: 'home',
+        path: '',
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
@@ -27,6 +27,7 @@ export const appRoutes: Routes = [
                 resolve: {users: MemberListResolve}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolve}},
+            {path: 'add_estate', component: Add_estateComponent}
         ]
     },
     {path: 'register', component: RegisterComponent},
@@ -36,7 +37,6 @@ export const appRoutes: Routes = [
     {path: 'rent', component: RentComponent},
     {path: 'daily-rent', component: Daily_rentComponent},
     {path: 'estate_agents', component: Estate_agentsComponent},
-    {path: 'add_estate', component: Add_estateComponent},
     {path: 'map', component: MapComponent},
     {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
