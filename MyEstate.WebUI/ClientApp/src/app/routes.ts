@@ -15,6 +15,8 @@ import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { Add_estateComponent } from './add_estate/add_estate.component';
 import { MapComponent } from './map/map.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -29,7 +31,9 @@ export const appRoutes: Routes = [
                 resolve: {users: MemberListResolve}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolve}},
-            {path: 'add_estate', component: Add_estateComponent}
+            {path: 'add_estate', component: Add_estateComponent},
+            {path: 'edit-profile', component: EditProfileComponent},
+            {path: 'user-cabinet', component: UserCabinetComponent},
         ]
     },
     {path: 'register', component: RegisterComponent},

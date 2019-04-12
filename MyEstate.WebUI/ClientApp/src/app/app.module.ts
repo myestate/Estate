@@ -35,7 +35,8 @@ import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
-
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -59,7 +60,9 @@ export function tokenGetter() {
       Daily_rentComponent,
       Add_estateComponent,
       MapComponent,
-      EstatesDetailComponent
+      EstatesDetailComponent,
+      EditProfileComponent,
+      UserCabinetComponent
    ],
    imports: [
       BrowserModule,
@@ -84,7 +87,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-     EstateService,
+      EstateService,
       UserService,
       MapService,
       MemberDetailResolve,
