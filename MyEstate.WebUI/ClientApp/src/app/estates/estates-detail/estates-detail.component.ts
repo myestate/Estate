@@ -12,6 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class EstatesDetailComponent implements OnInit {
   @Input() type: string;
   estate: Estate;
+
   id: number;
   constructor(private estateService: EstateService, private alertify: AlertifyService,
     private route: ActivatedRoute) { }
