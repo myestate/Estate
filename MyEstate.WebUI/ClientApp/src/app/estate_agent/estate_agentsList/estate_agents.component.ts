@@ -11,13 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Estate_agentsComponent implements OnInit {
 
-  /* agents = [
-    
-    new Agent("../../assets/ivan.jpg", "Ivan Petrenko", 35, "I'm very good estate agent."),
-    new Agent("../../assets/natalia.jpg", "Natalia Ivanchuk", 25, "I'm very good estate agent."),
-    new Agent("../../assets/nastia.jpg", "Nastia Dotsenko", 28, "I'm very good estate agent."),
-  ]; */
-
   estateAgents: EstateAgent[];
 
   constructor(private estateAgentService: EstateAgentService, private alertify: AlertifyService,
@@ -39,15 +32,5 @@ export class Estate_agentsComponent implements OnInit {
 
 }
 
-/* export class Agent {
-  imageUrl: string
-  name: string
-  age: number
-  description: string
-  constructor(im, name, age, des) {
-    this.imageUrl = im
-    this.name = name
-    this.age = age
-    this.description=des
-  } */
+
 
