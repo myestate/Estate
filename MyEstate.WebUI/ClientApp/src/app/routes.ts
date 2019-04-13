@@ -13,7 +13,7 @@ import { MemberListResolve } from './_resolvers/member-list.resolver';
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
-import { Add_estateComponent } from './add_estate/add_estate.component';
+import { AddEstateComponent } from './add_estate/add_estate.component';
 import { MapComponent } from './map/map.component';
 
 export const appRoutes: Routes = [
@@ -29,7 +29,7 @@ export const appRoutes: Routes = [
                 resolve: {users: MemberListResolve}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolve}},
-            {path: 'add_estate', component: Add_estateComponent}
+            {path: 'add_estate', component: AddEstateComponent}
         ]
     },
     {path: 'register', component: RegisterComponent},

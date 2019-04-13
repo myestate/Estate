@@ -9,7 +9,7 @@
           <label>City<span>*</span> </label>
         </div>
         <div class="col-md-5">
-          <input type="text" name="city" [(ngModel)]="model.city" list="city_list" required>
+          <input type="text" name="city" [(ngModel)]="estate.city" list="city_list" required>
           <datalist id="city_list">
             <option>Kyiv</option>
             <option>Kharkiv</option>
@@ -42,7 +42,7 @@
           <label>Region</label>
         </div>
         <div class="col-md-5">
-          <input type="text" [(ngModel)]="model.country" id="region">
+          <input type="text" [(ngModel)]="estate.country" id="region">
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
           <label>Address<span>*</span></label>
         </div>
         <div class="col-5">
-          <input type="text" [(ngModel)]="model.street" id="street" placeholder="Street" required>
+          <input type="text" [(ngModel)]="estate.street" id="street" placeholder="Street" required>
           <input type="number" min=1  id="building" placeholder="Number" required>
           <input type="number" min=1  id="Flat" placeholder="Flat">
         </div>
@@ -68,7 +68,7 @@
           <label>Rooms<span>*</span></label>
         </div>
         <div class="col">
-          <input type="number" [(ngModel)]="model.rooms" id="rooms" min=1 placeholder="Count" required>
+          <input type="number" [(ngModel)]="estate.rooms" id="rooms" min=1 placeholder="Count" required>
         </div>
         <div class="col">
           <input type="checkbox" id="lodgings"> Room in apartment, lodgings
@@ -83,7 +83,7 @@
           <label>Square meters, m²<span>*</span></label>
         </div>
         <div class="col-5">
-          <input type="number input" min=1 [(ngModel)]="model.square" id="gross" placeholder="Gross" required>
+          <input type="number input" min=1 [(ngModel)]="estate.square" id="gross" placeholder="Gross" required>
           <input type="number input" min=1  id="living" placeholder="Living" required>
           <input type="number input" min=1  id="kitchen" placeholder="Kitchen" required>
         </div>
@@ -98,7 +98,7 @@
         </div>
         <div class="col-5">
           <input type="number input" min=1  id="floor" placeholder="Floor(optional)">
-          <input type="number input" min=1 [(ngModel)]="model.floors" id="floors" placeholder="Floors" required>
+          <input type="number input" min=1 [(ngModel)]="estate.floors" id="floors" placeholder="Floors" required>
           <input type="text"  id="height" placeholder="Room height" required>
         </div>
       </div>
@@ -127,7 +127,7 @@
           <label>Balcony</label>
         </div>
         <div class="col-5">
-          <select [(ngModel)]="model.description" id="balcony">
+          <select [(ngModel)]="estate.description" id="balcony">
             <option value="">-</option>
             <option value="missing">Missing</option>
             <option value="ideal">Ideal</option>
@@ -144,7 +144,7 @@
           <label>Walls</label>
         </div>
         <div class="col-5">
-          <select [(ngModel)]="model.description" id="walls">
+          <select [(ngModel)]="estate.description" id="walls">
             <option value="">-</option>
             <option value="ideal">Ideal</option>
             <option value="good">Good</option>
@@ -184,7 +184,7 @@
           <label>Price/Currency/Price for<span>*</span></label>
         </div>
         <div class="col">
-          <input type="number input" style="line-height: 0%" min=1 [(ngModel)]="model.price" id="price" placeholder="Price" required>
+          <input type="number input" style="line-height: 0%" min=1 [(ngModel)]="estate.price" id="price" placeholder="Price" required>
 
           <select id="Currency" required>
             <option value="dollars">$</option>
@@ -213,7 +213,7 @@
         </div>
         <div class="col">
           <label for="file">Choose photos to upload</label>
-          <input class="col" type="file" [(ngModel)]="model.photos" id="photos" multiple accept=".png, .jpg, .jpeg">
+          <input class="col" type="file" [(ngModel)]="estate.photos" id="photos" multiple accept=".png, .jpg, .jpeg">
         </div>
       </div>
     </div>

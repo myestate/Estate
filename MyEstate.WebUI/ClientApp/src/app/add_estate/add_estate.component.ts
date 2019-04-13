@@ -7,13 +7,13 @@ import { AnimationStyleMetadata } from '@angular/animations';
 import { EstateService } from '../_services/estate/estate.service';
 
 @Component({
-  selector: 'app-add_estate',
+  selector: 'app-add-estate',
   templateUrl: './add_estate.component.html',
   styleUrls: ['./add_estate.component.css']
 })
-export class Add_estateComponent implements OnInit {
+export class AddEstateComponent implements OnInit {
   @Output() cancelAdding = new EventEmitter();
-  model: Estate;
+  estate: Estate = new Estate();
 
   constructor(private addService: EstateService, private alertify: AlertifyService) {   }
 
@@ -21,12 +21,12 @@ export class Add_estateComponent implements OnInit {
   }
 
   add_estate() {
-    this.addService.addEstate(this.model).subscribe(() => {
+    this.addService.addEstate(this.estate).subscribe(() => {
       this.alertify.success('Estate successfully added');
     }, error => {
      this.alertify.error(error);
     });
-    console.log(this.model);
+    console.log(this.estate);
   }
 
   cancel() {

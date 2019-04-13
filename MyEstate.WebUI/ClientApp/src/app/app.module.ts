@@ -29,7 +29,7 @@ import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/est
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
-import { Add_estateComponent } from './add_estate/add_estate.component';
+import { AddEstateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate.service';
@@ -57,7 +57,7 @@ export function tokenGetter() {
       SellingComponent,
       RentComponent,
       Daily_rentComponent,
-      Add_estateComponent,
+      AddEstateComponent,
       MapComponent,
       EstatesDetailComponent
    ],
