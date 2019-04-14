@@ -36,6 +36,7 @@ import { EstateService } from './_services/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
+import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 
 
 export function tokenGetter() {
@@ -60,7 +61,8 @@ export function tokenGetter() {
       Daily_rentComponent,
       Add_estateComponent,
       MapComponent,
-      EstatesDetailComponent
+      EstatesDetailComponent,
+      EstateCardComponent
    ],
    imports: [
       BrowserModule,

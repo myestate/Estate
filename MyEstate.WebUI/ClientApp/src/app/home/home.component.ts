@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Estate } from '../_models/estate';
+import { EstateService } from '../_services/estate/estate.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +11,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-
-  constructor(private http: HttpClient) { }
+  estates: Estate[];
+  constructor(private http: HttpClient, private estateService: EstateService) { }
 
   ngOnInit() {
+    this.getLastAddedEstate(6);
   }
 
   registerToggle() {
     this.registerMode = true;
   }
 
-  cancelRegisterMode(registerMode: boolean) {
-    this.registerMode = registerMode;
+  getLastAddedEstate(num: number) {
+   for (let index = 0; index < num; index++) {
+    this.estateService.getEstate(index).subscribe((estate: Estate) => {
+      this.estates[index] = estate;
+    });
+   }
   }
 }
