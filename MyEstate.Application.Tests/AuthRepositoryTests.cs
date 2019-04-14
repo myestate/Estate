@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using MyEstate.Application.Interfaces;
 using NUnit.Framework;
@@ -14,10 +16,15 @@ namespace MyEstate.Application.Tests
         [SetUp]
         public void Setup()
         {
-            var mockDbContext = new Mock<MyEstateContextFactory>().Object;
-             _authRepository = new AuthRepository(mockDbContext.CreateDbContext(new[] { "myDb" }));
+            var data = new[]
+            {
+                new Domain.Entities.User() { Username = "George" },
+                new Domain.Entities.User() { Username = "Susan" }
+            }.AsQueryable();
+
              _user = GetTestUsers()[0];
              _password = GetTestPasswords()[0];
+             _authRepository = new AuthRepository(GetUsersContext(data).Object);
         }
 
         [Test]
@@ -26,10 +33,10 @@ namespace MyEstate.Application.Tests
             // Arrange
 
             // Act
-            var register = _authRepository.Register(_user, _password);
+            var result = _authRepository.Register(_user, _password);
 
             // Assert
-            Assert.AreEqual(_user.Username, register.Result.Username);
+            Assert.AreEqual(_user.Username, result.Result.Username);
         }
 
         [Test]
@@ -45,23 +52,26 @@ namespace MyEstate.Application.Tests
             Assert.IsNotEmpty(register.Result.PasswordSalt);
         }
 
-        [Test]
-        public void Login_UsernameAndPassword_IsUserExist()
+        private Mock<MyEstateContext> GetUsersContext(IQueryable<Domain.Entities.User> data) 
         {
-            // Arrange
+            var mockSet = new Mock<DbSet<Domain.Entities.User>>();
+            var mockContext = new Mock<MyEstateContext>();
 
-            // Act
-            var login = _authRepository.Login(_user.Username, _password);
+            mockSet.As<IQueryable<Domain.Entities.User>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Domain.Entities.User>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Domain.Entities.User>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Domain.Entities.User>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
-            // Assert
-            Assert.IsNotNull(login);
+            mockContext.Setup(c => c.Users).Returns(mockSet.Object);
+
+            return mockContext;
         }
 
         private List<Domain.Entities.User> GetTestUsers()
         {
             var users = new List<Domain.Entities.User>
             {
-                new Domain.Entities.User { Username = "Test1" },
+                new Domain.Entities.User { Username = "Test12" },
                 new Domain.Entities.User { Username = "Test2" },
                 new Domain.Entities.User { Username = "Test3" },
                 new Domain.Entities.User { Username = "Test4" },
