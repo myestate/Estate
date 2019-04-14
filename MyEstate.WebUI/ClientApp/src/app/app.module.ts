@@ -35,6 +35,7 @@ import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
+import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 
 
 export function tokenGetter() {
@@ -86,6 +87,7 @@ export function tokenGetter() {
       AuthGuard,
      EstateService,
       UserService,
+      EstateAgentService,
       MapService,
       MemberDetailResolve,
       MemberListResolve
