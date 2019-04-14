@@ -3,6 +3,40 @@
   <br>
 
   <div class="fill-form">
+
+      <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Country<span>*</span></label>
+            </div>
+            <div class="col-md-5">
+              <input type="text" [(ngModel)]="estate.country" name="country" list="country_list" required>
+              <datalist id="country_list">
+                  <option>France</option>
+                  <option>Great Britain</option>
+                  <option>China</option>
+                  <option>India</option>
+                  <option>Japan</option>
+                  <option>Canada</option>
+                  <option>Germany</option>
+                  <option>Spanish</option>
+                  <option>Russia</option>
+                  <option>Ukraine</option>
+                  <option>Australia</option>
+                  <option>Greece</option>
+                  <option>Italy</option>
+                  <option>Switzerland</option>
+                  <option>Denmark</option>
+                  <option>Belgium</option>
+                  <option>Belgium</option>
+                  <option>Sweden</option>
+                  <option>Poland</option>
+                </datalist>
+            </div>
+          </div>
+        </div>
+        <hr size="30">
+
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-3">
@@ -10,7 +44,7 @@
         </div>
         <div class="col-md-5">
           <input type="text" name="city" [(ngModel)]="estate.city" list="city_list" required>
-          <datalist id="city_list">
+          <datalist *ngIf="estate.country.toLowerCase()=='ukraine'" id="city_list">
             <option>Kyiv</option>
             <option>Kharkiv</option>
             <option>Odessa</option>
@@ -56,7 +90,7 @@
         <div class="col-5">
           <input type="text" [(ngModel)]="estate.street" name="street" placeholder="Street" required>
           <input type="number" min=1 [(ngModel)]="model.building" name="building" placeholder="Number" required>
-          <input type="number" min=1 [(ngModel)]="model.flat" name="Flat" placeholder="Flat">
+          <input type="number" min=1 [(ngModel)]="model.flat" name="Flat" placeholder="Flat(optional)">
         </div>
       </div>
     </div>
@@ -84,8 +118,8 @@
         </div>
         <div class="col-5">
           <input type="number input" min=1 [(ngModel)]="estate.square" name="gross" placeholder="Gross" required>
-          <input type="number input" min=1 [(ngModel)]="model.living" name="living" placeholder="Living" required>
-          <input type="number input" min=1 [(ngModel)]="model.kitchen" name="kitchen" placeholder="Kitchen" required>
+          <input type="number input" min=1 [(ngModel)]="model.living" name="living" placeholder="Living(optional)">
+          <input type="number input" min=1 [(ngModel)]="model.kitchen" name="kitchen" placeholder="Kitchen(optional)">
         </div>
       </div>
     </div>
