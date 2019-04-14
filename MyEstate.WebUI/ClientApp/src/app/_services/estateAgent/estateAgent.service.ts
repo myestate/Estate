@@ -16,11 +16,11 @@ constructor(private http: HttpClient) { }
     return this.http.get<EstateAgent[]>(this.baseUrl);
   }
 
-  getEstate(id: number): Observable<EstateAgent> {
+  getEstateAgent(id: number): Observable<EstateAgent> {
     return this.http.get<EstateAgent>(this.baseUrl + id);
   }
 
-  addEstate(model: EstateAgent) {
+  addEstateAgent(model: EstateAgent) {
     return this.http.post(this.baseUrl, model);
   }
 
