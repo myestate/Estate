@@ -42,7 +42,7 @@
           <label>Region</label>
         </div>
         <div class="col-md-5">
-          <input type="text" [(ngModel)]="estate.country" id="region">
+          <input type="text" [(ngModel)]="model.region" name="region">
         </div>
       </div>
     </div>
@@ -54,9 +54,9 @@
           <label>Address<span>*</span></label>
         </div>
         <div class="col-5">
-          <input type="text" [(ngModel)]="estate.street" id="street" placeholder="Street" required>
-          <input type="number" min=1  id="building" placeholder="Number" required>
-          <input type="number" min=1  id="Flat" placeholder="Flat">
+          <input type="text" [(ngModel)]="estate.street" name="street" placeholder="Street" required>
+          <input type="number" min=1 [(ngModel)]="model.building" name="building" placeholder="Number" required>
+          <input type="number" min=1 [(ngModel)]="model.flat" name="Flat" placeholder="Flat">
         </div>
       </div>
     </div>
@@ -68,10 +68,10 @@
           <label>Rooms<span>*</span></label>
         </div>
         <div class="col">
-          <input type="number" [(ngModel)]="estate.rooms" id="rooms" min=1 placeholder="Count" required>
+          <input type="number" [(ngModel)]="estate.rooms" name="rooms" min=1 placeholder="Count" required>
         </div>
         <div class="col">
-          <input type="checkbox" id="lodgings"> Room in apartment, lodgings
+          <input type="checkbox" [(ngModel)]="model.lodgings" name="lodgings"> Room in apartment, lodgings
         </div>
       </div>
     </div>
@@ -83,9 +83,9 @@
           <label>Square meters, m²<span>*</span></label>
         </div>
         <div class="col-5">
-          <input type="number input" min=1 [(ngModel)]="estate.square" id="gross" placeholder="Gross" required>
-          <input type="number input" min=1  id="living" placeholder="Living" required>
-          <input type="number input" min=1  id="kitchen" placeholder="Kitchen" required>
+          <input type="number input" min=1 [(ngModel)]="estate.square" name="gross" placeholder="Gross" required>
+          <input type="number input" min=1 [(ngModel)]="model.living" name="living" placeholder="Living" required>
+          <input type="number input" min=1 [(ngModel)]="model.kitchen" name="kitchen" placeholder="Kitchen" required>
         </div>
       </div>
     </div>
@@ -97,9 +97,9 @@
           <label>Floor and count of floors<span>*</span></label>
         </div>
         <div class="col-5">
-          <input type="number input" min=1  id="floor" placeholder="Floor(optional)">
-          <input type="number input" min=1 [(ngModel)]="estate.floors" id="floors" placeholder="Floors" required>
-          <input type="text"  id="height" placeholder="Room height" required>
+          <input type="number input" min=1 [(ngModel)]="model.floor" name="floor" placeholder="Floor(optional)">
+          <input type="number input" min=1 [(ngModel)]="estate.floors" name="floors" placeholder="Floors" required>
+          <input type="text"  name="height" [(ngModel)]="model.height" placeholder="Room height" required>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
           <label>Condition</label>
         </div>
         <div class="col-5">
-          <select id="condition">
+          <select [(ngModel)]="model.condition" name="condition">
             <option value="">-</option>
             <option value="ideal">Ideal</option>
             <option value="good">Good</option>
@@ -127,7 +127,7 @@
           <label>Balcony</label>
         </div>
         <div class="col-5">
-          <select [(ngModel)]="estate.description" id="balcony">
+          <select [(ngModel)]="model.balcony" name="balcony">
             <option value="">-</option>
             <option value="missing">Missing</option>
             <option value="ideal">Ideal</option>
@@ -144,7 +144,7 @@
           <label>Walls</label>
         </div>
         <div class="col-5">
-          <select [(ngModel)]="estate.description" id="walls">
+          <select [(ngModel)]="model.walls" name="walls">
             <option value="">-</option>
             <option value="ideal">Ideal</option>
             <option value="good">Good</option>
@@ -163,7 +163,7 @@
           <label>Building type</label>
         </div>
         <div class="col">
-          <input type="text" id="Type" list="building_list">
+          <input type="text" [(ngModel)]="model.type" name="Type" list="building_list">
           <datalist id="building_list">
             <option>A frame house</option>
             <option>Affordable housing</option>
@@ -184,9 +184,9 @@
           <label>Price/Currency/Price for<span>*</span></label>
         </div>
         <div class="col">
-          <input type="number input" style="line-height: 0%" min=1 [(ngModel)]="estate.price" id="price" placeholder="Price" required>
+          <input type="number input" style="line-height: 0%" min=1 [(ngModel)]="estate.price" name="price" placeholder="Price" required>
 
-          <select id="Currency" required>
+          <select name="Currency" required>
             <option value="dollars">$</option>
             <option value="pounds">£</option>
             <option value="euros">€</option>
@@ -194,7 +194,7 @@
             <option value="grivnas">₴</option>
           </select>
 
-          <select id="price_for" required>
+          <select name="price_for" required>
             <option value="mounth">Mounth</option>
             <option value="year">Year</option>
             <option value="day">Day</option>
@@ -213,7 +213,7 @@
         </div>
         <div class="col">
           <label for="file">Choose photos to upload</label>
-          <input class="col" type="file" [(ngModel)]="estate.photos" id="photos" multiple accept=".png, .jpg, .jpeg">
+          <input class="col" type="file" (change)="addPhoto($event)" name="photos" multiple accept=".png, .jpg, .jpeg">
         </div>
       </div>
     </div>
