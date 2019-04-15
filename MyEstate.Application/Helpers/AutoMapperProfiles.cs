@@ -4,6 +4,7 @@ using MyEstate.Application.Photo.Model;
 using MyEstate.Application.User.Models;
 using MyEstate.Application.EstateAgent.Models;
 using MyEstate.Domain.Entities;
+using MyEstate.Application.Estate.Models;
 
 namespace Persistence.Helpers
 {
@@ -26,13 +27,10 @@ namespace Persistence.Helpers
                 opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
             });
 
-
-
-            
-
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+            // CreateMap<Estate, EstateForMapDto>();
         }
     }
 }

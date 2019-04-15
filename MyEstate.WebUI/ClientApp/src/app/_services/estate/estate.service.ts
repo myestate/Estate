@@ -23,4 +23,8 @@ constructor(private http: HttpClient) { }
   addEstate(model: Estate) {
     return this.http.post(this.baseUrl, model);
   }
+
+  getEstatesAddress(): Observable<Estate[]> {
+    return this.http.get<Estate[]>(this.baseUrl + 'address');
+  }
 }

@@ -43,6 +43,16 @@ namespace MyEstate.API.Controllers
             return Ok(estateToReturn);
         }
 
+        [HttpGet("address")]
+        public async Task<IActionResult> GetAddress()
+        {
+            var estates = await _repo.GetEstates();
+
+            var address = _mapper.Map<IEnumerable<EstateForMapDto>>(estates);
+
+            return Ok(address);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddEstate([FromBody]EstateForAddDto estate)
         {
