@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
 using MyEstate.Domain.Entities;
 using Persistence;
+using Persistence.Helpers;
 
 namespace MyEstate.Application
 {
@@ -32,11 +33,11 @@ namespace MyEstate.Application
             return estate;
         }
 
-        public async Task<IEnumerable<Domain.Entities.Estate>> GetEstates()
+        public async Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams)
         {
-            var estates = await _context.Estates.Include(p => p.Photos).Include(p => p.Owner).ToListAsync();
+            var estates = _context.Estates.Include(p => p.Photos).Include(p => p.Owner);
 
-            return estates;
+            return await PagedList< Domain.Entities.Estate>.CreateAsync(estates, estateParams.PageNumber, estateParams.PageSize);
         }
 
         public async Task<bool> SaveAll()

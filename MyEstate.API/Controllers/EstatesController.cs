@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyEstate.Application.Interfaces;
 using MyEstate.Application.Estate.Models;
 using MyEstate.Domain.Entities;
+using Persistence.Helpers;
 
 namespace MyEstate.API.Controllers
 {
@@ -24,11 +25,13 @@ namespace MyEstate.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEstates()
+        public async Task<IActionResult> GetEstates([FromQuery]EstateParams estateParams)
         {
-            var estates = await _repo.GetEstates();
+            var estates = await _repo.GetEstates(estateParams);
 
             var estatesToReturn = _mapper.Map<IEnumerable<EstateForListDto>>(estates);
+
+            Response.AddPagination(estates.CurrentPage, estates.PageSize, estates.TotalCount, estates.TotalPages);
 
             return Ok(estatesToReturn);
         }
