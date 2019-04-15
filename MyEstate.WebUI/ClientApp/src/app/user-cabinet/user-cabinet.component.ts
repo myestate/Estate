@@ -18,12 +18,16 @@ export class UserCabinetComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserInfo().subscribe((response: any) => {
-      console.log('respons' + response);
       this.user = response;
     }, error => {
       this.alertify.error(error);
     });
-    console.log('User' + this.user);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.alertify.message('logged out');
+    this.route.navigate(['/home']);
   }
 
 }

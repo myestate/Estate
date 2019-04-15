@@ -1,0 +1,28 @@
+.buttons>button{
+    margin: 5px auto;
+    display: block;
+}
+
+li{
+    list-style-type: none;
+    text-decoration: none;
+}
+
+a{
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+a:hover{
+    opacity: 0.6;
+    color: white;
+}
+
+ul{
+    background-color: #086A87;
+    border-radius: 10px;
+    margin: none;
+    padding: 0;
+}
