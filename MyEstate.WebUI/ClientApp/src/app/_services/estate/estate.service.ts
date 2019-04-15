@@ -14,7 +14,7 @@ export class EstateService {
 
 constructor(private http: HttpClient) { }
 
-  getEstates(page?, itemsPerPage?): Observable<Estate[]> {
+  getEstates(page?, itemsPerPage?): Observable<PaginatedResult<Estate[]>> {
     const paginatedResult: PaginatedResult<Estate[]> = new PaginatedResult<Estate[]>();
     let params = new HttpParams();
     if (page != null && itemsPerPage != null) {

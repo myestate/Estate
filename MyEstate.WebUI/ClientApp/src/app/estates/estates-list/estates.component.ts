@@ -3,6 +3,7 @@ import { Estate } from '../../_models/estate';
 import { EstateService } from '../../_services/estate/estate.service';
 import { AlertifyService } from '../../_services/alertify/Alertify.service';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-estates',
