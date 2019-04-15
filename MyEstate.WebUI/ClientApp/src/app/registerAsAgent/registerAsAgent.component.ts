@@ -1,4 +1,6 @@
-import { Component, OnInit } from 'src/app/registerAsAgent/node_modules/@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth/auth.service';
+import { AlertifyService } from '../_services/alertify/Alertify.service';
 
 @Component({
   selector: 'app-registerAsAgent',
@@ -10,6 +12,9 @@ export class RegisterAsAgentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  registerAsAgent() {
   }
 
 }

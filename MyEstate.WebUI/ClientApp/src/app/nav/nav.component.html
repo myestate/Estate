@@ -23,6 +23,9 @@
       <li class="nav-item" routerLinkActive="router-link-active" *ngIf="loggedIn()">
         <a [routerLink]="['/add_estate']" class="nav-link">Add estate</a>
       </li>
+      <li class="nav-item" routerLinkActive="router-link-active" *ngIf="loggedIn()">
+        <a [routerLink]="['/registerAsAgent']" class="nav-link">Register as agent</a>
+      </li>
       <li class="nav-item" routerLinkActive="active"  *ngIf="loggedIn()">
         <a [routerLink]="['/messages']" class="nav-link">Messages</a>
       </li>

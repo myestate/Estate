@@ -13,16 +13,13 @@ export class Estate_agentsComponent implements OnInit {
 
   estateAgents: EstateAgent[];
 
-  constructor(private estateAgentService: EstateAgentService, private alertify: AlertifyService,
-    private route: ActivatedRoute) { }
+  constructor(private estateAgentService: EstateAgentService, private alertify: AlertifyService) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.estateAgents = data['estateAgents'];
-    });
+    this.loadEstateAgents();
   }
 
-  loadEstates() {
+  loadEstateAgents() {
     this.estateAgentService.getEstateAgents().subscribe((estateAgents: EstateAgent[]) => {
       this.estateAgents = estateAgents;
     }, error => {
