@@ -31,7 +31,7 @@ export const appRoutes: Routes = [
                 resolve: {users: MemberListResolve}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolve}},
-            {path: 'add_estate', component: Add_estateComponent},
+            {path: 'add_estate', component: AddEstateComponent},
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
         ]
