@@ -50,5 +50,11 @@ namespace MyEstate.Application
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<bool> UpdateUser(Domain.Entities.User user)
+        {
+            _context.Users.Update(user);
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }

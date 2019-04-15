@@ -27,15 +27,17 @@ namespace MyEstate.API.Controllers
             _repo = repo;
         }
 
-        // [HttpGet]
-        // public async Task<IActionResult> GetUsers()
-        // {
-        //     var users = await _repo.GetUsers();
+        [HttpGet]
 
-        //     var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+        [Route("/api/users/getusers")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await _repo.GetUsers();
 
-        //     return Ok(usersToReturn);
-        // }
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            return Ok(usersToReturn);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
@@ -47,24 +49,22 @@ namespace MyEstate.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, UserForDetailedDto userforUpdateDto)
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser([FromBody]UserForDetailedDto userforUpdateDto)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
+            //var userFromRepo = await _repo.GetUser(userforUpdateDto.Id);
 
-            var userFromRepo = await _repo.GetUser(id);
+            User user = _mapper.Map<User>(userforUpdateDto);
 
-            _mapper.Map(userforUpdateDto, userFromRepo);
-
-            if(await _repo.SaveAll())
+            if(await _repo.UpdateUser(user)){
                 return NoContent();
+            }
 
-            throw new Exception($"Updating user {id} failed on save");
+            throw new Exception($"Updating user {userforUpdateDto.Id} failed on save");
         }
 
         [HttpGet]
-        // [Route("api/users/getuserinfo")]
+        [Route("/api/users/getuserinfo")]
         public async Task<IActionResult> GetUserInfo()
         {
             var re = Request;
@@ -73,18 +73,15 @@ namespace MyEstate.API.Controllers
             if (result && values.Count > 0)
             {
                 var token = values.SingleOrDefault();
-                var  splitToken= token.Split(' ');
-                var stream = "[encoded jwt]";
-                var handler = new JwtSecurityTokenHandler();
-                var jsonToken = handler.ReadToken(stream);
-                var tokenS = handler.ReadToken(splitToken[1]) as JwtSecurityToken;
-                var jti = tokenS.Claims.First(claim => claim.Type == "jti").Value;
+                var splitToken = token.Split(' ');
                 // var key = Encoding.ASCII.GetBytes(splitToken[1]);
                 var tokenHandler = new JwtSecurityTokenHandler();
 
-                var decodeToken = tokenHandler.ReadJwtToken(splitToken[1]);
+                var jsonToken = tokenHandler.ReadJwtToken(splitToken[1]) as JwtSecurityToken;
                 //Find user by id
-                var userFromRepo = await _repo.GetUser(Convert.ToInt32(decodeToken.Id));
+                //var userFromRepo = await _repo.GetUser(Convert.ToInt32(decodeToken.Id));
+                string id = jsonToken.Payload.ContainsKey("nameid") ? jsonToken.Payload["nameid"].ToString() : null;
+                var userFromRepo = await _repo.GetUser(Convert.ToInt32(id));
 
                 var userDTO = _mapper.Map<UserForDetailedDto>(userFromRepo);
                 return Ok(userDTO);

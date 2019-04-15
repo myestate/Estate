@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users');
+    return this.http.get<User[]>(this.baseUrl + 'users/getusers');
   }
 
   getUser(id: number): Observable<User> {
@@ -26,9 +26,11 @@ export class UserService {
 
     const token = localStorage.getItem('token');
     headers.append('Authorization', token);
-    const jwtHelper = new JwtHelperService();
-    const decodedToken = jwtHelper.decodeToken(token);
-    console.log(decodedToken);
-    return this.http.get<User>(this.baseUrl + 'users', { headers: headers });
+
+    return this.http.get<User>(this.baseUrl + 'users/getuserinfo', { headers: headers });
+  }
+
+  updateUserInfo(user: User): Observable<User>  {
+    return this.http.put<User>(this.baseUrl + 'users', user);
   }
 }
