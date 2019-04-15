@@ -15,8 +15,12 @@ namespace MyEstate.API.Controllers
     public class EstateAgentsController : ControllerBase
     {
         private readonly IEstateAgentsRepository _repo;
-        public EstateAgentsController(IEstateAgentsRepository repo)
+
+        private readonly IMapper _mapper;
+
+        public EstateAgentsController(IEstateAgentsRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -33,7 +37,9 @@ namespace MyEstate.API.Controllers
         {
             var estateAgent = await _repo.GetEstateAgent(id);
 
-             return Ok(estateAgent);
+            var estateAgentToReturn = _mapper.Map<EstateAgentForListDto>(estateAgent);
+
+             return Ok(estateAgentToReturn);
         }
 
         [HttpPost]

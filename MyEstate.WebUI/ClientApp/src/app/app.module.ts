@@ -29,7 +29,7 @@ import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/est
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
-import { Add_estateComponent } from './add_estate/add_estate.component';
+import { AddEstateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate.service';
@@ -37,6 +37,8 @@ import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.
 import { MapService } from './_services/map/map.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
+import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -58,8 +60,9 @@ export function tokenGetter() {
       SellingComponent,
       RentComponent,
       Daily_rentComponent,
-      Add_estateComponent,
+      AddEstateComponent,
       MapComponent,
+      EstateCardComponent,
       EstatesDetailComponent,
       EditProfileComponent,
       UserCabinetComponent
@@ -89,6 +92,7 @@ export function tokenGetter() {
       AuthGuard,
       EstateService,
       UserService,
+      EstateAgentService,
       MapService,
       MemberDetailResolve,
       MemberListResolve

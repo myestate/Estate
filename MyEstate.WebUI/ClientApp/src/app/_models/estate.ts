@@ -1,7 +1,7 @@
 import { User } from './user';
 import { Photo } from './photo';
 
-export interface Estate {
+export class Estate {
     id: number;
     title: string;
     description: string;

@@ -1,0 +1,28 @@
+  <div *ngIf="estate.photos; else Carousel">
+    <img class="img-fluid" src="../../../assets/notFound.jpg" />
+  </div>
+  <ng-template #Carousel>
+    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" *ngFor="let photo of estate.photos">
+          <img class="img-fluid" src="{{photo.url}}" alt="{{photo.description}}">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </ng-template>
+  <div class="caption">
+    <h4 id="homeTitle">{{estate.title}}</h4>
+    <h5 id="price">{{estate.price}}$</h5>
+    <p id="description">
+      {{estate.description}}
+    </p>
+    <a [routerLink]="['/estates-detail', estate.id]"><input type="button" class="btn btn-primary" value="More"></a>
+  </div>
