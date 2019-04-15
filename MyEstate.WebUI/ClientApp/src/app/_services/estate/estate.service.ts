@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Estate } from 'src/app/_models/estate';
+import { PaginatedResult } from '../../_models/pagination';
+import { map } from 'core-js/library/fn/dict';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,22 @@ export class EstateService {
 
 constructor(private http: HttpClient) { }
 
-  getEstates(): Observable<Estate[]> {
-    return this.http.get<Estate[]>(this.baseUrl);
+  getEstates(page?, itemsPerPage?): Observable<Estate[]> {
+    const paginatedResult: PaginatedResult<Estate[]> = new PaginatedResult<Estate[]>();
+    let params = new HttpParams();
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+    return this.http.get<Estate[]>(this.baseUrl, { observe: 'response', params }).pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return paginatedResult;
+      })
+    );
   }
 
   getEstate(id: number): Observable<Estate> {

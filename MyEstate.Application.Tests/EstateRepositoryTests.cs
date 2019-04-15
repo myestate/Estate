@@ -25,10 +25,10 @@ namespace MyEstate.Application.Tests
             // Arrange
 
             // Act
-            var result = _estateRepository.AddEstate(_user);
+            var result = _estateRepository.AddEstate(_estate);
 
             // Assert
-            Assert.AreEqual(_user.Username, result.Result.Username);
+            Assert.AreEqual(_estate.Title, result.Result.Title);
         }
 
         private List<Domain.Entities.Estate> GetTestEstates()

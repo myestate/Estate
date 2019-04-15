@@ -3,7 +3,7 @@ import { NgModule, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import {BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+import {BsDropdownModule, TabsModule, PaginationModule} from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 
 import { AppComponent } from './app.component';
@@ -68,6 +68,7 @@ export function tokenGetter() {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      PaginationModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
