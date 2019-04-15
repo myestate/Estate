@@ -44,7 +44,7 @@
         </div>
         <div class="col-md-5">
           <input type="text" name="city" [(ngModel)]="estate.city" list="city_list" required>
-          <datalist *ngIf="estate.country.toLowerCase()=='ukraine'" id="city_list">
+          <datalist *ngIf="estate.country.toLowerCase()==='ukraine'" id="city_list">
             <option>Kyiv</option>
             <option>Kharkiv</option>
             <option>Odessa</option>

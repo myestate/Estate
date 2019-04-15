@@ -46,7 +46,7 @@ export class AddEstateComponent implements OnInit {
   }
 
   addPhoto(event) {
-    let target = event.target || event.srcElement;
+    const target = event.target || event.srcElement;
     this.estate.photos = target.files;
 }
 
