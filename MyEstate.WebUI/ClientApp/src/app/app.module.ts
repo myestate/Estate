@@ -39,6 +39,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
+import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -50,7 +53,7 @@ export function tokenGetter() {
       NavComponent,
       HomeComponent,
       RegisterComponent,
-     EstatesComponent,
+      EstatesComponent,
       Estate_agentsComponent,
       Estate_agentsCardComponent,
       MessagesComponent,
@@ -65,7 +68,10 @@ export function tokenGetter() {
       EstateCardComponent,
       EstatesDetailComponent,
       EditProfileComponent,
-      UserCabinetComponent
+      UserCabinetComponent,
+      EstatesDetailComponent,
+      RegisterAsAgentComponent
+
    ],
    imports: [
       BrowserModule,

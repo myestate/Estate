@@ -1,0 +1,103 @@
+<h2 class="text-primary text-center">Tell us about yourself</h2>
+<form #registerAsAgentForm="ngForm" (ngSubmit)="registerAsAgent()">
+  <br />
+
+  <div class="fill-form">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3">
+          <label>Full name<span>*</span></label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" id="name" />
+        </div>
+      </div>
+    </div>
+    <hr size="30" />
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3">
+          <label>Gender<span>*</span> </label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" id="male" list="male_list" required />
+          <datalist id="male_list">
+            <option>Male</option>
+            <option>Female</option>
+          </datalist>
+        </div>
+      </div>
+    </div>
+    <hr size="30" />
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3">
+          <label>City<span>*</span> </label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" id="city" list="city_list" required />
+          <datalist id="city_list">
+            <option>Kyiv</option>
+            <option>Kharkiv</option>
+            <option>Odessa</option>
+            <option>Dnipro</option>
+            <option>Donetsk</option>
+            <option>Zaporizhia</option>
+            <option>Lviv</option>
+            <option>Kryvyi Rih</option>
+            <option>Mykolaiv</option>
+            <option>Mariupol</option>
+            <option>Luhansk</option>
+            <option>Vinnytsia</option>
+            <option>Makiivka</option>
+            <option>Sevastopol</option>
+            <option>Simferopol</option>
+            <option>Kherson</option>
+            <option>Poltava</option>
+            <option>Chernihiv</option>
+            <option>Sumy</option>
+          </datalist>
+        </div>
+      </div>
+    </div>
+    <hr size="30" />
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3">
+          <label>Age<span>*</span></label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" id="age" />
+        </div>
+      </div>
+    </div>
+    <hr size="30" />
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-3">
+          <label>Photo</label>
+        </div>
+        <div class="col">
+          <label for="file">Choose photos to upload</label>
+          <input
+            class="col"
+            type="file"
+            id="photo"
+            multiple
+            accept=".png, .jpg, .jpeg"
+          />
+        </div>
+      </div>
+    </div>
+    <hr size="30" />
+  </div>
+  <div class="row" style="justify-content:center">
+    <button class="btn btn-add" [disabled]="!addEstateForm.valid" type="submit">
+      OK
+    </button>
+  </div>
+</form>
