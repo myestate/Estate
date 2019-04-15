@@ -36,9 +36,8 @@ export const appRoutes: Routes = [
             {path: 'add_estate', component: AddEstateComponent},
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
-            {path: 'add_estate', component: Add_estateComponent},
+            {path: 'add_estate', component: AddEstateComponent},
             {path: 'registerAsAgent', component: RegisterAsAgentComponent}
-            
 
         ]
     },
