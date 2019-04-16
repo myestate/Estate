@@ -4,6 +4,7 @@ import { EstateService } from '../../_services/estate/estate.service';
 import { AlertifyService } from '../../_services/alertify/Alertify.service';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-estates',
@@ -24,14 +25,15 @@ export class EstatesComponent implements OnInit {
 // tslint:disable-next-line: max-line-length
     new News('Hello world', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
   ];
-  constructor(private estateService: EstateService, private alertify: AlertifyService) { }
+  constructor(private estateService: EstateService, private alertify: AlertifyService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loadEstates();
   }
 
   loadEstates() {
-    this.estateService.getEstates(1,1)
+    this.estateService.getEstates()
       .subscribe(
         (res: PaginatedResult<Estate[]>) => {
         this.estates = res.result;
@@ -41,9 +43,20 @@ export class EstatesComponent implements OnInit {
     });
   }
 
+  loadEstatesToPage() {
+    this.estateService.getEstates(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .subscribe(
+      (res: PaginatedResult<Estate[]>) => {
+        this.estates = res.result;
+        this.pagination = res.pagination;
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
-    this.loadEstates();
+    this.loadEstatesToPage();
   }
 }
 
