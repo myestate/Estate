@@ -13,8 +13,6 @@ import { Location } from '../_models/geocode_data';
 export class MapComponent implements OnInit {
   lat: any;
   lng: any;
-  address: string;
-  estatesCoordinate: Location[] = [];
   estates: Estate[] = [];
   constructor(private alertify: AlertifyService, private mapService: MapService, private estateService: EstateService) {
     if (navigator) {
@@ -48,6 +46,7 @@ export class MapComponent implements OnInit {
     this.mapService.getCoordinate(address).subscribe((response) => {
       this.lat = response.results[0].geometry.location.lat;
       this.lng = response.results[0].geometry.location.lng;
+      this.alertify.message('Now you are in ' + address);
   });
 }
 }

@@ -88,7 +88,8 @@ export function tokenGetter() {
          }
       }),
       AgmCoreModule.forRoot({
-         apiKey: environment.googleMapAPIKey
+         apiKey: environment.googleMapAPIKey,
+         language: 'en'
       })
    ],
    providers: [
