@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
   }
 
   getEstates() {
-   this.estateService.getEstates().subscribe((estates: Estate[]) => {
-      this.estates = estates;
-   });
+  //  this.estateService.getEstates().subscribe((estates: Estate[]) => {
+      // this.estates = estates;
+  //  });
   }
 }

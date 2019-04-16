@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
 using MyEstate.Domain.Entities;
 using Persistence;
+using Persistence.Helpers;
 
 namespace MyEstate.Application
 {
@@ -26,7 +27,17 @@ namespace MyEstate.Application
             _context.Remove(entity);
         }
 
-        public Task<Message> GetMessage(int id)
+        public async Task<Domain.Entities.Message> GetMessage(int id)
+        {
+           return await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public Task<PagedList<Domain.Entities.Message>> GetMessagesForUser()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId)
         {
             throw new System.NotImplementedException();
         }

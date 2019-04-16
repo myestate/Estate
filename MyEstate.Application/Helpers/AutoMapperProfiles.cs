@@ -5,6 +5,7 @@ using MyEstate.Application.User.Models;
 using MyEstate.Application.EstateAgent.Models;
 using MyEstate.Domain.Entities;
 using MyEstate.Application.Estate.Models;
+using MyEstate.Application.Message.Models;
 
 namespace Persistence.Helpers
 {
@@ -30,7 +31,8 @@ namespace Persistence.Helpers
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
-            // CreateMap<Estate, EstateForMapDto>();
+          
+            CreateMap<MessageForCreationDto, Message>().ReverseMap();
         }
     }
 }

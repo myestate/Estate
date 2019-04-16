@@ -49,7 +49,7 @@ namespace MyEstate.API.Controllers
         [HttpGet("address")]
         public async Task<IActionResult> GetAddress()
         {
-            var estates = await _repo.GetEstates();
+            var estates = await _repo.GetAllEstates();
 
             var address = _mapper.Map<IEnumerable<EstateForMapDto>>(estates);
 

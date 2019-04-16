@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Persistence.Helpers;
 
 namespace MyEstate.Application.Interfaces
 {
@@ -16,6 +17,8 @@ namespace MyEstate.Application.Interfaces
 
         Task<MyEstate.Domain.Entities.Message> GetMessage(int id);
 
-        // Task<PagedList<Domain.Entities.Message>> GetMessagesForUser();
+        Task<PagedList<Domain.Entities.Message>> GetMessagesForUser();
+
+        Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId);
     }
 }

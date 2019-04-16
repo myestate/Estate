@@ -53,5 +53,12 @@ namespace MyEstate.Application
 
             return estate;
         }
+
+        public async Task<IEnumerable<Domain.Entities.Estate>> GetAllEstates()
+        {
+            var estates = await _context.Estates.Include(p => p.Photos).ToListAsync();
+
+            return estates;
+        }
     }
 }
