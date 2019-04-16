@@ -40,6 +40,7 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 
 
@@ -103,7 +104,8 @@ export function tokenGetter() {
       EstateAgentService,
       MapService,
       MemberDetailResolve,
-      MemberListResolve
+      MemberListResolve,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent

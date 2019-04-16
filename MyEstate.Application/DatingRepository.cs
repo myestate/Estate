@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
 using MyEstate.Domain.Entities;
-using Persistence;
 using Persistence.Helpers;
+using Persistence;
 
 namespace MyEstate.Application
 {
@@ -29,7 +29,7 @@ namespace MyEstate.Application
 
         public async Task<Domain.Entities.Message> GetMessage(int id)
         {
-           return await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+           return await _context.Message.FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<PagedList<Domain.Entities.Message>> GetMessagesForUser(MessageParams messageParams)
