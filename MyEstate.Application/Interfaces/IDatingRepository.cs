@@ -13,5 +13,9 @@ namespace MyEstate.Application.Interfaces
 
         Task<MyEstate.Domain.Entities.Photo> GetPhoto(int id); 
         Task<bool> UpdateUser(Domain.Entities.User user);
+
+        Task<MyEstate.Domain.Entities.Message> GetMessage(int id);
+
+        // Task<PagedList<Domain.Entities.Message>> GetMessagesForUser();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
+using MyEstate.Domain.Entities;
 using Persistence;
 
 namespace MyEstate.Application
@@ -23,6 +24,11 @@ namespace MyEstate.Application
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        public Task<Message> GetMessage(int id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public async Task<Domain.Entities.Photo> GetPhoto(int id)
