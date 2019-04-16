@@ -37,14 +37,14 @@
         </div>
         <hr size="30">
 
-    <div class="col-md-8">
+   <div class="col-md-8">
       <div class="row">
         <div class="col-md-3">
           <label>City<span>*</span> </label>
         </div>
         <div class="col-md-5">
-          <input type="text" name="city" [(ngModel)]="estate.city" list="city_list" required>
-          <datalist *ngIf="estate.country.toLowerCase()==='ukraine'" id="city_list">
+          <input type="text" [(ngModel)]="estate.city" name="city" list="city_list" required>
+          <datalist *ngIf="(estate.country | lowercase) == 'ukraine'" id="city_list">
             <option>Kyiv</option>
             <option>Kharkiv</option>
             <option>Odessa</option>
@@ -247,7 +247,7 @@
         </div>
         <div class="col">
           <label for="file">Choose photos to upload</label>
-          <input class="col" type="file" (change)="addPhoto($event)" name="photos" multiple accept=".png, .jpg, .jpeg">
+          <input class="col" type="file" name="photos" multiple accept=".png, .jpg, .jpeg">
         </div>
       </div>
     </div>

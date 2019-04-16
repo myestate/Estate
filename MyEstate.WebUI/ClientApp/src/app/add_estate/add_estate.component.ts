@@ -36,6 +36,7 @@ export class AddEstateComponent implements OnInit {
     this.estate.description = `Region: ${this.model.region}\nCondition: ${this.model.condition}\n` +
     `Balcony: ${this.model.balcony}\nWalls: ${this.model.walls}\nHouse type: ${this.model.type}`;
     this.estate.street += `, ${this.model.building}`;
+    
     this.addService.addEstate(this.estate).subscribe(() => {
       this.alertify.success('Estate successfully added');
     }, error => {
@@ -44,11 +45,6 @@ export class AddEstateComponent implements OnInit {
     console.log(this.estate);
     console.log(this.estate.photos);
   }
-
-  addPhoto(event) {
-    const target = event.target || event.srcElement;
-    this.estate.photos = target.files;
-}
 
   cancel() {
     this.cancelAdding.emit(false);
