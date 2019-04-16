@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Estate } from '../../_models/estate';
 import { EstateService } from '../../_services/estate/estate.service';
 import { AlertifyService } from '../../_services/alertify/Alertify.service';
+import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-estates',
@@ -12,7 +14,7 @@ import { AlertifyService } from '../../_services/alertify/Alertify.service';
 export class EstatesComponent implements OnInit {
   @Input() type: string;
   estates: Estate[];
-
+  pagination: Pagination;
 
   newsList = [
 // tslint:disable-next-line: max-line-length
@@ -29,11 +31,19 @@ export class EstatesComponent implements OnInit {
   }
 
   loadEstates() {
-    this.estateService.getEstates().subscribe((estates: Estate[]) => {
-      this.estates = estates;
+    this.estateService.getEstates(1,1)
+      .subscribe(
+        (res: PaginatedResult<Estate[]>) => {
+        this.estates = res.result;
+        this.pagination = res.pagination;
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  pageChanged(event: any): void {
+    this.pagination.currentPage = event.page;
+    this.loadEstates();
   }
 }
 
