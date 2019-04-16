@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {BsDropdownModule, TabsModule, PaginationModule} from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -43,6 +44,7 @@ import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.comp
 
 
 
+
 export function tokenGetter() {
    return localStorage.getItem('token');
 }
@@ -77,6 +79,7 @@ export function tokenGetter() {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      FileUploadModule,
       PaginationModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
