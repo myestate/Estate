@@ -1,12 +1,18 @@
 <agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker *ngFor="let coordinate of estatesCoordinate" 
-  [latitude]="coordinate.lat" [longitude]="coordinate.lng" [iconUrl]="{
+  <agm-marker *ngFor="let estate of estates" 
+  [latitude]="estate.location.lat" [longitude]="estate.location.lng" [iconUrl]="{
     url:'https://img.icons8.com/flat_round/64/000000/home.png',
     scaledSize: {
         width: 25,
         height: 30
     }
-}"></agm-marker>
+}">
+<agm-info-window>
+  <img src="{{estate.photos[0]}}" alt="">
+  <h3>{{estate.title}}</h3>
+  <h4>{{estate.description}}</h4>
+</agm-info-window>
+</agm-marker>
 </agm-map>
 
 <div style="width:400px; position: relative;">

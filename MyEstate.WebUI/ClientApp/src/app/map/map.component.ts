@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { AlertifyService } from '../_services/alertify/Alertify.service';
-import { google, LatLng } from '@agm/core/services/google-maps-types';
-import { Observable } from 'rxjs';
 import { MapService } from '../_services/map/map.service';
 import { EstateService } from '../_services/estate/estate.service';
 import { Estate } from '../_models/estate';
@@ -19,8 +15,8 @@ export class MapComponent implements OnInit {
   lng: any;
   address: string;
   estatesCoordinate: Location[] = [];
-
-  constructor(private alertify: AlertifyService, private mapService: MapService, private estates: EstateService) {
+  estates: Estate[] = [];
+  constructor(private alertify: AlertifyService, private mapService: MapService, private estateService: EstateService) {
     if (navigator) {
       navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
@@ -34,16 +30,17 @@ export class MapComponent implements OnInit {
   }
 
   getAddresses() {
-    this.estates.getEstatesAddress().subscribe((estates: Estate[]) => {
+    this.estateService.getEstatesAddress().subscribe((estates: Estate[]) => {
       estates.forEach(estate => {
-        this.getCoordinate(estate.country + ',' + estate.city + ',' + estate.street);
+        this.addCoordinates(estate.country + ',' + estate.city + ',' + estate.street, estate);
       });
     });
   }
 
-  getCoordinate(address: string) {
+  addCoordinates(address: string, estate: Estate) {
     this.mapService.getCoordinate(address).subscribe((response) => {
-      this.estatesCoordinate.push(response.results[0].geometry.location);
+      estate.location = response.results[0].geometry.location;
+      this.estates.push(estate);
     });
   }
 
