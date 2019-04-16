@@ -22,7 +22,7 @@ namespace Persistence.Helpers
             TotalCount = count;
             PageSize = pageSize;
             CurrentPage = pageNumber;
-            TotalCount = (int)Math.Ceiling(count / (double)PageSize);
+            TotalPages = (int)Math.Ceiling(count / (double)PageSize);
             this.AddRange(items);
         }
 

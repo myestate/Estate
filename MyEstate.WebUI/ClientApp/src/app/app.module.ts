@@ -32,7 +32,7 @@ import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { AddEstateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
-import { EstateService } from './_services/estate.service';
+import { EstateService } from './_services/estate/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';

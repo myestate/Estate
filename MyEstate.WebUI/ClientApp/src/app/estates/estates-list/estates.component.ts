@@ -31,7 +31,7 @@ export class EstatesComponent implements OnInit {
   }
 
   loadEstates() {
-    this.estateService.getEstates(this.pagination.currentPage, this.pagination.itemsPerPage)
+    this.estateService.getEstates(1,1)
       .subscribe(
         (res: PaginatedResult<Estate[]>) => {
         this.estates = res.result;

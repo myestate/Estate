@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Estate } from 'src/app/_models/estate';
 import { PaginatedResult } from '../../_models/pagination';
-import { map } from 'core-js/library/fn/dict';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
