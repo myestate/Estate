@@ -8,6 +8,7 @@ using MyEstate.Application.Interfaces;
 using MyEstate.Application.Estate.Models;
 using MyEstate.Domain.Entities;
 using Persistence.Helpers;
+using System.Security.Claims;
 
 namespace MyEstate.API.Controllers
 {
@@ -56,14 +57,17 @@ namespace MyEstate.API.Controllers
             return Ok(address);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddEstate([FromBody]EstateForAddDto estate)
         {
+            var user = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var estateToCreate = new Estate
             {
                 Title = estate.Title,
                 Description = estate.Description,
                 Price = estate.Price,
+                OwnerId = user,
                 Square = estate.Square,
                 Rooms = estate.Rooms,
                 Floors = estate.Floors,

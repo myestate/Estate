@@ -6,10 +6,11 @@ namespace MyEstate.Domain.Entities
     public class Estate
     {
         public int Id { get; set; }
+        public string AdType { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        public User Owner { get; set; }
+        public int OwnerId { get; set; }
         public double Square { get; set; }
         public int Rooms { get; set; }
         public int Floors { get; set; }

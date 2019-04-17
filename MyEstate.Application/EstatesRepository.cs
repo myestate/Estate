@@ -27,7 +27,7 @@ namespace MyEstate.Application
 
         public async Task<Domain.Entities.Estate> GetEstate(int id)
         {
-            var estate = await _context.Estates.Include(p => p.Photos).Include(p => p.Owner)
+            var estate = await _context.Estates.Include(p => p.Photos)
                              .FirstOrDefaultAsync(u => u.Id == id);
 
             return estate;
@@ -35,7 +35,7 @@ namespace MyEstate.Application
 
         public async Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams)
         {
-            var estates = _context.Estates.Include(p => p.Photos).Include(p => p.Owner);
+            var estates = _context.Estates.Include(p => p.Photos);
 
             return await PagedList< Domain.Entities.Estate>.CreateAsync(estates, estateParams.PageNumber, estateParams.PageSize);
         }

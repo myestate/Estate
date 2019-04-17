@@ -17,5 +17,28 @@ namespace Persistence.Helpers
                 pageSize = (value > MaxPageSize) ? MaxPageSize : value;
             }
         }
+
+
+        public string Type { get; set; }
+
+        public double MinPrice { get; set; }
+
+        public double MaxPrice { get; set; }
+
+        public double MinSquare { get; set; }
+
+        public double MaxSquare { get; set; }
+
+        public int MinRooms { get; set; }
+
+        public int MaxRooms { get; set; }
+
+        public int MinFloors { get; set; }
+
+        public int MaxFloors { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
     }
 }
