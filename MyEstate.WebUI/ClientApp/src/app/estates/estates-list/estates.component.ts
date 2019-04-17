@@ -16,20 +16,35 @@ export class EstatesComponent implements OnInit {
   @Input() type: string;
   estates: Estate[];
   pagination: Pagination;
+  estateParams: any = {};
 
-  newsList = [
-// tslint:disable-next-line: max-line-length
-    new News('Metro in Lviv!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-// tslint:disable-next-line: max-line-length
-    new News('New feature in program', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-// tslint:disable-next-line: max-line-length
-    new News('Hello world', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-  ];
   constructor(private estateService: EstateService, private alertify: AlertifyService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadEstates();
+    this.pagination = <Pagination>{ currentPage : 1, itemsPerPage : 10}
+    this.resetEstateParams();
+    this.loadEstatesToPage();
+  }
+
+  resetFilters() {
+    this.resetEstateParams();
+    this.loadEstatesToPage();
+  }
+
+  resetEstateParams() {
+    this.estateParams.type = this.type;
+    this.estateParams.country = "All";
+    this.estateParams.city = "All";
+    this.estateParams.street = "All";
+    this.estateParams.minPrice = 0;
+    this.estateParams.maxPrice = 5000000;
+    this.estateParams.minSquare = 0;
+    this.estateParams.maxSquare = 1000;
+    this.estateParams.minRooms = 1;
+    this.estateParams.maxRooms = 10;
+    this.estateParams.minFloors = 1;
+    this.estateParams.maxFloors = 50;
   }
 
   loadEstates() {
@@ -43,8 +58,9 @@ export class EstatesComponent implements OnInit {
     });
   }
 
+
   loadEstatesToPage() {
-    this.estateService.getEstates(this.pagination.currentPage, this.pagination.itemsPerPage)
+    this.estateService.getEstates(this.pagination.currentPage, this.pagination.itemsPerPage, this.estateParams)
       .subscribe(
       (res: PaginatedResult<Estate[]>) => {
         this.estates = res.result;
@@ -57,14 +73,5 @@ export class EstatesComponent implements OnInit {
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
     this.loadEstatesToPage();
-  }
-}
-
-export class News {
-  title: string;
-  content: string;
-  constructor(title: string, content: string) {
-    this.title = title;
-    this.content = content;
   }
 }

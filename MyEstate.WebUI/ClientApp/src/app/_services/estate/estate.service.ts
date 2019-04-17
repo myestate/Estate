@@ -14,13 +14,28 @@ export class EstateService {
 
 constructor(private http: HttpClient) { }
 
-  getEstates(page?, itemsPerPage?): Observable<PaginatedResult<Estate[]>> {
+  getEstates(page?, itemsPerPage?, estateParams?): Observable<PaginatedResult<Estate[]>> {
     const paginatedResult: PaginatedResult<Estate[]> = new PaginatedResult<Estate[]>();
     let params = new HttpParams();
     if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
+    if (estateParams != null) {
+      params = params.append('type', estateParams.type);
+      params = params.append('country', estateParams.country);
+      params = params.append('city', estateParams.city);
+      params = params.append('street', estateParams.street);
+      params = params.append('minPrice', estateParams.minPrice);
+      params = params.append('maxPrice', estateParams.maxPrice);
+      params = params.append('minSquare', estateParams.minSquare);
+      params = params.append('maxSquare', estateParams.maxSquare);
+      params = params.append('minRooms', estateParams.minRooms);
+      params = params.append('maxRooms', estateParams.maxRooms);
+      params = params.append('minFloors', estateParams.minFloors);
+      params = params.append('maxFloors', estateParams.maxFloors);
+    }
+
     return this.http.get<Estate[]>(this.baseUrl, { observe: 'response', params }).pipe(
       map(response => {
         paginatedResult.result = response.body;
