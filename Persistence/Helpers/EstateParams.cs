@@ -19,26 +19,29 @@ namespace Persistence.Helpers
         }
 
 
-        public string Type { get; set; }
+        public string Type { get; set; } = "All";
 
-        public double MinPrice { get; set; }
+        public string Country { get; set; } = "All";
 
-        public double MaxPrice { get; set; }
+        public string City { get; set; } = "All";
 
-        public double MinSquare { get; set; }
+        public string Street { get; set; } = "All";
 
-        public double MaxSquare { get; set; }
+        public double MinPrice { get; set; } = 0;
 
-        public int MinRooms { get; set; }
+        public double MaxPrice { get; set; } = 5000000;
 
-        public int MaxRooms { get; set; }
+        public double MinSquare { get; set; } = 0;
 
-        public int MinFloors { get; set; }
+        public double MaxSquare { get; set; } = 1000;
 
-        public int MaxFloors { get; set; }
+        public int MinRooms { get; set; } = 1;
 
-        public string Country { get; set; }
+        public int MaxRooms { get; set; } = 10;
 
-        public string City { get; set; }
+        public int MinFloors { get; set; } = 1;
+
+        public int MaxFloors { get; set; } = 50;
+
     }
 }

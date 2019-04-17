@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
 using MyEstate.Domain.Entities;
@@ -35,7 +36,47 @@ namespace MyEstate.Application
 
         public async Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams)
         {
-            var estates = _context.Estates.Include(p => p.Photos);
+            var estates = _context.Estates.Include(p => p.Photos).AsQueryable();
+
+            if (estateParams.Type != "All")
+            {
+                estates = estates.Where(e => e.AdType == estateParams.Type);
+            }
+
+            if (estateParams.Country != "All")
+            {
+                estates = estates.Where(e => e.Country == estateParams.Country);
+            }
+
+            if (estateParams.City != "All")
+            {
+                estates = estates.Where(e => e.City == estateParams.City);
+            }
+
+            if (estateParams.Street != "All")
+            {
+                estates = estates.Where(e => e.Street == estateParams.Street);
+            }
+
+            if (estateParams.MinPrice != 0 || estateParams.MaxPrice != 5000000)
+            {
+                estates = estates.Where(e => e.Price>= estateParams.MinPrice && e.Price<= estateParams.MaxPrice);
+            }
+
+            if (estateParams.MinSquare != 0 || estateParams.MaxSquare != 1000)
+            {
+                estates = estates.Where(e => e.Square >= estateParams.MinSquare && e.Square <= estateParams.MaxSquare);
+            }
+
+            if (estateParams.MinRooms != 1 || estateParams.MaxRooms != 10)
+            {
+                estates = estates.Where(e => e.Rooms >= estateParams.MinRooms && e.Rooms <= estateParams.MaxRooms);
+            }
+
+            if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 10)
+            {
+                estates = estates.Where(e => e.Floors >= estateParams.MinFloors && e.Floors <= estateParams.MaxFloors);
+            }
 
             return await PagedList< Domain.Entities.Estate>.CreateAsync(estates, estateParams.PageNumber, estateParams.PageSize);
         }

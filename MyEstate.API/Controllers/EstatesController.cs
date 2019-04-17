@@ -64,6 +64,7 @@ namespace MyEstate.API.Controllers
             var user = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var estateToCreate = new Estate
             {
+                AdType = estate.AdType,
                 Title = estate.Title,
                 Description = estate.Description,
                 Price = estate.Price,
