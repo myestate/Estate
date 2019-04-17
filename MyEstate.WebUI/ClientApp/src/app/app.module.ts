@@ -41,6 +41,7 @@ import { EstateAgentService } from './_services/estateAgent/estateAgent.service'
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 
@@ -71,7 +72,8 @@ export function tokenGetter() {
       EditProfileComponent,
       UserCabinetComponent,
       EstatesDetailComponent,
-      RegisterAsAgentComponent
+      RegisterAsAgentComponent,
+      MemberMessagesComponent
 
    ],
    imports: [
