@@ -36,24 +36,24 @@ namespace MyEstate.Application
 
         public async Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams)
         {
-            var estates = _context.Estates.Include(p => p.Photos).AsQueryable();
+            var estates = _context.Estates.Include(p => p.Photos).OrderByDescending(e => e.Created).AsQueryable();
 
-            if (estateParams.Type != "All")
+            if (!string.IsNullOrEmpty(estateParams.Type) && estateParams.Type != "All")
             {
                 estates = estates.Where(e => e.AdType == estateParams.Type);
             }
 
-            if (estateParams.Country != "All")
+            if (!string.IsNullOrEmpty(estateParams.Country) && estateParams.Country != "All")
             {
                 estates = estates.Where(e => e.Country == estateParams.Country);
             }
 
-            if (estateParams.City != "All")
+            if (!string.IsNullOrEmpty(estateParams.City) && estateParams.City != "All")
             {
                 estates = estates.Where(e => e.City == estateParams.City);
             }
 
-            if (estateParams.Street != "All")
+            if (!string.IsNullOrEmpty(estateParams.Street) && estateParams.Street != "All")
             {
                 estates = estates.Where(e => e.Street == estateParams.Street);
             }
@@ -81,6 +81,48 @@ namespace MyEstate.Application
             if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 10)
             {
                 estates = estates.Where(e => e.Floors >= estateParams.MinFloors && e.Floors <= estateParams.MaxFloors);
+            }
+
+            if (!string.IsNullOrEmpty(estateParams.OrderBy))
+            {
+                switch (estateParams.OrderBy)
+                {
+                    case "priceUp":
+                        {
+                            estates = estates.OrderBy(e => e.Price);
+                            break;
+                        };
+                    case "priceDown":
+                        {
+                            estates = estates.OrderByDescending(e => e.Price);
+                            break;
+                        };
+                    case "squareUp":
+                        {
+                            estates = estates.OrderBy(e => e.Square);
+                            break;
+                        };
+                    case "squareDown":
+                        {
+                            estates = estates.OrderByDescending(e => e.Square);
+                            break;
+                        };
+                    case "roomsUp":
+                        {
+                            estates = estates.OrderBy(e => e.Rooms);
+                            break;
+                        };
+                    case "roomsDown":
+                        {
+                            estates = estates.OrderByDescending(e => e.Rooms);
+                            break;
+                        };
+                    default:
+                        {
+                            estates = estates.OrderByDescending(e => e.Created);
+                            break;
+                        }
+                }
             }
 
             return await PagedList< Domain.Entities.Estate>.CreateAsync(estates, estateParams.PageNumber, estateParams.PageSize);

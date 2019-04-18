@@ -19,13 +19,13 @@ namespace Persistence.Helpers
         }
 
 
-        public string Type { get; set; } = "All";
+        public string Type { get; set; }
 
-        public string Country { get; set; } = "All";
+        public string Country { get; set; }
 
-        public string City { get; set; } = "All";
+        public string City { get; set; }
 
-        public string Street { get; set; } = "All";
+        public string Street { get; set; }
 
         public int OwnerId { get; set; } = -1;
 
@@ -45,5 +45,7 @@ namespace Persistence.Helpers
 
         public int MaxFloors { get; set; } = 50;
 
+
+        public string OrderBy { get; set; }
     }
 }

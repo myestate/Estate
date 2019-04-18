@@ -34,6 +34,7 @@ constructor(private http: HttpClient) { }
       params = params.append('maxRooms', estateParams.maxRooms);
       params = params.append('minFloors', estateParams.minFloors);
       params = params.append('maxFloors', estateParams.maxFloors);
+      params = params.append('orderBy', estateParams.orderBy);
     }
 
     return this.http.get<Estate[]>(this.baseUrl, { observe: 'response', params }).pipe(

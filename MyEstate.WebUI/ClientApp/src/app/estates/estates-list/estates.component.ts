@@ -34,9 +34,9 @@ export class EstatesComponent implements OnInit {
 
   resetEstateParams() {
     this.estateParams.type = this.type;
-    this.estateParams.country = "All";
-    this.estateParams.city = "All";
-    this.estateParams.street = "All";
+    this.estateParams.country = "";
+    this.estateParams.city = "";
+    this.estateParams.street = "";
     this.estateParams.minPrice = 0;
     this.estateParams.maxPrice = 5000000;
     this.estateParams.minSquare = 0;
@@ -45,6 +45,7 @@ export class EstatesComponent implements OnInit {
     this.estateParams.maxRooms = 10;
     this.estateParams.minFloors = 1;
     this.estateParams.maxFloors = 50;
+    this.estateParams.orderBy = "created";
   }
 
   loadEstates() {

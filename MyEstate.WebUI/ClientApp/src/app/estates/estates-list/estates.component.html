@@ -48,8 +48,20 @@
     </div>
     <div class="row mb-3">
       <div class="col-md-3">
-        <button type="submit" class="btn btn-primary mr-2" >Apply Filters</button>
-        <button type="button" class="btn bg-secondary" (click) ="resetFilters()">Reset Filter</button>
+        <h4 class="mb-1 text-center">Order by</h4>
+        <select class="form-control" id="orderBy" name="orderBy" [(ngModel)]="estateParams.orderBy">
+          <option value="created">Created</option>
+          <option value="priceUp">Price up</option>
+          <option value="priceDown">Price down</option>
+          <option value="squareUp">Square up</option>
+          <option value="squareDown">Square down</option>
+          <option value="roomsUp">Rooms up</option>
+          <option value="roomsDown">Rooms down</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary mr-2">Apply Filters</button>
+        <button type="button" class="btn bg-secondary" (click)="resetFilters()">Reset Filter</button>
       </div>
     </div>
   </form>
