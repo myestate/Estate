@@ -26,10 +26,10 @@ namespace MyEstate.Application
             _context.Remove(entity);
         }
 
-        public async Task<Domain.Entities.Estate> GetEstate(int id)
+        public async Task<Domain.Entities.Estate> GetEstate(int userId)
         {
             var estate = await _context.Estates.Include(p => p.Photos)
-                             .FirstOrDefaultAsync(u => u.Id == id);
+                             .LastOrDefaultAsync(u => u.OwnerId == userId);
 
             return estate;
         }

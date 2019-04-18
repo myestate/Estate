@@ -12,7 +12,7 @@ namespace MyEstate.Application.Interfaces
         Task<IEnumerable<MyEstate.Domain.Entities.User>> GetUsers();
         Task<MyEstate.Domain.Entities.User> GetUser(int id);
 
-        Task<MyEstate.Domain.Entities.Photo> GetPhoto(int id); 
+        Task<MyEstate.Domain.Entities.EstatePhoto> GetPhoto(int id); 
         Task<bool> UpdateUser(Domain.Entities.User user);
 
         Task<MyEstate.Domain.Entities.Message> GetMessage(int id);

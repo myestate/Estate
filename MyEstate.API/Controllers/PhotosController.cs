@@ -15,19 +15,21 @@ using MyEstate.Domain.Entities;
 namespace MyEstate.API.Controllers
 {
     [Authorize]
-    [Route("api/users/{userId}/photos")]
+    [Route("api/estates/{estateId}/photos")]
     [ApiController]
     public class PhotosControllers : ControllerBase
     {
         private readonly IDatingRepository _repo;
+        private readonly IEstatesRepository _estateRepo;
 
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _cloudinary;
-        public PhotosControllers(IDatingRepository repo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig)
+        public PhotosControllers(IDatingRepository repo,IEstatesRepository estateRepo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig)
         {
             _cloudinaryConfig = cloudinaryConfig;
             _repo = repo;
+            _estateRepo = estateRepo;
             _mapper = mapper;            
 
             Account acc = new Account(
@@ -51,12 +53,12 @@ namespace MyEstate.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhotoForUser(int userId, [FromForm]PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult> AddPhotoForEstate(int estateId, [FromForm]PhotoForCreationDto photoForCreationDto)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (estateId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             return Unauthorized();
 
-            var userFromRepo = await _repo.GetUser(userId);
+            var estateFromRepo = await _estateRepo.GetEstate(estateId);
 
             var file = photoForCreationDto.File;
 
@@ -79,12 +81,12 @@ namespace MyEstate.API.Controllers
             photoForCreationDto.Url = uploadResult.Uri.ToString();
             photoForCreationDto.PublicId = uploadResult.PublicId;
 
-            var photo = _mapper.Map<Photo>(photoForCreationDto);
+            var photo = _mapper.Map<EstatePhoto>(photoForCreationDto);
 
-            if(!userFromRepo.Photos.Any(u => u.IsMain))
+            if(!estateFromRepo.Photos.Any(u => u.IsMain))
                 photo.IsMain = true;
 
-            userFromRepo.Photos.Add(photo);
+            estateFromRepo.Photos.Add(photo);
 
             if(await _repo.SaveAll())
             {

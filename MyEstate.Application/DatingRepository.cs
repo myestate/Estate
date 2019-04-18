@@ -42,24 +42,23 @@ namespace MyEstate.Application
             throw new System.NotImplementedException();
         }
 
-        public async Task<Domain.Entities.Photo> GetPhoto(int id)
+        public async Task<EstatePhoto> GetPhoto(int id)
         {
-            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            var photo = await _context.EstatePhotos.FirstOrDefaultAsync(p => p.Id == id);
 
             return photo;
         }
 
         public async Task<Domain.Entities.User> GetUser(int id)
         {
-            var user = await _context.Users.Include(p => p.Photos)
-                             .FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
         public async Task<IEnumerable<Domain.Entities.User>> GetUsers()
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var users = await _context.Users.ToListAsync();
 
             return users;
         }

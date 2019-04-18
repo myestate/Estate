@@ -13,24 +13,19 @@ namespace Persistence.Helpers
     {
         public AutoMapperProfiles()
         {
+         
             CreateMap<User, UserForListDto>()
-            .ForMember(dest => dest.PhotoUrl, opt => {
-                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
-            })
             .ForMember(dest => dest.Age, opt => {
                 opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
             });
             CreateMap<User, UserForDetailedDto>()
-              .ForMember(dest => dest.PhotoUrl, opt => {
-                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
-              })
               .ForMember(dest => dest.Age, opt => {
                 opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
             });
 
-            CreateMap<Photo, PhotosForDetailedDto>();
-            CreateMap<Photo, PhotoForReturnDto>();
-            CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<EstatePhoto, PhotosForDetailedDto>();
+            CreateMap<EstatePhoto, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, EstatePhoto>();
           
             CreateMap<MessageForCreationDto, Message>().ReverseMap();
         }
