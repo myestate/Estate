@@ -41,7 +41,7 @@
         <p><strong>City:</strong> {{estate.city}}</p>
         <p><strong>Street:</strong> {{estate.street}}</p>
         <p><strong>Created:</strong> {{estate.created}}</p>
-        <small><strong>Owner:</strong> {{user.username}}</small>
+        <small><strong>Owner:</strong> <a [routerLink]="['/members', user.id]">{{user.username}}</a></small>
       </div>
     </div>
   </div>

@@ -27,6 +27,8 @@ namespace Persistence.Helpers
 
         public string Street { get; set; } = "All";
 
+        public int OwnerId { get; set; } = -1;
+
         public double MinPrice { get; set; } = 0;
 
         public double MaxPrice { get; set; } = 5000000;

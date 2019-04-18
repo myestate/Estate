@@ -27,12 +27,6 @@ export class EstatesDetailComponent implements OnInit {
       this.id = params['id'];
     });
     this.loadEstate(this.id);
-
-    this.userService.getUser(this.estate.ownerId).subscribe((user: User) => {
-      this.user = user;
-    });
-      
-
   }
 
   loadEstate(id: number) {
@@ -41,6 +35,9 @@ export class EstatesDetailComponent implements OnInit {
       if (estate.photos.length!==0) {
         this.havePhotos = true;
       }
+      this.userService.getUser(estate.ownerId).subscribe((user: User) => {
+        this.user = user;
+      });
     }, error => {
       this.alertify.error(error);
     });

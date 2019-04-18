@@ -58,6 +58,11 @@ namespace MyEstate.Application
                 estates = estates.Where(e => e.Street == estateParams.Street);
             }
 
+            if (estateParams.OwnerId != -1)
+            {
+                estates = estates.Where(e => e.OwnerId == estateParams.OwnerId);
+            }
+
             if (estateParams.MinPrice != 0 || estateParams.MaxPrice != 5000000)
             {
                 estates = estates.Where(e => e.Price>= estateParams.MinPrice && e.Price<= estateParams.MaxPrice);
