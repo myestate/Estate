@@ -7,7 +7,7 @@ export class Estate {
     title: string;
     description: string;
     price: number;
-    owner: User;
+    ownerId: number;
     square: number;
     rooms: number;
     floors: number;
