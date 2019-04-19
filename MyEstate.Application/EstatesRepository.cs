@@ -29,10 +29,19 @@ namespace MyEstate.Application
         public async Task<Domain.Entities.Estate> GetEstate(int id)
         {
             var estate = await _context.Estates.Include(p => p.Photos)
-                             .LastOrDefaultAsync(u => u.Id == id);
+            .FirstOrDefaultAsync(u => u.Id == id);
 
             return estate;
         }
+
+         public async Task<Domain.Entities.Estate> GetEstateByOwnerId(int userId)
+        {
+            var estate = await _context.Estates.Include(p => p.Photos)
+            .LastOrDefaultAsync(u => u.OwnerId == userId);
+
+            return estate;
+        }
+
 
         public async Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams)
         {

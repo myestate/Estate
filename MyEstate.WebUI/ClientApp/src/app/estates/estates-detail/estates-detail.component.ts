@@ -16,7 +16,7 @@ export class EstatesDetailComponent implements OnInit {
   @Input() type: string;
   estate: Estate;
   user: User;
-  havePhotos: boolean = false;
+  havePhotos: boolean = true;
 
   id: number;
   constructor(private userService: UserService, private estateService: EstateService, private alertify: AlertifyService,
@@ -32,7 +32,7 @@ export class EstatesDetailComponent implements OnInit {
   loadEstate(id: number) {
     this.estateService.getEstate(id).subscribe((estate: Estate) => {
       this.estate = estate;
-      if (estate.photos.length!==0) {
+      if (estate.photos.length !== 0) {
         this.havePhotos = true;
       }
       this.userService.getUser(estate.ownerId).subscribe((user: User) => {

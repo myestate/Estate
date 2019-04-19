@@ -11,11 +11,12 @@ using MyEstate.API.Helpers;
 using MyEstate.Application.Interfaces;
 using MyEstate.Application.Photo.Model;
 using MyEstate.Domain.Entities;
+using Persistence.Helpers;
 
 namespace MyEstate.API.Controllers
 {
     [Authorize]
-    [Route("api/estates/{estateId}/photos")]
+    [Route("api/estates/{userId}/photos")]
     [ApiController]
     public class PhotosControllers : ControllerBase
     {
@@ -53,12 +54,12 @@ namespace MyEstate.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhotoForEstate(int estateId, [FromForm]PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult> AddPhotoForEstate(int userId, [FromForm]PhotoForCreationDto photoForCreationDto)
         {
-            if (estateId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             return Unauthorized();
-
-            var estateFromRepo = await _estateRepo.GetEstate(estateId);
+         
+            var estateFromRepo = await _estateRepo.GetEstateByOwnerId(userId);
 
             var file = photoForCreationDto.File;
 

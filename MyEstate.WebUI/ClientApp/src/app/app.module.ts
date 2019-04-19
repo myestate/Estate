@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -77,6 +79,10 @@ export function tokenGetter() {
    ],
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
+      MatStepperModule, MatInputModule, MatButtonModule,
+      FormsModule,
+      ReactiveFormsModule,
       HttpClientModule,
       FormsModule,
       FileUploadModule,

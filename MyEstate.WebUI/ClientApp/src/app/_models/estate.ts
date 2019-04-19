@@ -5,6 +5,7 @@ import { Location } from './geocode_data';
 export class Estate {
     id: number;
     title: string;
+    type: string;
     description: string;
     price: number;
     ownerId: number;
