@@ -16,7 +16,7 @@ export class EstatesDetailComponent implements OnInit {
   @Input() type: string;
   estate: Estate;
   user: User;
-  havePhotos: boolean = true;
+  havePhotos: boolean = false;
 
   id: number;
   constructor(private userService: UserService, private estateService: EstateService, private alertify: AlertifyService,
