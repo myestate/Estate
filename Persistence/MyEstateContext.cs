@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyEstate.Domain.Entities;
 
 namespace Persistence
 {
-    public class MyEstateContext : DbContext
+    public class MyEstateContext : IdentityDbContext
     {
         public MyEstateContext()
         {
