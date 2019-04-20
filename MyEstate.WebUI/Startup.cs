@@ -28,7 +28,7 @@ namespace MyEstate.WebUI
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/wwwroot";
             });
         }
 
@@ -57,15 +57,14 @@ namespace MyEstate.WebUI
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            
             app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+           app.UseCors(x => x.WithOrigins("http://localhost:4200"));
+           app.UseAuthentication();
+           app.UseDefaultFiles();
+           app.UseStaticFiles();
+           app.UseMvc();
 
             app.UseSpa(spa =>
             {

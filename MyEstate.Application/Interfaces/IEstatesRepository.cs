@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Persistence.Helpers;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyEstate.Application.Interfaces
@@ -8,8 +9,11 @@ namespace MyEstate.Application.Interfaces
         void Add<T>(T entry) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveAll();
-        Task<IEnumerable<MyEstate.Domain.Entities.Estate>> GetEstates();
-        Task<MyEstate.Domain.Entities.Estate> GetEstate(int id);
+        Task<PagedList<Domain.Entities.Estate>> GetEstates(EstateParams estateParams);
+        Task<Domain.Entities.Estate> GetEstate(int userId);
+        Task<Domain.Entities.Estate> GetEstateByOwnerId(int userId);
         Task<Domain.Entities.Estate> AddEstate(Domain.Entities.Estate estate);
+
+        Task<IEnumerable<Domain.Entities.Estate>> GetAllEstates();
     }
 }

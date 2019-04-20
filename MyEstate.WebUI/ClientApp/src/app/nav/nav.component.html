@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+<nav class="navbar navbar-expand-sm" style="background-color: #333" >
   <div class="container">
-
     <a [routerLink]="['/home']"  class="navbar-brand">MyEstate</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
           <span class="navbar-toggler-icon"></span>
@@ -23,6 +22,9 @@
       <li class="nav-item" routerLinkActive="router-link-active" *ngIf="loggedIn()">
         <a [routerLink]="['/add_estate']" class="nav-link">Add estate</a>
       </li>
+      <li class="nav-item" routerLinkActive="router-link-active" *ngIf="loggedIn()">
+        <a [routerLink]="['/registerAsAgent']" class="nav-link">Register as agent</a>
+      </li>
       <li class="nav-item" routerLinkActive="active"  *ngIf="loggedIn()">
         <a [routerLink]="['/messages']" class="nav-link">Messages</a>
       </li>
@@ -36,7 +38,9 @@
         </a>
   
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" href="#"> <i class="fa fa-user"></i> Edit Profile</a>
+          <a [routerLink]="['/edit-profile']" class="dropdown-item" > <i class="fa fa-user"></i> Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="['/user-cabinet']" class="dropdown-item">My cabinet</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">
             <i class="fa fa-sign-out" ></i> Logout</a>
@@ -57,4 +61,4 @@
       <div routerLinkActive="router-link-active">
            <button class="btn" [routerLink]="['/map']"> <i style="font-size: 25px" class="fa">&#xf041;</i></button>
       </div>
-     
+</nav>

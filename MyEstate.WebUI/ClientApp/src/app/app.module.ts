@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import {BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -14,7 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify/Alertify.service';
 import { appRoutes } from './routes';
-import { EstatesComponent } from './estates/estates.component';
+import { EstatesComponent } from './estates/estates-list/estates.component';
 import { Estate_agentsComponent } from './estate_agent/estate_agentsList/estate_agents.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -29,10 +32,19 @@ import { Estate_agentsCardComponent } from './estate_agent/estate_agentsCard/est
 import { SellingComponent } from './selling/selling.component';
 import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
-import { Add_estateComponent } from './add_estate/add_estate.component';
+import { AddEstateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
+import { EstateService } from './_services/estate/estate.service';
+import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
+import { EstateCardComponent } from './estates/estate-card/estate-card.component';
+import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+
+
 
 
 export function tokenGetter() {
@@ -55,13 +67,27 @@ export function tokenGetter() {
       SellingComponent,
       RentComponent,
       Daily_rentComponent,
-      Add_estateComponent,
-      MapComponent
+      AddEstateComponent,
+      MapComponent,
+      EstateCardComponent,
+      EstatesDetailComponent,
+      EditProfileComponent,
+      UserCabinetComponent,
+      EstatesDetailComponent,
+      RegisterAsAgentComponent
+
    ],
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
+      MatStepperModule, MatInputModule, MatButtonModule,
+      FormsModule,
+      ReactiveFormsModule,
       HttpClientModule,
       FormsModule,
+      FileUploadModule,
+      ButtonsModule.forRoot(),
+      PaginationModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -73,7 +99,8 @@ export function tokenGetter() {
          }
       }),
       AgmCoreModule.forRoot({
-         apiKey: environment.googleMapAPIKey
+         apiKey: environment.googleMapAPIKey,
+         language: 'en'
       })
    ],
    providers: [
@@ -81,7 +108,9 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      EstateService,
       UserService,
+      EstateAgentService,
       MapService,
       MemberDetailResolve,
       MemberListResolve

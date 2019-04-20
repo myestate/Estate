@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/_models/user';
-
+import { EstateAgent } from 'src/app/_models/estateAgent';
 
 @Component({
   selector: 'app-estate_agentsCard',
@@ -9,7 +8,7 @@ import { User } from 'src/app/_models/user';
 })
 export class Estate_agentsCardComponent implements OnInit {
   
-  @Input() agent: Agent;
+  @Input() estateAgent: EstateAgent;
 
   constructor() { }
 
@@ -18,15 +17,3 @@ export class Estate_agentsCardComponent implements OnInit {
 
 }
 
-export class Agent {
-  imageUrl: string
-  name: string
-  age: number
-  description: string
-  constructor(im, name, age, des) {
-    this.imageUrl = im
-    this.name = name
-    this.age = age
-    this.description=des
-  }
-}

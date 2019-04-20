@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row border border-dark">
+  
+      <div class="column col-4  border border-success rounded py-2" [ngStyle]='{"background-color":"#f0f8ff"}'>
+  
+       <div class="row justify-content-around">
+         
+          <img class="card-img-top" src="{{user.photoUrl}}" alt="{{user.knowAs}}">
+        
+      
+        <div class="column mt-3">
+            <p class="lead">User Name: {{user.username}}</p>
+            <p class="lead">Id: {{user.id}}</p>
+        </div>
+       </div>
+  
+      <div class="column buttons">
+          <button type="button" class="btn btn-primary col-12" [routerLink]="['/user-cabinet']">Мій кабінет</button>
+          <button type="button" class="btn btn-success col-12" [routerLink]="['/estates']">Оголошення</button>
+          <button type="button" class="btn btn-warning  col-12" [routerLink]="['notification']">Сповіщення</button>
+  
+          <button type="button" class="btn btn-info col-12 dropdown-toggle dropdown-help" 
+          (click)='toogleHelp=!toogleHelp'>Допомога</button>
+          <!-- <ul *ngIf='toogleHelp'>
+            <li><a href="">Як додати оголошення?</a></li>
+            <li><a href="">Виникли питання</a></li>
+          </ul> -->
+  
+          <button type="button" class="btn btn-info col-12 dropdown-toggle"
+          (click)='toogleSetting=!toogleSetting'>Налаштування</button>
+          <!-- <ul *ngIf='toogleSetting'>
+              <li><a [routerLink]="['/edit-profile']">Редагувати особистий кабінет</a></li>
+              <li><a href="">Змінити пароль</a></li>
+              <li><a href="">Видалити акаунт</a></li>
+            </ul> -->
+  
+          <button (click)="logout()" type="button" class="btn btn-danger col-12">Вийти</button>
+      </div>
+  
+      </div>
+  
+      <div class="column col-8 py-2 text-center text-uppercase" [ngStyle]='{"background-color":"#f0f8ff"}'>
+  
+        <div class="column col-6 m-auto text-center text-uppercase">
+              <h3>Усі квартири:</h3>
+              <div class='border border-success rounded'>
+                <p class="lead">Понад 100 оголошень</p>
+                <p class="lead">Знайдіть своє</p>
+              </div>
+        </div>
+  
+        <div class="column col-6 m-auto text-center text-uppercase">
+            <h3>Оренда:</h3>
+            <div class='border border-success rounded'>
+              <p class="lead">Орендуйте житло в будь-який момент</p>
+            </div>
+      </div>
+  
+        <div class="column col-6 m-auto text-center text-uppercase">
+            <h3>Зв'яжіться з нами:</h3>
+            <div class='border border-success rounded'>
+              <p class="lead">Велика кількість агентів готова Вам допомогти в будь-який момент</p>
+            </div>
+      </div>
+
+      </div>
+    </div>
+  </div>

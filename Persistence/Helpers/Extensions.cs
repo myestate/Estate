@@ -1,6 +1,8 @@
 
 using System;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Persistence.Helpers
 {
@@ -11,6 +13,15 @@ namespace Persistence.Helpers
             response.Headers.Add("Application error:", message);
             response.Headers.Add("Access-Control-Expose-Headers", "ApplicationError");
             response.Headers.Add("Access-Control-Allow_Origin","*");
+        }
+
+        public static void AddPagination(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems, int totalPages)
+        {
+            var paginationHeader = new PaginationHeader(currentPage, itemsPerPage, totalItems, totalPages);
+            var camalCaseFormatter = new JsonSerializerSettings();
+            camalCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camalCaseFormatter));
+            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
 
         public static int CalculateAge(this DateTime theDateTime)

@@ -1,12 +1,14 @@
 import { User } from './user';
 import { Photo } from './photo';
+import { Location } from './geocode_data';
 
-export interface Estate {
+export class Estate {
     id: number;
     title: string;
+    type: string;
     description: string;
     price: number;
-    owner: User;
+    ownerId: number;
     square: number;
     rooms: number;
     floors: number;
@@ -16,4 +18,5 @@ export interface Estate {
     photos: Photo[];
     created: Date;
     isActive: Boolean;
+    location: Location;
 }

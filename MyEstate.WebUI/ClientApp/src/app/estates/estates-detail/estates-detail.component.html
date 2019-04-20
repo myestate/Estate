@@ -1,0 +1,49 @@
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div *ngIf="!havePhotos; then Default else Carousel"></div>
+      <ng-template #Default>
+        <img class="img-fluid" src="../../../assets/notFound.jpg" />
+      </ng-template>
+        <ng-template #Carousel>
+          <div id="carouselControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="img-fluid rounded img-thumbnail" src="{{estate.photos[0].url}}" alt="{{estate.photos[0].description}}">
+              </div>
+              <div class="carousel-item" *ngFor="let photo of estate.photos">
+                <img class="img-fluid rounded img-thumbnail" src="{{photo.url}}" alt="{{photo.description}}">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </ng-template>
+</div>
+    <div class="col-md-6">
+      <div class="caption">
+        <h4 id="homeTitle">{{estate.title}}</h4>
+        <h5 id="price">{{estate.price}}$</h5>
+        <p id="description">
+          {{estate.description}}
+        </p>
+        <p><strong>Square:</strong> {{estate.square}}</p>
+        <p><strong>Rooms:</strong> {{estate.rooms}}</p>
+        <p><strong>Floors:</strong> {{estate.floors}}</p>
+        <p><strong>Country:</strong> {{estate.country}}</p>
+        <p><strong>City:</strong> {{estate.city}}</p>
+        <p><strong>Street:</strong> {{estate.street}}</p>
+        <p><strong>Created:</strong> {{estate.created}}</p>
+        <small><strong>Owner:</strong> <a [routerLink]="['/members', user.id]">{{user.username}}</a></small>
+      </div>
+    </div>
+  </div>
+</div>
+
