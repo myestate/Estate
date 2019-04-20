@@ -13,7 +13,7 @@ using MyEstate.Domain.Entities;
 
 namespace MyEstate.API.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
