@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(MyEstateContext))]
-    partial class MyEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20190417075229_ModifyEstateEntity")]
+    partial class ModifyEstateEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,7 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<int>("OwnerId");
+                    b.Property<int?>("OwnerId");
 
                     b.Property<double>("Price");
 
@@ -83,35 +85,6 @@ namespace Persistence.Migrations
                     b.ToTable("EstateAgents");
                 });
 
-            modelBuilder.Entity("MyEstate.Domain.Entities.EstatePhoto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateAdded");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int?>("EstateAgentId");
-
-                    b.Property<int>("EstateId");
-
-                    b.Property<bool>("IsMain");
-
-                    b.Property<string>("PublicId");
-
-                    b.Property<string>("Url");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EstateAgentId");
-
-                    b.HasIndex("EstateId");
-
-                    b.ToTable("EstatePhotos");
-                });
-
             modelBuilder.Entity("MyEstate.Domain.Entities.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -143,6 +116,39 @@ namespace Persistence.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int?>("EstateAgentId");
+
+                    b.Property<int?>("EstateId");
+
+                    b.Property<bool>("IsMain");
+
+                    b.Property<string>("PublicId");
+
+                    b.Property<string>("Url");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstateAgentId");
+
+                    b.HasIndex("EstateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Photos");
+                });
+
             modelBuilder.Entity("MyEstate.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -159,6 +165,8 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Gender");
 
+                    b.Property<string>("Interests");
+
                     b.Property<string>("Introduction");
 
                     b.Property<string>("KnowAs");
@@ -171,8 +179,6 @@ namespace Persistence.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("PhotoUrl");
-
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
@@ -180,24 +186,24 @@ namespace Persistence.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MyEstate.Domain.Entities.Value", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Values");
+                });
+
             modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
                 {
                     b.HasOne("MyEstate.Domain.Entities.User", "Owner")
                         .WithMany()
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyEstate.Domain.Entities.EstatePhoto", b =>
-                {
-                    b.HasOne("MyEstate.Domain.Entities.EstateAgent")
-                        .WithMany("Photos")
-                        .HasForeignKey("EstateAgentId");
-
-                    b.HasOne("MyEstate.Domain.Entities.Estate", "Estate")
-                        .WithMany("Photos")
-                        .HasForeignKey("EstateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("MyEstate.Domain.Entities.Message", b =>
@@ -211,6 +217,22 @@ namespace Persistence.Migrations
                         .WithMany("MessagesSent")
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
+                {
+                    b.HasOne("MyEstate.Domain.Entities.EstateAgent")
+                        .WithMany("Photos")
+                        .HasForeignKey("EstateAgentId");
+
+                    b.HasOne("MyEstate.Domain.Entities.Estate")
+                        .WithMany("Photos")
+                        .HasForeignKey("EstateId");
+
+                    b.HasOne("MyEstate.Domain.Entities.User", "User")
+                        .WithMany("Photos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

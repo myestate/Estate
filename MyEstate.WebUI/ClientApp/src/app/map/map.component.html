@@ -19,7 +19,7 @@
 <form #getAddresForm="ngForm" (ngSubmit)="findPlace(address)">
   <div class="form-group m-4">
     <input type="text" name="address" 
-    [(ngModel)]="address" placeholder="Address" required autofocus>
+    [(ngModel)]="address" placeholder="Aaddress" required autofocus>
     <button class="btn btn-outline-success ml-3" [disabled]="!getAddresForm.valid" type="submit">Find</button>
   </div>
 </form>

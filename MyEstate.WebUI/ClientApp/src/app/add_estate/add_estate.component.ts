@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth/auth.service';
 import { AlertifyService } from '../_services/alertify/Alertify.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, } from '@angular/forms';
 import { Estate } from '../_models/estate';
 import { AnimationStyleMetadata } from '@angular/animations';
 import { EstateService } from '../_services/estate/estate.service';
@@ -9,6 +9,11 @@ import { UserService } from '../_services/user/user.service';
 import {FileUploader} from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
 import { Photo } from '../_models/photo';
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-estate',
@@ -23,16 +28,41 @@ export class AddEstateComponent implements OnInit {
     photos: Photo[] = [];
     hasBaseDropZoneOver = false;
     baseUrl = environment.apiUrl;
+     addressForm: FormGroup;
+     estateForm: FormGroup;
+     sellingForm: FormGroup;
+
+  constructor(private addService: EstateService, private alertify: AlertifyService,
+      private authService: AuthService) {   }
 
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
 
-  constructor(private addService: EstateService, private alertify: AlertifyService,
-      private authService: AuthService) {   }
-
   ngOnInit() {
     this.initializeUploader();
+    this.addressForm = new FormGroup({
+    country: new FormControl('', Validators.required),
+    city:  new FormControl('', Validators.required),
+    street:  new FormControl('', Validators.required),
+    region: new FormControl(),
+    building: new FormControl('', Validators.min(0)),
+    flat: new FormControl()
+   });
+   console.log(this.authService.decodedToken.nameid);
+   this.estateForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    description:  new FormControl('', Validators.required),
+    square:  new FormControl('', Validators.required || Validators.min(0)),
+    rooms: new FormControl('', Validators.required || Validators.min(0)),
+    floors: new FormControl('', Validators.min(0)),
+    flat: new FormControl()
+   });
+
+   this.sellingForm = new FormGroup({
+    type: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.min(0) || Validators.required)
+   });
   }
 
   Capitalize(str: string) {
@@ -40,26 +70,22 @@ export class AddEstateComponent implements OnInit {
   }
 
   add_estate() {
-    this.estate.isActive = true;
-    this.estate.country = this.Capitalize(this.estate.country);
-    this.estate.city = this.Capitalize(this.estate.city);
-    this.estate.street = this.Capitalize(this.estate.street);
-    this.estate.description = `Region: ${this.model.region}\nCondition: ${this.model.condition}\n` +
-    `Balcony: ${this.model.balcony}\nWalls: ${this.model.walls}\nHouse type: ${this.model.type}`;
-    this.estate.street += `, ${this.model.building}`;
-
-    this.addService.addEstate(this.estate).subscribe(() => {
+    if (this.addressForm.valid && this.sellingForm.valid && this.estateForm.valid) {
+      this.estate = Object.assign({}, this.addressForm.value, this.estateForm.value, this.sellingForm.value);
+      this.estate.isActive = true;
+      this.addService.addEstate(this.estate).subscribe(() => {
       this.alertify.success('Estate successfully added');
+      this.uploader.uploadAll();
+      console.log(this.estate);
     }, error => {
      this.alertify.error(error);
     });
-    console.log(this.estate);
-    console.log(this.estate.photos);
+    }
   }
 
   initializeUploader() {
     this.uploader = new FileUploader({
-      url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
+      url: this.baseUrl + 'estates/' + this.authService.decodedToken.nameid + '/photos',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image'],
@@ -91,4 +117,3 @@ export class AddEstateComponent implements OnInit {
     this.cancelAdding.emit(false);
   }
 }
-

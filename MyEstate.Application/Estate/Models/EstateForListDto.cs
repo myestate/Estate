@@ -9,10 +9,11 @@ namespace MyEstate.Application.Estate.Models
     public class EstateForListDto
     {
         public int Id { get; set; }
+        public string AdType { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        public UserForListDto Owner { get; set; }
+        public int OwnerId { get; set; }
         public double Square { get; set; }
         public int Rooms { get; set; }
         public int Floors { get; set; }
