@@ -39,6 +39,7 @@ namespace MyEstate.API
                     opt.SerializerSettings.ReferenceLoopHandling =
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
+            services.BuildServiceProvider().GetService<MyEstateContext>().Database.Migrate();
             services.AddCors();
             // services.AddTransient<Seed>();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));

@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(MyEstateContext))]
-    [Migration("20190406200343_AddEstateAgentApi")]
-    partial class AddEstateAgentApi
+    [Migration("20190420105106_azureMigration")]
+    partial class azureMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,8 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AdType");
+
                     b.Property<string>("City");
 
                     b.Property<string>("Country");
@@ -39,7 +41,7 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<int?>("OwnerId");
+                    b.Property<int>("OwnerId");
 
                     b.Property<double>("Price");
 
@@ -78,14 +80,12 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("PhotoUrl");
-
                     b.HasKey("Id");
 
                     b.ToTable("EstateAgents");
                 });
 
-            modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
+            modelBuilder.Entity("MyEstate.Domain.Entities.EstatePhoto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,7 +95,9 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("EstateId");
+                    b.Property<int?>("EstateAgentId");
+
+                    b.Property<int>("EstateId");
 
                     b.Property<bool>("IsMain");
 
@@ -103,15 +105,44 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("EstateAgentId");
 
                     b.HasIndex("EstateId");
 
-                    b.HasIndex("UserId");
+                    b.ToTable("EstatePhotos");
+                });
 
-                    b.ToTable("Photos");
+            modelBuilder.Entity("MyEstate.Domain.Entities.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime?>("DateRead");
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<DateTime>("MessageSent");
+
+                    b.Property<bool>("RecipientDeleted");
+
+                    b.Property<int>("RecipientId");
+
+                    b.Property<bool>("SenderDeleted");
+
+                    b.Property<int>("SenderId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipientId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("MyEstate.Domain.Entities.User", b =>
@@ -130,8 +161,6 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Gender");
 
-                    b.Property<string>("Interests");
-
                     b.Property<string>("Introduction");
 
                     b.Property<string>("KnowAs");
@@ -144,6 +173,8 @@ namespace Persistence.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
+                    b.Property<string>("PhotoUrl");
+
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
@@ -151,36 +182,37 @@ namespace Persistence.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MyEstate.Domain.Entities.Value", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Values");
-                });
-
             modelBuilder.Entity("MyEstate.Domain.Entities.Estate", b =>
                 {
                     b.HasOne("MyEstate.Domain.Entities.User", "Owner")
                         .WithMany()
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyEstate.Domain.Entities.Photo", b =>
+            modelBuilder.Entity("MyEstate.Domain.Entities.EstatePhoto", b =>
                 {
-                    b.HasOne("MyEstate.Domain.Entities.Estate")
+                    b.HasOne("MyEstate.Domain.Entities.EstateAgent")
                         .WithMany("Photos")
-                        .HasForeignKey("EstateId");
+                        .HasForeignKey("EstateAgentId");
 
-                    b.HasOne("MyEstate.Domain.Entities.User", "User")
+                    b.HasOne("MyEstate.Domain.Entities.Estate", "Estate")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("EstateId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyEstate.Domain.Entities.Message", b =>
+                {
+                    b.HasOne("MyEstate.Domain.Entities.User", "Recipient")
+                        .WithMany("MessagesReceived")
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("MyEstate.Domain.Entities.User", "Sender")
+                        .WithMany("MessagesSent")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
