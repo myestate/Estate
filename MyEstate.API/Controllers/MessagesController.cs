@@ -84,7 +84,7 @@ namespace MyEstate.API.Controllers
         {
             var sender = await _repo.GetUser(userId);
 
-            if (sender.id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (sender.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             {
              return Unauthorized();   
             }
@@ -126,11 +126,11 @@ namespace MyEstate.API.Controllers
             if(messageFromRepo.RecipientId == userId)
                 messageFromRepo.RecipientDeleted = true;
         
-            if(messageFromRepo.SenderDeleted && messagesFromRepo.RecipientDeleted)
+            if(messageFromRepo.SenderDeleted && messageFromRepo.RecipientDeleted)
                 _repo.Delete(messageFromRepo);
 
             if(await _repo.SaveAll())
-                returnNoContent();
+                return NoContent();
 
             throw new Exception("Error deleting the message");
         }
@@ -148,8 +148,8 @@ namespace MyEstate.API.Controllers
             if(message.RecipientId != userId)
                 return Unauthorized();
 
-            message.isRead = true;
-            messageDateRead = DateTime.Now;
+            message.IsRead = true;
+            message.DateRead = DateTime.Now;
 
             await _repo.SaveAll();
 

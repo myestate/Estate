@@ -34,8 +34,10 @@ namespace MyEstate.Application
 
         public async Task<PagedList<Domain.Entities.Message>> GetMessagesForUser(MessageParams messageParams)
         {
-            var messages = _context.Messages.Include(u => u.Sender).ThenInclude(p => p.Photos)
-            .Include( u => u.Recipient).ThenInclude(p => p.Photos)
+            var messages = _context.Messages.Include(u => u.Sender)
+            //.ThenInclude(p => p.Photos)
+            .Include( u => u.Recipient)
+            //.ThenInclude(p => p.Photos)
             .AsQueryable();
 
             switch(messageParams.MessageContainer)
@@ -61,8 +63,10 @@ namespace MyEstate.Application
 
         public async Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId)
         {
-            var messages = await _context.Messages.Include(u => u.Sender).ThenInclude(p => p.Photos)
-            .Include( u => u.Recipient).ThenInclude(p => p.Photos)
+            var messages = await _context.Messages.Include(u => u.Sender)
+            //.ThenInclude(p => p.Photos)
+            .Include( u => u.Recipient)
+            //.ThenInclude(p => p.Photos)
             .Where(m => m.RecipientId == userId && m.RecipientDeleted == false && m.SenderId == recipientId
              || m.RecipientId == recipientId && m.SenderId == userId
              && m.SenderDeleted == false)
@@ -72,7 +76,7 @@ namespace MyEstate.Application
              return messages;
         }
 
-        public async Task<EstatePhoto> GetPhoto(int id)
+        public async Task<MyEstate.Domain.Entities.EstatePhoto> GetPhoto(int id)
         {
             var photo = await _context.EstatePhotos.FirstOrDefaultAsync(p => p.Id == id);
 

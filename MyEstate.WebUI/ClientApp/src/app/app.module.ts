@@ -6,8 +6,10 @@ import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'n
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TimeAgoPipe} from 'time-ago-pipe';
+
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -77,7 +79,8 @@ export function tokenGetter() {
       UserCabinetComponent,
       EstatesDetailComponent,
       RegisterAsAgentComponent,
-      MemberMessagesComponent
+      MemberMessagesComponent,
+      TimeAgoPipe
 
    ],
    imports: [

@@ -14,7 +14,7 @@
           <div class="header">
             <strong class="primary-front">{{message.senderKnownAs}}</strong>
             <small class="text-muted">
-              <span class="fa fa-clock-o">{{message.messageSent}}</span>
+              <span class="fa fa-clock-o">{{message.messageSent | timeAgo}}</span>
             </small>
         </div>
         <p>{{message.content}}</p>
@@ -29,9 +29,9 @@
           <div class="chat-body">
             <div class="header">
                 <small class="text-muted float-right">
-                    <span class="fa fa-clock-o">{{message.messageSent}}</span>
+                    <span class="fa fa-clock-o">{{message.messageSent | timeAgo}}</span>
                     <span *ngIf="!message.isRead" class="test-danger">(unread)</span>
-                    <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead}})</span>
+                    <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead | timeAgo}})</span>
                   </small>
               <strong class="primary-front float-right">{{message.senderKnownAs}}</strong>
               
