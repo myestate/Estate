@@ -18,17 +18,17 @@ namespace MyEstate.Application
         
         public async Task<Domain.Entities.User> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == username);
 
             if (user == null)
             {
                 return null;
             }
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-            {
-                return null;
-            }
+            //if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            //{
+            //    return null;
+            //}
 
             return user;
         }
@@ -37,8 +37,8 @@ namespace MyEstate.Application
         {
             CreatePasswordHash(password, out var passwordHash, out var passwordSalt);
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            //user.PasswordHash = passwordHash;
+            //user.PasswordSalt = passwordSalt;
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -48,7 +48,7 @@ namespace MyEstate.Application
 
         public async Task<bool> UserExists(string username)
         {
-            return await _context.Users.AnyAsync(x => x.Username == username);
+            return await _context.Users.AnyAsync(x => x.UserName == username);
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)

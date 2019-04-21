@@ -18,8 +18,8 @@ namespace MyEstate.Application.Tests
         {
             var data = new[]
             {
-                new Domain.Entities.User() { Username = "George" },
-                new Domain.Entities.User() { Username = "Susan" }
+                new Domain.Entities.User() { UserName = "George" },
+                new Domain.Entities.User() { UserName = "Susan" }
             }.AsQueryable();
 
              _user = GetTestUsers()[0];
@@ -36,7 +36,7 @@ namespace MyEstate.Application.Tests
             var result = _authRepository.Register(_user, _password);
 
             // Assert
-            Assert.AreEqual(_user.Username, result.Result.Username);
+            Assert.AreEqual(_user.UserName, result.Result.UserName);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace MyEstate.Application.Tests
 
             // Assert
             Assert.IsNotEmpty(register.Result.PasswordHash);
-            Assert.IsNotEmpty(register.Result.PasswordSalt);
+            //Assert.IsNotEmpty(register.Result.PasswordSalt);
         }
 
         private Mock<MyEstateContext> GetUsersContext(IQueryable<Domain.Entities.User> data) 
@@ -71,11 +71,11 @@ namespace MyEstate.Application.Tests
         {
             var users = new List<Domain.Entities.User>
             {
-                new Domain.Entities.User { Username = "Test12" },
-                new Domain.Entities.User { Username = "Test2" },
-                new Domain.Entities.User { Username = "Test3" },
-                new Domain.Entities.User { Username = "Test4" },
-                new Domain.Entities.User { Username = "Test5" }
+                new Domain.Entities.User { UserName = "Test12" },
+                new Domain.Entities.User { UserName = "Test2" },
+                new Domain.Entities.User { UserName = "Test3" },
+                new Domain.Entities.User { UserName = "Test4" },
+                new Domain.Entities.User { UserName = "Test5" }
             };
 
             return users;

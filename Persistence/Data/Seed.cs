@@ -25,7 +25,7 @@
 
 //                 user.PasswordHash = passwordHash;
 //                 user.PasswordSalt = passwordSalt;
-//                 user.Username = user.Username.ToLower();     
+//                 user.Username = user.UserName.ToLower();     
 
 //                 _context.Users.Add(user);     
 //             }

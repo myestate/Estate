@@ -82,8 +82,8 @@ namespace MyEstate.API
             services.AddCors();
             // services.AddTransient<Seed>();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
-            services.AddAutoMapper();
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            Mapper.Reset();
+            services.AddAutoMapper();            
             services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddScoped<IEstatesRepository, EstatesRepository>();
             services.AddScoped<IEstateAgentsRepository, EstateAgentsRepository>();
