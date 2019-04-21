@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(MyEstateContext))]
-    [Migration("20190420105106_azureMigration")]
-    partial class azureMigration
+    [Migration("20190421221540_DatabaseInit")]
+    partial class DatabaseInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -15,5 +15,5 @@ namespace Persistence
 
             return new MyEstateContext(optionsBuilder.Options);
         }
-    }
+    } 
 }

@@ -5,15 +5,11 @@ namespace Persistence
 {
     public class MyEstateContext : DbContext
     {
-        public MyEstateContext()
-        {
-        }
-
         public MyEstateContext(DbContextOptions options) : base(options)
         {
         }
 
-        public  DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<EstatePhoto> EstatePhotos { get; set; }
 

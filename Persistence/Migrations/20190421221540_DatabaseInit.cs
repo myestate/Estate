@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class azureMigration : Migration
+    public partial class DatabaseInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
