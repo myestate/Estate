@@ -117,11 +117,11 @@ namespace MyEstate.API.Controllers
             {
              return Unauthorized();   
             }
-
+            
             var messageFromRepo = await _repo.GetMessage(id);
 
             if(messageFromRepo.SenderId == userId)
-                messageFromRepo.RecipientDeleted = true;
+                messageFromRepo.SenderDeleted = true;
 
             if(messageFromRepo.RecipientId == userId)
                 messageFromRepo.RecipientDeleted = true;
