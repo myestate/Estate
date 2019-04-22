@@ -39,6 +39,7 @@ namespace MyEstate.API
                     opt.SerializerSettings.ReferenceLoopHandling =
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
+            services.BuildServiceProvider().GetService<MyEstateContext>().Database.Migrate();
             services.AddCors();
             // services.AddTransient<Seed>();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
@@ -90,7 +91,14 @@ namespace MyEstate.API
             app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseMvc(routes => {
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new {controller = "Fallback", action = "Index"}
+                ); 
+            });
         }
     }
 }

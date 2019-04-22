@@ -14,6 +14,7 @@ export class MapComponent implements OnInit {
   lat: any;
   lng: any;
   estates: Estate[] = [];
+  address: string;
   constructor(private alertify: AlertifyService, private mapService: MapService, private estateService: EstateService) {
     if (navigator) {
       navigator.geolocation.getCurrentPosition( pos => {

@@ -47,7 +47,6 @@ export class AddEstateComponent implements OnInit {
     street:  new FormControl('', Validators.required),
     region: new FormControl(),
     building: new FormControl('', Validators.min(0)),
-    flat: new FormControl()
    });
    console.log(this.authService.decodedToken.nameid);
    this.estateForm = new FormGroup({
@@ -74,9 +73,9 @@ export class AddEstateComponent implements OnInit {
       this.estate = Object.assign({}, this.addressForm.value, this.estateForm.value, this.sellingForm.value);
       this.estate.isActive = true;
       this.addService.addEstate(this.estate).subscribe(() => {
+      console.log(this.estate.type);
       this.alertify.success('Estate successfully added');
       this.uploader.uploadAll();
-      console.log(this.estate);
     }, error => {
      this.alertify.error(error);
     });
