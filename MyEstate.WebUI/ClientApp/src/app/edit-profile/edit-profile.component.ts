@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class EditProfileComponent implements OnInit {
   user: User;
   username: string;
+  toogleHelp: boolean;
+  toogleSetting: any;
 
   constructor(private userService: UserService,
     private alertify: AlertifyService,

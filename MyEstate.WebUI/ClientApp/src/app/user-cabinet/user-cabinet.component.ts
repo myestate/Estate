@@ -12,6 +12,8 @@ import { AuthService } from '../_services/auth/auth.service';
 })
 export class UserCabinetComponent implements OnInit {
   user: User;
+  toogleHelp: boolean;
+  toogleSetting: boolean;
   photoUrl: string;
   constructor(private userService: UserService, private alertify: AlertifyService,
     private route: Router, private authService: AuthService) { }
