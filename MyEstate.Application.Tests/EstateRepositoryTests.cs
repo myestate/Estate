@@ -3,31 +3,99 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
 using NUnit.Framework;
-using Persistence;
+using Persistence.Helpers;
 
 namespace MyEstate.Application.Tests
 {
-    public class EstateRepositoryTests
+    public class EstateRepositoryTests : MyEstateTestBase
     {
-        private IEstatesRepository _estateRepository;
-        private Domain.Entities.Estate _estate;
-
-        [SetUp]
-        public void Setup()
+        [Test]
+        public void AddEstate_HappyPath()
         {
-            _estate = GetTestEstates()[0];
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            var estate = new Domain.Entities.Estate
+            {
+                AdType = "Selling",
+                Title = "Test1",
+                Description = "Test1Description",
+                Price = 10,
+                Square = 10,
+                Rooms = 1,
+                Floors = 1,
+                Country = "Ukraine",
+                City = "Lviv",
+                Street = "First"
+            };
+
+            // Act
+            var result = estateRepo.AddEstate(estate);
+
+            // Assert
+            Assert.AreEqual(estate, result.Result);
         }
 
         [Test]
-        public void Register_HappyPath()
+        public void Filtering_TypeRent()
         {
             // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            
+            EstateParams estateParams = new EstateParams() { Type="Rent"};
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.AdType == "Rent")
+                .ToList();
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+        }
+
+        [Test]
+        public void Filtering_TypeDailyRent()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            EstateParams estateParams = new EstateParams() { Type = "Daily rent" };
+
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.AdType == "Daily rent")
+                .ToList();
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+        }
+
+        [Test]
+        public void Filtering_TypeSelling()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams() { Type = "Selling" };
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.AdType == "Selling")
+                .ToList();
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+        }
+
+        [Test]
+        public void GetEstatesById()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
 
             // Act
-            var result = _estateRepository.AddEstate(_estate);
-
+            var result = estateRepo.GetEstate(1);
             // Assert
-            Assert.AreEqual(_estate.Title, result.Result.Title);
+            Assert.AreEqual(result.Result.Id, 1);
         }
 
         private List<Domain.Entities.Estate> GetTestEstates()
@@ -35,6 +103,7 @@ namespace MyEstate.Application.Tests
             var users = new List<Domain.Entities.Estate>
             {
                 new Domain.Entities.Estate{
+                    AdType="Selling",
                     Title = "Test1",
                     Description="Test1Description",
                     Price = 10,
@@ -46,6 +115,7 @@ namespace MyEstate.Application.Tests
                     Street="First"
                 },
                 new Domain.Entities.Estate {
+                    AdType="Rent",
                     Title = "Test2",
                     Description="Test2Description",
                     Price = 20,
@@ -57,6 +127,7 @@ namespace MyEstate.Application.Tests
                     Street="Second"
                 },
                 new Domain.Entities.Estate {
+                    AdType="Rent",
                     Title = "Test3",
                     Description="Test3Description",
                     Price = 30,
@@ -68,6 +139,7 @@ namespace MyEstate.Application.Tests
                     Street="Third"
                 },
                 new Domain.Entities.Estate {
+                    AdType="Daily rent",
                     Title = "Test4",
                     Description="Test4Description",
                     Price = 40,
