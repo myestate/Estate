@@ -17,6 +17,8 @@ import { AddEstateComponent } from './add_estate/add_estate.component';
 import { MapComponent } from './map/map.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -34,6 +36,9 @@ export const appRoutes: Routes = [
             {path: 'add_estate', component: AddEstateComponent},
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
+            {path: 'add_estate', component: AddEstateComponent},
+            {path: 'registerAsAgent', component: RegisterAsAgentComponent}
+
         ]
     },
     {path: 'register', component: RegisterComponent},

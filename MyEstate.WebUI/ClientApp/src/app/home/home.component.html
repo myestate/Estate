@@ -5,79 +5,17 @@
     </div>
 </header>
 
-<div class="container-fluid my-5" *ngIf="estates != null">
+<div class="album py-5 bg-light">
+  <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/barnhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Barn House</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/brickhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Brick House</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/renovated.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Renovated</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/summerhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Summerhouse</h4>
-        </div>
-    </div>
+    <div *ngFor="let estate of estates" class="col-md-4">
+          <app-estate-card  [estate]="estate"></app-estate-card>
     </div>
   </div>
-  <br/>
-  <div class="row">
-  <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/barnhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Barn House</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/brickhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Brick House</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/renovated.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Renovated</h4>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="img-card img-fluid" src="../../assets/summerhouse.jpg">
-        <div class="card-img-overlay">
-          <h4 class="card-title text-light">Summerhouse</h4>
-        </div>
-    </div>
-    </div>
-    </div>
 </div>
-  
-<div class="container-fluid my-5" id="contact">
+
+
+  <div class="container-fluid my-5" id="contact">
   <h2>Contact</h2>
   <hr/>
    <form role="form">

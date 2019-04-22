@@ -2,7 +2,7 @@ using System;
 
 namespace MyEstate.Domain.Entities
 {
-    public class Photo
+    public class EstatePhoto
     {
         public int Id { get; set; }
         public string Url { get; set; }
@@ -10,7 +10,7 @@ namespace MyEstate.Domain.Entities
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public string PublicId{get;set;}
-        public User User { get; set; }
-        public int UserId { get; set; }
+        public Estate Estate { get; set; }
+        public int EstateId { get; set; }
     }
 }

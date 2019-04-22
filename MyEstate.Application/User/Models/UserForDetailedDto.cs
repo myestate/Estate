@@ -20,6 +20,5 @@ namespace MyEstate.Application.User.Models
         public string City { get; set; }
         public string Country { get; set; }
         public string PhotoUrl { get; set; }   
-        public IEnumerable<PhotosForDetailedDto> Photos { get; set; }
     }
 }

@@ -15,18 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private estateService: EstateService) { }
 
   ngOnInit() {
-    this.getLastAddedEstate(6);
+    this.getEstates();
   }
 
   registerToggle() {
     this.registerMode = true;
   }
 
-  getLastAddedEstate(num: number) {
-   for (let index = 0; index < num; index++) {
-    this.estateService.getEstate(index).subscribe((estate: Estate) => {
-      this.estates[index] = estate;
-    });
-   }
+  getEstates() {
+  //  this.estateService.getEstates().subscribe((estates: Estate[]) => {
+      // this.estates = estates;
+  //  });
   }
 }

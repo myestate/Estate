@@ -1,9 +1,8 @@
-<form #addEstateForm="ngForm" (ngSubmit)="add_estate()">
+<!-- <form #addEstateForm="ngForm" (ngSubmit)="add_estate()">
   <h2 class="text-primary text-center">Tell us about your apartment</h2>
   <br>
 
   <div class="fill-form">
-
       <div class="col-md-8">
           <div class="row">
             <div class="col-md-3">
@@ -37,14 +36,14 @@
         </div>
         <hr size="30">
 
-    <div class="col-md-8">
+   <div class="col-md-8">
       <div class="row">
         <div class="col-md-3">
           <label>City<span>*</span> </label>
         </div>
         <div class="col-md-5">
-          <input type="text" name="city" [(ngModel)]="estate.city" list="city_list" required>
-          <datalist *ngIf="estate.country.toLowerCase()==='ukraine'" id="city_list">
+          <input type="text" [(ngModel)]="estate.city" name="city" list="city_list" required>
+          <datalist *ngIf="(estate.country | lowercase) == 'ukraine'" id="city_list">
             <option>Kyiv</option>
             <option>Kharkiv</option>
             <option>Odessa</option>
@@ -245,9 +244,9 @@
         <div class="col-3">
           <label>Photo</label>
         </div>
-        <div class="col">
+        <div class="form-group">
           <label for="file">Choose photos to upload</label>
-          <input class="col" type="file" (change)="addPhoto($event)" name="photos" multiple accept=".png, .jpg, .jpeg">
+          <input class="form-control-file" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
         </div>
       </div>
     </div>
@@ -255,8 +254,236 @@
 
   </div>
   <div class="row" style="justify-content:center">
-    <button class="btn btn-add" [disabled]="!addEstateForm.valid" type="submit">Add Estate</button>
+    <button  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="btn btn-add" [disabled]="!addEstateForm.valid" type="submit">Add Estate</button>
     <br>
     <button class="btn btn-default" [routerLink]="['/home']" routerLinkActive="router-link-active" type="button"  (click)="cancel()">Cancel</button>
   </div>
+</form> -->
+
+
+
+
+<!-- <mat-horizontal-stepper #stepper>
+    <mat-step [stepControl] = "addressForm">
+<form [formGroup]="addressForm">
+<div class="form-group">
+    <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-3">
+            <label>Country<span>*</span></label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" formControlName="country" list="country_list" required>
+            <datalist id="country_list">
+                <option>France</option>
+                <option>Great Britain</option>
+                <option>China</option>
+                <option>India</option>
+                <option>Japan</option>
+                <option>Canada</option>
+                <option>Germany</option>
+                <option>Spanish</option>
+                <option>Russia</option>
+                <option>Ukraine</option>
+                <option>Australia</option>
+                <option>Greece</option>
+                <option>Italy</option>
+                <option>Switzerland</option>
+                <option>Denmark</option>
+                <option>Belgium</option>
+                <option>Belgium</option>
+                <option>Sweden</option>
+                <option>Poland</option>
+              </datalist>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+              <label>City<span>*</span> </label>
+            </div>
+            <div class="col-md-5">
+              <input type="text" formControlName="city" list="city_list" required>
+              <datalist *ngIf="(estate.country | lowercase) == 'ukraine'" id="city_list">
+                <option>Kyiv</option>
+                <option>Kharkiv</option>
+                <option>Odessa</option>
+                <option>Dnipro</option>
+                <option>Donetsk</option>
+                <option>Zaporizhia</option>
+                <option>Lviv</option>
+                <option>Kryvyi Rih</option>
+                <option>Mykolaiv</option>
+                <option>Mariupol</option>
+                <option>Luhansk</option>
+                <option>Vinnytsia</option>
+                <option>Makiivka</option>
+                <option>Sevastopol</option>
+                <option>Simferopol</option>
+                <option>Kherson</option>
+                <option>Poltava</option>
+                <option>Chernihiv</option>
+                <option>Sumy</option>
+              </datalist>
+            </div>
+          </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+              <label>Region</label>
+            </div>
+            <div class="col-md-5">
+              <input type="text" formControlName="region">
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-3">
+                <label>Address<span>*</span></label>
+              </div>
+              <div class="col-5">
+                <input type="text" formControlName="street" placeholder="Street" required>
+                <input type="number" formControlName="building" placeholder="Number" required>
+                <input type="number" formControlName="flat" placeholder="Flat(optional)"> 
+              </div>
+            </div>
+        </div>
+      </div>
 </form>
+</mat-step>
+</mat-horizontal-stepper>
+
+<h1>Form value: {{addressForm.value | json}} </h1>
+<h1>Form value: {{addressForm.status | json}} </h1>  -->
+
+
+
+<mat-horizontal-stepper  #stepper>
+    <ng-template matStepperIcon="edit">
+        <mat-label></mat-label>
+    </ng-template>
+    <mat-step [stepControl] = "addressForm">
+       <form [formGroup] = "addressForm">
+          <ng-template matStepLabel>Enter estate address</ng-template>
+          <mat-form-field>
+            <div class="input-group mb-3">
+               <input matInput placeholder = "Country" formControlName = "country" required>
+            </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <div class="input-group mb-3">
+                <input matInput placeholder = "City" formControlName = "city" required>
+             </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <div class="input-group mb-3">
+                <input matInput placeholder = "Street" formControlName = "street" required>
+             </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Region" formControlName = "region">
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Building" formControlName = "building" required>
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Flat" formControlName = "flat">
+               </div>
+          </mat-form-field>
+           <div>
+         </div>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+       </form>
+    </mat-step>
+    <mat-step [stepControl] = "estateForm">
+       <form [formGroup] = "estateForm">
+          <ng-template matStepLabel>Enter estate details</ng-template>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Title" formControlName = "title" required>
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Description" formControlName = "description" >
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Square" formControlName = "square" required>
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Rooms" formControlName = "rooms" required>
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Floors" formControlName = "floors">
+               </div>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <div class="input-group mb-3">
+                  <input matInput placeholder = "Flat" formControlName = "flat">
+               </div>
+          </mat-form-field>
+          <br>
+                  <div class="form-group">
+                      <label for="file">Choose photos to upload</label>
+                      <input class="form-control-file" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+                    </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+       </form>
+    </mat-step>
+
+    <mat-step [stepControl] = "sellingForm">
+        <form [formGroup] = "sellingForm">
+           <ng-template matStepLabel>Enter selling info</ng-template>
+           
+           <div class="form-group">
+              <label class="control-label" style="margin-right:10px">Type is: </label>
+              <label class="radio-inline">
+                <input class="mr-3" type="radio" value="selling" formControlName="type">Selling
+              </label>
+              <label class="radio-inline ml-3">
+                <input class="mr-3" type="radio" value="rent" formControlName="type">Rent
+              </label>
+              <label class="radio-inline ml-3">
+                  <input class="mr-3" type="radio" value="daily" formControlName="type">Daily rent
+                </label>
+            </div>
+           <mat-form-field>
+               <div class="input-group mb-3">
+                   <input matInput placeholder = "Price($)" formControlName = "price" >
+                </div>
+           </mat-form-field>
+        </form>
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click) = "stepper.reset()">Reset</button>
+            <button mat-button  (click) = "add_estate()">Send</button>
+         </div>
+     </mat-step>
+ </mat-horizontal-stepper>

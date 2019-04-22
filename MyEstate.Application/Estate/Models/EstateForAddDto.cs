@@ -8,6 +8,7 @@ namespace MyEstate.Application.Estate.Models
 {
     public class EstateForAddDto
     {
+        public string AdType { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }

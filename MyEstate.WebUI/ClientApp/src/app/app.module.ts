@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import {BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -32,13 +35,17 @@ import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { AddEstateComponent } from './add_estate/add_estate.component';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
-import { EstateService } from './_services/estate.service';
+import { EstateService } from './_services/estate/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
+import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+
+
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -50,7 +57,7 @@ export function tokenGetter() {
       NavComponent,
       HomeComponent,
       RegisterComponent,
-     EstatesComponent,
+      EstatesComponent,
       Estate_agentsComponent,
       Estate_agentsCardComponent,
       MessagesComponent,
@@ -65,12 +72,22 @@ export function tokenGetter() {
       EstateCardComponent,
       EstatesDetailComponent,
       EditProfileComponent,
-      UserCabinetComponent
+      UserCabinetComponent,
+      EstatesDetailComponent,
+      RegisterAsAgentComponent
+
    ],
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
+      MatStepperModule, MatInputModule, MatButtonModule,
+      FormsModule,
+      ReactiveFormsModule,
       HttpClientModule,
       FormsModule,
+      FileUploadModule,
+      ButtonsModule.forRoot(),
+      PaginationModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -82,7 +99,8 @@ export function tokenGetter() {
          }
       }),
       AgmCoreModule.forRoot({
-         apiKey: environment.googleMapAPIKey
+         apiKey: environment.googleMapAPIKey,
+         language: 'en'
       })
    ],
    providers: [

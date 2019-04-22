@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
+using MyEstate.Domain.Entities;
 using Persistence;
+using Persistence.Helpers;
 
 namespace MyEstate.Application
 {
@@ -25,24 +27,38 @@ namespace MyEstate.Application
             _context.Remove(entity);
         }
 
-        public async Task<Domain.Entities.Photo> GetPhoto(int id)
+        public async Task<Domain.Entities.Message> GetMessage(int id)
         {
-            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+           return await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public Task<PagedList<Domain.Entities.Message>> GetMessagesForUser()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<EstatePhoto> GetPhoto(int id)
+        {
+            var photo = await _context.EstatePhotos.FirstOrDefaultAsync(p => p.Id == id);
 
             return photo;
         }
 
         public async Task<Domain.Entities.User> GetUser(int id)
         {
-            var user = await _context.Users.Include(p => p.Photos)
-                             .FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
         public async Task<IEnumerable<Domain.Entities.User>> GetUsers()
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var users = await _context.Users.ToListAsync();
 
             return users;
         }
