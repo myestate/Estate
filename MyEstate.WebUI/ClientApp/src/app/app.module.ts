@@ -6,8 +6,10 @@ import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'n
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TimeAgoPipe} from 'time-ago-pipe';
+
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -43,6 +45,8 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 
@@ -74,7 +78,9 @@ export function tokenGetter() {
       EditProfileComponent,
       UserCabinetComponent,
       EstatesDetailComponent,
-      RegisterAsAgentComponent
+      RegisterAsAgentComponent,
+      MemberMessagesComponent,
+      TimeAgoPipe
 
    ],
    imports: [
@@ -113,7 +119,8 @@ export function tokenGetter() {
       EstateAgentService,
       MapService,
       MemberDetailResolve,
-      MemberListResolve
+      MemberListResolve,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent
