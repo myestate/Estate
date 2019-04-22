@@ -49,18 +49,19 @@ namespace MyEstate.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody]UserForDetailedDto userforUpdateDto)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser([FromRoute]int id, [FromBody]UserForDetailedDto userForUpdateDto)
         {
-            //var userFromRepo = await _repo.GetUser(userforUpdateDto.Id);
-
-            User user = _mapper.Map<User>(userforUpdateDto);
-
-            if(await _repo.UpdateUser(user)){
-                return NoContent();
+            if (id != userForUpdateDto.Id)
+            {
+                return BadRequest();
             }
 
-            throw new Exception($"Updating user {userforUpdateDto.Id} failed on save");
+            //var userFromRepo = await _repo.GetUser(id);
+            
+            var user = _mapper.Map<User>(userForUpdateDto);
+            await _repo.UpdateUser(user);
+            return Ok(userForUpdateDto);
         }
 
         [HttpGet]
@@ -74,13 +75,11 @@ namespace MyEstate.API.Controllers
             {
                 var token = values.SingleOrDefault();
                 var splitToken = token.Split(' ');
-                // var key = Encoding.ASCII.GetBytes(splitToken[1]);
                 var tokenHandler = new JwtSecurityTokenHandler();
 
                 var jsonToken = tokenHandler.ReadJwtToken(splitToken[1]) as JwtSecurityToken;
                 //Find user by id
-                //var userFromRepo = await _repo.GetUser(Convert.ToInt32(decodeToken.Id));
-                string id = jsonToken.Payload.ContainsKey("nameid") ? jsonToken.Payload["nameid"].ToString() : null;
+                 string id = jsonToken.Payload.ContainsKey("nameid") ? jsonToken.Payload["nameid"].ToString() : null;
                 var userFromRepo = await _repo.GetUser(Convert.ToInt32(id));
 
                 var userDTO = _mapper.Map<UserForDetailedDto>(userFromRepo);

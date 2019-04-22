@@ -12,16 +12,18 @@ import { Router } from '@angular/router';
 export class UserCabinetComponent implements OnInit {
 
   user: User;
-
+  // username: string;
   constructor(private userService: UserService, private alertify: AlertifyService,
-    private route: Router) { }
+    private route: Router) {
+      this.userService.getUserInfo().subscribe((response: User) => {
+        this.user = response;
+      }, error => {
+        this.alertify.error(error);
+      });
+      // this.username = this.user.username === undefined ? 'Enter user name' : this.user.username;
+    }
 
   ngOnInit() {
-    this.userService.getUserInfo().subscribe((response: any) => {
-      this.user = response;
-    }, error => {
-      this.alertify.error(error);
-    });
   }
 
   logout() {
