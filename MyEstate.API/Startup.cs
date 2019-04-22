@@ -39,7 +39,7 @@ namespace MyEstate.API
             services.AddDbContext<MyEstateContext>(x =>
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            IdentityBuilder bulder = services.AddIdentityCore<User>(opt =>
+            IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequiredLength = 4;
@@ -47,11 +47,11 @@ namespace MyEstate.API
                 opt.Password.RequireUppercase = false;
             });
 
-            bulder = new IdentityBuilder(bulder.UserType, typeof(Role), bulder.Services);
-            bulder.AddEntityFrameworkStores<MyEstateContext>();
-            bulder.AddRoleValidator<RoleValidator<Role>>();
-            bulder.AddRoleManager<RoleManager<Role>>();
-            bulder.AddSignInManager<SignInManager<User>>();
+            builder = new IdentityBuilder(builder.UserType, typeof(Role), builder.Services);
+            builder.AddEntityFrameworkStores<MyEstateContext>();
+            builder.AddRoleValidator<RoleValidator<Role>>();
+            builder.AddRoleManager<RoleManager<Role>>();
+            builder.AddSignInManager<SignInManager<User>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

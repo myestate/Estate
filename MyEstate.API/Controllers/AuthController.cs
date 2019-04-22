@@ -26,15 +26,15 @@ namespace MyEstate.API.Controllers
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _singInMeneger;
+        private readonly SignInManager<User> _singInManager;
 
         public AuthController(IMapper mapper,
             IConfiguration config,
             UserManager<User> userManager,
-            SignInManager<User> singInMeneger)
+            SignInManager<User> singInManager)
         {
             _userManager = userManager;
-            _singInMeneger = singInMeneger;
+            _singInManager = singInManager;
             _config = config;
             _mapper = mapper;
         }
@@ -42,12 +42,12 @@ namespace MyEstate.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-            //var userToCreate = new User
-            //{
-            //    UserName = userForRegisterDto.Username
-            //};
+            var userToCreate = new User
+            {
+                UserName = userForRegisterDto.Username
+            };
 
-            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+            //var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
             var result = await _userManager.CreateAsync(userToCreate, userForRegisterDto.Password);           
             
@@ -67,12 +67,12 @@ namespace MyEstate.API.Controllers
         {
             var user = await _userManager.FindByNameAsync(userForLoginDto.Username);
 
-            var result = await _singInMeneger
+            var result = await _singInManager
                 .CheckPasswordSignInAsync(user, userForLoginDto.Password, false);
 
             if (result.Succeeded)
             {
-                var appUser = await _userManager.Users.Include(p => p.PhotoUrl)
+                var appUser = await _userManager.Users
                     .FirstOrDefaultAsync(u => u.NormalizedUserName == userForLoginDto.Username.ToUpper());
 
                 var userToReturn = _mapper.Map<UserForListDto>(appUser);
@@ -83,23 +83,24 @@ namespace MyEstate.API.Controllers
                     user = userToReturn
                 });
             }
+
             return Unauthorized();
         }
 
         private async Task<string> GenerateJwtToken(User user)
         {
-            var claims = new List<Claim>            
+            var claims = new[]         
             {           
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName)
             };
 
-            var roles = await _userManager.GetRolesAsync(user);
+            //var roles = await _userManager.GetRolesAsync(user);
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+            //foreach (var role in roles)
+            //{
+            //    claims.Add(new Claim(ClaimTypes.Role, role));
+            //}
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
             .GetBytes(_config.GetSection("AppSettings:Token").Value));
