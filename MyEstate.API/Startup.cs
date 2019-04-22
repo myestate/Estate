@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MyEstate.API.Data;
 using MyEstate.API.Helpers;
 using MyEstate.Application;
 using MyEstate.Application.Interfaces;
@@ -88,7 +89,7 @@ namespace MyEstate.API
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
-            // services.AddTransient<Seed>();
+            services.AddTransient<Seed>();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             Mapper.Reset();
             services.AddAutoMapper();            

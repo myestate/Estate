@@ -43,6 +43,7 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 
 
@@ -74,7 +75,8 @@ export function tokenGetter() {
       EditProfileComponent,
       UserCabinetComponent,
       EstatesDetailComponent,
-      RegisterAsAgentComponent
+      RegisterAsAgentComponent,
+      AdminPanelComponent
 
    ],
    imports: [
