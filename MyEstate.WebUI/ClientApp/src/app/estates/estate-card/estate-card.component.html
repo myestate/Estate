@@ -28,8 +28,8 @@
     <h5 class="card-text text-muted text">{{estate.price}}$</h5>
     <p class="card-text">
       {{estate.description}}
-    </p>
-    <a [routerLink]="['/estates-detail', estate.id]"><input type="button" class="btn btn-primary" value="More"></a>
-    <a [routerLink]="['/members/', estate.ownerId]" [queryParams]="{tab: 3}"><input type="button" class="btn btn-primary ml-1 bg-success" value="Message"></a>
+    </p>  
+    <a [routerLink]="['/estates-detail', estate.id]" *ngIf="loggedIn()"><input type="button" class="btn btn-primary" value="More"></a>
+    <a [routerLink]="['/members/', estate.ownerId]" *ngIf="loggedIn()" [queryParams]="{tab: 3}"><input type="button" class="btn btn-primary ml-1 bg-success" value="Message"></a>
   </div>
 </div>

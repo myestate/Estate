@@ -13,8 +13,12 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
   baseUrl = environment.apiUrl;
+  private headers: HttpHeaders;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + 'users/getusers');
@@ -34,7 +38,7 @@ export class UserService {
   }
 
   updateUserInfo(user: User): Observable<User>  {
-    return this.http.put<User>(this.baseUrl + 'users', user);
+    return this.http.put<User>(this.baseUrl + 'users/' + user.id, user, {headers: this.headers});
   }
 
   getMessages(id: number, page?, itemsPerPage?, messageContainer?) {

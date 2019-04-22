@@ -104,8 +104,16 @@ namespace MyEstate.Application
 
         public async Task<bool> UpdateUser(Domain.Entities.User user)
         {
-            _context.Users.Update(user);
-            return await _context.SaveChangesAsync() > 0;
+             _context.Entry(user).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+            return true;
         }
     }
 }

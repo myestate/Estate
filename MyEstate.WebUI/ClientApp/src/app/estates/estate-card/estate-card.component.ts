@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Estate } from 'src/app/_models/estate';
+import { AuthService } from '../../_services/auth/auth.service';
 
 @Component({
   selector: 'app-estate-card',
@@ -9,7 +10,7 @@ import { Estate } from 'src/app/_models/estate';
 export class EstateCardComponent implements OnInit {
   @Input() estate: Estate;
   havePhotos: boolean = false;
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     if (this.estate.photos.length !== 0) {
@@ -17,4 +18,7 @@ export class EstateCardComponent implements OnInit {
     }
   }
 
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
 }
