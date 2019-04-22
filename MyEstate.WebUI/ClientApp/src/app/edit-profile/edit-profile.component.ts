@@ -11,20 +11,20 @@ import { Router } from '@angular/router';
 })
 export class EditProfileComponent implements OnInit {
   user: User;
-  toogleSetting: boolean;
-  toogleHelp: boolean;
+  username: string;
 
-  constructor(private userService: UserService, private alertify: AlertifyService,
-    private route: Router) { }
+  constructor(private userService: UserService,
+    private alertify: AlertifyService,
+    private route: Router) {
+      this.userService.getUserInfo().subscribe((response: any) => {
+        this.user = response;
+      }, error => {
+        this.alertify.error(error);
+      });
+      // this.username = this.user === undefined ? 'Enter user name' : this.user.username;
+     }
 
-
-  ngOnInit() {
-    this.userService.getUserInfo().subscribe((response: any) => {
-      this.user = response;
-    }, error => {
-      this.alertify.error(error);
-    });
-  }
+  ngOnInit() { }
 
   confirm_profile_button()  {
     this.userService.updateUserInfo(this.user).subscribe((response: any) => {

@@ -17,7 +17,7 @@ namespace MyEstate.Application.Interfaces
 
         Task<MyEstate.Domain.Entities.Message> GetMessage(int id);
 
-        Task<PagedList<Domain.Entities.Message>> GetMessagesForUser();
+        Task<PagedList<Domain.Entities.Message>> GetMessagesForUser(MessageParams messageParams);
 
         Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId);
     }

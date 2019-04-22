@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyEstate.Application.Interfaces;
-using MyEstate.Domain.Entities;
-using Persistence;
 using Persistence.Helpers;
+using Persistence;
 
 namespace MyEstate.Application
 {
@@ -32,17 +32,51 @@ namespace MyEstate.Application
            return await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public Task<PagedList<Domain.Entities.Message>> GetMessagesForUser()
+        public async Task<PagedList<Domain.Entities.Message>> GetMessagesForUser(MessageParams messageParams)
         {
-            throw new System.NotImplementedException();
+            var messages = _context.Messages.Include(u => u.Sender)
+            //.ThenInclude(p => p.Photos)
+            .Include( u => u.Recipient)
+            //.ThenInclude(p => p.Photos)
+            .AsQueryable();
+
+            switch(messageParams.MessageContainer)
+            {
+                case "Inbox":
+                    messages = messages.Where(u=> u.RecipientId == messageParams.UserId
+                     && u.RecipientDeleted == false);
+                    break;
+                case "Outbox": 
+                    messages = messages.Where(u=> u.SenderId == messageParams.UserId
+                     && u.SenderDeleted == false);
+                    break;
+                default:
+                    messages = messages.Where(u => u.RecipientId == messageParams.UserId
+                     && u.RecipientDeleted == false && u.IsRead == false);
+                    break;
+            }
+
+            messages = messages.OrderByDescending(d => d.MessageSent);
+            return await PagedList<Domain.Entities.Message>.CreateAsync(messages,
+            messageParams.PageNumber, messageParams.PageSize);
         }
 
-        public Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId)
+        public async Task<IEnumerable<Domain.Entities.Message>> GetMessageThread(int userId, int recipientId)
         {
-            throw new System.NotImplementedException();
+            var messages = await _context.Messages.Include(u => u.Sender)
+            //.ThenInclude(p => p.Photos)
+            .Include( u => u.Recipient)
+            //.ThenInclude(p => p.Photos)
+            .Where(m => m.RecipientId == userId && m.RecipientDeleted == false && m.SenderId == recipientId
+             || m.RecipientId == recipientId && m.SenderId == userId
+             && m.SenderDeleted == false)
+             .OrderByDescending(m => m.MessageSent)
+             .ToListAsync();
+
+             return messages;
         }
 
-        public async Task<EstatePhoto> GetPhoto(int id)
+        public async Task<MyEstate.Domain.Entities.EstatePhoto> GetPhoto(int id)
         {
             var photo = await _context.EstatePhotos.FirstOrDefaultAsync(p => p.Id == id);
 
@@ -70,8 +104,16 @@ namespace MyEstate.Application
 
         public async Task<bool> UpdateUser(Domain.Entities.User user)
         {
-            _context.Users.Update(user);
-            return await _context.SaveChangesAsync() > 0;
+             _context.Entry(user).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+            return true;
         }
     }
 }
