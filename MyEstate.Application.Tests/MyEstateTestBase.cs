@@ -83,8 +83,34 @@ namespace MyEstate.Application.Tests
                     }
                 };
 
+                var estateAgents = new[]
+                {
+                    new Domain.Entities.EstateAgent()
+                    {
+                        Name = "John",
+                        Gender = "Male",
+                        Age = 25,
+                        City = "Lviv"
+                    },
+                    new Domain.Entities.EstateAgent()
+                    {
+                        Name = "Julia",
+                        Gender = "Female ",
+                        Age = 24,
+                        City = "Kiev"
+                    },
+                    new Domain.Entities.EstateAgent()
+                    {
+                        Name = "Steve",
+                        Gender = "Male",
+                        Age = 34,
+                        City = "Odesa"
+                    }
+                };
+
                 context.Users.AddRange(users);
                 context.Estates.AddRange(estates);
+                context.EstateAgents.AddRange(estateAgents);
 
                 context.SaveChanges();
             }
