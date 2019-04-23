@@ -87,7 +87,7 @@ namespace MyEstate.Application
                 estates = estates.Where(e => e.Rooms >= estateParams.MinRooms && e.Rooms <= estateParams.MaxRooms);
             }
 
-            if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 10)
+            if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 50)
             {
                 estates = estates.Where(e => e.Floors >= estateParams.MinFloors && e.Floors <= estateParams.MaxFloors);
             }
@@ -149,6 +149,17 @@ namespace MyEstate.Application
             await _context.SaveChangesAsync();
 
             return estate;
+        }
+
+        public async Task DeleteEstate(int estateId)
+        {
+            Domain.Entities.Estate estate= await _context.Estates.Include(p => p.Photos)
+            .FirstOrDefaultAsync(u => u.Id == estateId);
+            if (estate != null)
+            {
+                _context.Estates.Remove(estate);
+            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Domain.Entities.Estate>> GetAllEstates()
