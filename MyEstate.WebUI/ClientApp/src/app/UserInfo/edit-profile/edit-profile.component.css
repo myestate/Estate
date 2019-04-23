@@ -1,12 +1,6 @@
-/* .solidConteiner {
-    border-style: solid;
-    border-width: 1px;
-    width: 60%;
-    border-color: dimgrey;
-} */
 details { 
     display: block;
-  }
+}
   
   .dropdown {
     position: relative;

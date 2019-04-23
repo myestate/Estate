@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../_models/user';
-import { UserService } from '../_services/user/user.service';
-import { AlertifyService } from '../_services/alertify/Alertify.service';
+import { User } from 'src/app/_models/user';
+import { UserService } from 'src/app/_services/user/user.service';
+import { AlertifyService } from 'src/app/_services/alertify/Alertify.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent implements OnInit {
-  user: User;
+export class EditProfileComponent {
+  public user: User = new User();
   username: string;
 
   constructor(private userService: UserService,
@@ -23,8 +23,6 @@ export class EditProfileComponent implements OnInit {
       });
       // this.username = this.user === undefined ? 'Enter user name' : this.user.username;
      }
-
-  ngOnInit() { }
 
   confirm_profile_button()  {
     this.userService.updateUserInfo(this.user).subscribe((response: any) => {
