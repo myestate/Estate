@@ -13,7 +13,7 @@ namespace MyEstate.Application.Interfaces
         Task<Domain.Entities.Estate> GetEstate(int userId);
         Task<Domain.Entities.Estate> GetEstateByOwnerId(int userId);
         Task<Domain.Entities.Estate> AddEstate(Domain.Entities.Estate estate);
-
+        Task DeleteEstate(int estateId);
         Task<IEnumerable<Domain.Entities.Estate>> GetAllEstates();
     }
 }

@@ -278,6 +278,44 @@ namespace MyEstate.Application.Tests
             Assert.AreEqual(resultExpected[1], result.Result[0]);
         }
 
+        [Test]
+        public void GetEstate_ById()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            var resultExpected = estateRepo.GetAllEstates();
+            // Act
+            var result = estateRepo.GetEstate(resultExpected.Result.First().Id);
+            // Assert
+            Assert.AreEqual(resultExpected.Result.First(), result.Result);
+        }
+
+        [Test]
+        public async System.Threading.Tasks.Task DeleteEstate_SuccessAsync()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            var resultBeforeDelete = estateRepo.GetAllEstates();
+            // Act
+            await estateRepo.DeleteEstate(resultBeforeDelete.Result.First().Id);
+            var resultAfterDelete = estateRepo.GetAllEstates();
+            // Assert
+            CollectionAssert.AreNotEqual(resultBeforeDelete.Result, resultAfterDelete.Result);
+        }
+
+        [Test]
+        public async System.Threading.Tasks.Task DeleteEstate_NotSuccessAsync()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            var resultBeforeDelete = estateRepo.GetAllEstates();
+            // Act
+            await estateRepo.DeleteEstate(-1);
+            var resultAfterDelete = estateRepo.GetAllEstates();
+            // Assert
+            CollectionAssert.AreEqual(resultBeforeDelete.Result, resultAfterDelete.Result);
+        }
+
         private List<Domain.Entities.Estate> GetTestEstates()
         {
             var users = new List<Domain.Entities.Estate>

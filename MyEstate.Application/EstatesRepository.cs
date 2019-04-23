@@ -151,6 +151,17 @@ namespace MyEstate.Application
             return estate;
         }
 
+        public async Task DeleteEstate(int estateId)
+        {
+            Domain.Entities.Estate estate= await _context.Estates.Include(p => p.Photos)
+            .FirstOrDefaultAsync(u => u.Id == estateId);
+            if (estate != null)
+            {
+                _context.Estates.Remove(estate);
+            }
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Domain.Entities.Estate>> GetAllEstates()
         {
             var estates = await _context.Estates.Include(p => p.Photos).ToListAsync();
