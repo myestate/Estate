@@ -15,10 +15,11 @@ import { RentComponent } from './rent/rent.component';
 import { Daily_rentComponent } from './daily_rent/daily_rent.component';
 import { AddEstateComponent } from './add_estate/add_estate.component';
 import { MapComponent } from './map/map.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { EditProfileComponent } from './UserInfo/edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './UserInfo/user-cabinet/user-cabinet.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
-
+import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
+import { NotificationComponent } from './UserInfo/notification/notification.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -37,7 +38,9 @@ export const appRoutes: Routes = [
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
             {path: 'add_estate', component: AddEstateComponent},
-            {path: 'registerAsAgent', component: RegisterAsAgentComponent}
+            {path: 'changepassword', component: ChangepasswordComponent},
+            {path: 'registerAsAgent', component: RegisterAsAgentComponent},
+            {path: 'notification' , component: NotificationComponent}
 
         ]
     },

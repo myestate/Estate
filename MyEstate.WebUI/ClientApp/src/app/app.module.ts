@@ -6,7 +6,7 @@ import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'n
 import { AgmCoreModule, GoogleMapsAPIWrapper, AgmMap } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material'
+import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -38,14 +38,14 @@ import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { EditProfileComponent } from './UserInfo/edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './UserInfo/user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
-
-
-
+import { DropdownMenuComponent } from './UserInfo/dropdown-menu/dropdown-menu.component';
+import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
+import { NotificationComponent } from './UserInfo/notification/notification.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -74,8 +74,10 @@ export function tokenGetter() {
       EditProfileComponent,
       UserCabinetComponent,
       EstatesDetailComponent,
-      RegisterAsAgentComponent
-
+      RegisterAsAgentComponent,
+      DropdownMenuComponent,
+      NotificationComponent,
+      ChangepasswordComponent
    ],
    imports: [
       BrowserModule,

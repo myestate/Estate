@@ -37,4 +37,14 @@ export class UserService {
   updateUserInfo(user: User): Observable<User>  {
     return this.http.put<User>(this.baseUrl + 'users/' + user.id, user, {headers: this.headers});
   }
+
+  updateUserPassword(oldPassword: string, newPassword: string): Observable<User>  {
+    const headers = new HttpHeaders();
+
+    const token = localStorage.getItem('token');
+    headers.append('Authorization', token);
+    const passwordInfo = {oldPass: oldPassword, newPass: newPassword };
+
+    return this.http.post<User>(this.baseUrl + 'users', passwordInfo, {headers: headers});
+  }
 }
