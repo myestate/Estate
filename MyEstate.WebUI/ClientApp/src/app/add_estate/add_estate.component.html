@@ -1,363 +1,3 @@
-<!-- <form #addEstateForm="ngForm" (ngSubmit)="add_estate()">
-  <h2 class="text-primary text-center">Tell us about your apartment</h2>
-  <br>
-
-  <div class="fill-form">
-      <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-3">
-              <label>Country<span>*</span></label>
-            </div>
-            <div class="col-md-5">
-              <input type="text" [(ngModel)]="estate.country" name="country" list="country_list" required>
-              <datalist id="country_list">
-                  <option>France</option>
-                  <option>Great Britain</option>
-                  <option>China</option>
-                  <option>India</option>
-                  <option>Japan</option>
-                  <option>Canada</option>
-                  <option>Germany</option>
-                  <option>Spanish</option>
-                  <option>Russia</option>
-                  <option>Ukraine</option>
-                  <option>Australia</option>
-                  <option>Greece</option>
-                  <option>Italy</option>
-                  <option>Switzerland</option>
-                  <option>Denmark</option>
-                  <option>Belgium</option>
-                  <option>Belgium</option>
-                  <option>Sweden</option>
-                  <option>Poland</option>
-                </datalist>
-            </div>
-          </div>
-        </div>
-        <hr size="30">
-
-   <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>City<span>*</span> </label>
-        </div>
-        <div class="col-md-5">
-          <input type="text" [(ngModel)]="estate.city" name="city" list="city_list" required>
-          <datalist *ngIf="(estate.country | lowercase) == 'ukraine'" id="city_list">
-            <option>Kyiv</option>
-            <option>Kharkiv</option>
-            <option>Odessa</option>
-            <option>Dnipro</option>
-            <option>Donetsk</option>
-            <option>Zaporizhia</option>
-            <option>Lviv</option>
-            <option>Kryvyi Rih</option>
-            <option>Mykolaiv</option>
-            <option>Mariupol</option>
-            <option>Luhansk</option>
-            <option>Vinnytsia</option>
-            <option>Makiivka</option>
-            <option>Sevastopol</option>
-            <option>Simferopol</option>
-            <option>Kherson</option>
-            <option>Poltava</option>
-            <option>Chernihiv</option>
-            <option>Sumy</option>
-          </datalist>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Region</label>
-        </div>
-        <div class="col-md-5">
-          <input type="text" [(ngModel)]="model.region" name="region">
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Address<span>*</span></label>
-        </div>
-        <div class="col-5">
-          <input type="text" [(ngModel)]="estate.street" name="street" placeholder="Street" required>
-          <input type="number" min=1 [(ngModel)]="model.building" name="building" placeholder="Number" required>
-          <input type="number" min=1 [(ngModel)]="model.flat" name="Flat" placeholder="Flat(optional)">
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Rooms<span>*</span></label>
-        </div>
-        <div class="col">
-          <input type="number" [(ngModel)]="estate.rooms" name="rooms" min=1 placeholder="Count" required>
-        </div>
-        <div class="col">
-          <input type="checkbox" [(ngModel)]="model.lodgings" name="lodgings"> Room in apartment, lodgings
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Square meters, m²<span>*</span></label>
-        </div>
-        <div class="col-5">
-          <input type="number input" min=1 [(ngModel)]="estate.square" name="gross" placeholder="Gross" required>
-          <input type="number input" min=1 [(ngModel)]="model.living" name="living" placeholder="Living(optional)">
-          <input type="number input" min=1 [(ngModel)]="model.kitchen" name="kitchen" placeholder="Kitchen(optional)">
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Floor and count of floors<span>*</span></label>
-        </div>
-        <div class="col-5">
-          <input type="number input" min=1 [(ngModel)]="model.floor" name="floor" placeholder="Floor(optional)">
-          <input type="number input" min=1 [(ngModel)]="estate.floors" name="floors" placeholder="Floors" required>
-          <input type="text"  name="height" [(ngModel)]="model.height" placeholder="Room height" required>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-3">
-          <label>Condition</label>
-        </div>
-        <div class="col-5">
-          <select [(ngModel)]="model.condition" name="condition">
-            <option value="">-</option>
-            <option value="ideal">Ideal</option>
-            <option value="good">Good</option>
-            <option value="normal">Normal</option>
-            <option value="bad">Bad</option>
-            <option value="repair">Needs repair</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-3">
-          <label>Balcony</label>
-        </div>
-        <div class="col-5">
-          <select [(ngModel)]="model.balcony" name="balcony">
-            <option value="">-</option>
-            <option value="missing">Missing</option>
-            <option value="ideal">Ideal</option>
-            <option value="good">Good</option>
-            <option value="normal">Normal</option>
-            <option value="bad">Bad</option>
-            <option value="repair">Needs repair</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-3">
-          <label>Walls</label>
-        </div>
-        <div class="col-5">
-          <select [(ngModel)]="model.walls" name="walls">
-            <option value="">-</option>
-            <option value="ideal">Ideal</option>
-            <option value="good">Good</option>
-            <option value="normal">Normal</option>
-            <option value="bad">Bad</option>
-            <option value="repair">Needs repair</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Building type</label>
-        </div>
-        <div class="col">
-          <input type="text" [(ngModel)]="model.type" name="Type" list="building_list">
-          <datalist id="building_list">
-            <option>A frame house</option>
-            <option>Affordable housing</option>
-            <option>Apartment</option>
-            <option>Barn</option>
-            <option>Penthouse</option>
-            <option>Self build home</option>
-            <option>Cottage</option>
-          </datalist>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-3">
-          <label>Price/Currency/Price for<span>*</span></label>
-        </div>
-        <div class="col">
-          <input type="number" style="line-height: 0%" min=1 [(ngModel)]="estate.price" name="price" placeholder="Price" required>
-
-          <select name="Currency" required>
-            <option value="dollars">$</option>
-            <option value="pounds">£</option>
-            <option value="euros">€</option>
-            <option value="yen">¥</option>
-            <option value="grivnas">₴</option>
-          </select>
-
-          <select name="price_for" required>
-            <option value="mounth">Mounth</option>
-            <option value="year">Year</option>
-            <option value="day">Day</option>
-            <option value="hour">Hour</option>
-            <option value="sell">Sell</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-3">
-          <label>Photo</label>
-        </div>
-        <div class="form-group">
-          <label for="file">Choose photos to upload</label>
-          <input class="form-control-file" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
-        </div>
-      </div>
-    </div>
-    <hr size="30">
-
-  </div>
-  <div class="row" style="justify-content:center">
-    <button  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="btn btn-add" [disabled]="!addEstateForm.valid" type="submit">Add Estate</button>
-    <br>
-    <button class="btn btn-default" [routerLink]="['/home']" routerLinkActive="router-link-active" type="button"  (click)="cancel()">Cancel</button>
-  </div>
-</form> -->
-
-
-
-
-<!-- <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl] = "addressForm">
-<form [formGroup]="addressForm">
-<div class="form-group">
-    <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-3">
-            <label>Country<span>*</span></label>
-          </div>
-          <div class="col-md-5">
-            <input type="text" formControlName="country" list="country_list" required>
-            <datalist id="country_list">
-                <option>France</option>
-                <option>Great Britain</option>
-                <option>China</option>
-                <option>India</option>
-                <option>Japan</option>
-                <option>Canada</option>
-                <option>Germany</option>
-                <option>Spanish</option>
-                <option>Russia</option>
-                <option>Ukraine</option>
-                <option>Australia</option>
-                <option>Greece</option>
-                <option>Italy</option>
-                <option>Switzerland</option>
-                <option>Denmark</option>
-                <option>Belgium</option>
-                <option>Belgium</option>
-                <option>Sweden</option>
-                <option>Poland</option>
-              </datalist>
-          </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-              <label>City<span>*</span> </label>
-            </div>
-            <div class="col-md-5">
-              <input type="text" formControlName="city" list="city_list" required>
-              <datalist *ngIf="(estate.country | lowercase) == 'ukraine'" id="city_list">
-                <option>Kyiv</option>
-                <option>Kharkiv</option>
-                <option>Odessa</option>
-                <option>Dnipro</option>
-                <option>Donetsk</option>
-                <option>Zaporizhia</option>
-                <option>Lviv</option>
-                <option>Kryvyi Rih</option>
-                <option>Mykolaiv</option>
-                <option>Mariupol</option>
-                <option>Luhansk</option>
-                <option>Vinnytsia</option>
-                <option>Makiivka</option>
-                <option>Sevastopol</option>
-                <option>Simferopol</option>
-                <option>Kherson</option>
-                <option>Poltava</option>
-                <option>Chernihiv</option>
-                <option>Sumy</option>
-              </datalist>
-            </div>
-          </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-              <label>Region</label>
-            </div>
-            <div class="col-md-5">
-              <input type="text" formControlName="region">
-            </div>
-          </div>
-
-          <div class="row">
-              <div class="col-md-3">
-                <label>Address<span>*</span></label>
-              </div>
-              <div class="col-5">
-                <input type="text" formControlName="street" placeholder="Street" required>
-                <input type="number" formControlName="building" placeholder="Number" required>
-                <input type="number" formControlName="flat" placeholder="Flat(optional)"> 
-              </div>
-            </div>
-        </div>
-      </div>
-</form>
-</mat-step>
-</mat-horizontal-stepper>
-
-<h1>Form value: {{addressForm.value | json}} </h1>
-<h1>Form value: {{addressForm.status | json}} </h1>  -->
-
-
-
 <mat-horizontal-stepper  #stepper>
     <ng-template matStepperIcon="edit">
         <mat-label></mat-label>
@@ -367,19 +7,35 @@
           <ng-template matStepLabel>Enter estate address</ng-template>
           <mat-form-field>
             <div class="input-group mb-3">
-               <input matInput placeholder = "Country" formControlName = "country" required>
+               <input matInput placeholder = "Country" 
+               type="text"
+               [ngClass]="{'is-invalid': addressForm.get('country').errors
+              && addressForm.get('country').touched}"
+               class="form-control is-invalid" 
+               formControlName = "country" required>
+               <div class="invalid-feedback">Please enter the country</div>
             </div>
           </mat-form-field>
           <br>
           <mat-form-field>
             <div class="input-group mb-3">
-                <input matInput placeholder = "City" formControlName = "city" required>
+                <input matInput placeholder = "City"
+                [ngClass]="{'is-invalid': addressForm.get('city').errors
+                && addressForm.get('city').touched}"
+                 class="form-control is-invalid" 
+                  formControlName = "city" required>
+                  <div class="invalid-feedback">Please enter the city</div>
              </div>
           </mat-form-field>
           <br>
           <mat-form-field>
             <div class="input-group mb-3">
-                <input matInput placeholder = "Street" formControlName = "street" required>
+                <input matInput placeholder = "Street"
+                [ngClass]="{'is-invalid': addressForm.get('street').errors
+                && addressForm.get('street').touched}"
+                 class="form-control is-invalid" 
+                formControlName = "street" required>
+                <div class="invalid-feedback">Please enter the street</div>
              </div>
           </mat-form-field>
           <br>
@@ -391,19 +47,24 @@
           <br>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Building" formControlName = "building" required>
+                  <input matInput placeholder = "Building" type="number" 
+                  [ngClass]="{'is-invalid': addressForm.get('building').errors
+                  && addressForm.get('building').touched}"
+                   class="form-control is-invalid" 
+                  formControlName = "building" required>
+                  <div class="invalid-feedback">Please enter the building number</div>
                </div>
           </mat-form-field>
           <br>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Flat" formControlName = "flat">
+                  <input matInput placeholder = "Flat" type="number" formControlName = "flat">
                </div>
           </mat-form-field>
            <div>
          </div>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button [disabled]="!addressForm.valid" matStepperNext>Next</button>
           </div>
        </form>
     </mat-step>
@@ -412,25 +73,45 @@
           <ng-template matStepLabel>Enter estate details</ng-template>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Title" formControlName = "title" required>
+                  <input matInput placeholder = "Title" 
+                  [ngClass]="{'is-invalid': estateForm.get('title').errors
+                  && estateForm.get('title').touched}"
+                   class="form-control is-invalid" 
+                  formControlName = "title" required>
+                  <div class="invalid-feedback">Please enter the title</div>
                </div>
           </mat-form-field>
           <br>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Description" formControlName = "description" >
+                  <input matInput placeholder = "Description" 
+                  [ngClass]="{'is-invalid': estateForm.get('description').errors
+                  && estateForm.get('description').touched}"
+                   class="form-control is-invalid" 
+                  formControlName = "description"  required>
+                  <div class="invalid-feedback">Please enter the description</div>
                </div>
           </mat-form-field>
           <br>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Square" formControlName = "square" required>
+                  <input matInput placeholder = "Square" type="number" 
+                  [ngClass]="{'is-invalid': estateForm.get('square').errors
+                  && estateForm.get('square').touched}"
+                   class="form-control is-invalid" 
+                  formControlName = "square" required>
+                  <div class="invalid-feedback">Please enter the square</div>
                </div>
           </mat-form-field>
           <br>
           <mat-form-field>
               <div class="input-group mb-3">
-                  <input matInput placeholder = "Rooms" formControlName = "rooms" required>
+                  <input matInput placeholder = "Rooms" type="number"
+                  [ngClass]="{'is-invalid': estateForm.get('rooms').errors
+                  && estateForm.get('rooms').touched}"
+                   class="form-control is-invalid" 
+                  formControlName = "rooms" required>
+                  <div class="invalid-feedback">Please enter the number of rooms</div>
                </div>
           </mat-form-field>
           <br>
@@ -452,7 +133,7 @@
                     </div>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button [disabled]="!estateForm.valid" matStepperNext>Next</button>
           </div>
        </form>
     </mat-step>
@@ -464,7 +145,7 @@
            <div class="form-group">
               <label class="control-label" style="margin-right:10px">Type is: </label>
               <label class="radio-inline">
-                <input class="mr-3" type="radio" value="selling" formControlName="type">Selling
+                <input class="mr-3" type="radio" value="selling" formControlName="type" required>Selling
               </label>
               <label class="radio-inline ml-3">
                 <input class="mr-3" type="radio" value="rent" formControlName="type">Rent
@@ -475,7 +156,7 @@
             </div>
            <mat-form-field>
                <div class="input-group mb-3">
-                   <input matInput placeholder = "Price($)" formControlName = "price" >
+                   <input matInput placeholder = "Price($)" type="number" formControlName = "price" required>
                 </div>
            </mat-form-field>
         </form>
@@ -483,7 +164,7 @@
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click) = "stepper.reset()">Reset</button>
-            <button mat-button  (click) = "add_estate()">Send</button>
+            <button mat-button [disabled]="!sellingForm.valid"  (click) = "add_estate()">Send</button>
          </div>
      </mat-step>
  </mat-horizontal-stepper>
