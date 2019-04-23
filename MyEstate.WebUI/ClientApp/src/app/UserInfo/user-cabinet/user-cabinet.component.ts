@@ -3,7 +3,7 @@ import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user/user.service';
 import { AlertifyService } from 'src/app/_services/alertify/Alertify.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../_services/auth/auth.service';
+import { AuthService } from 'src/app/_services/auth/auth.service';
 
 @Component({
   selector: 'app-user-cabinet',
@@ -11,8 +11,9 @@ import { AuthService } from '../_services/auth/auth.service';
   styleUrls: ['./user-cabinet.component.css']
 })
 export class UserCabinetComponent implements OnInit {
-  user: User;
-  photoUrl: string;
+
+  public user: User;
+
   constructor(private userService: UserService, private alertify: AlertifyService,
     private route: Router, private authService: AuthService) { }
 
@@ -23,8 +24,6 @@ export class UserCabinetComponent implements OnInit {
   getUserInfo() {
     this.userService.getUser(this.authService.decodedToken.nameid).subscribe((user: User) => {
       this.user = user;
-      this.photoUrl = this.user.photoUrl;
-      console.log(this.user.photoUrl);
     });
   }
 
