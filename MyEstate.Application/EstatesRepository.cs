@@ -87,7 +87,7 @@ namespace MyEstate.Application
                 estates = estates.Where(e => e.Rooms >= estateParams.MinRooms && e.Rooms <= estateParams.MaxRooms);
             }
 
-            if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 10)
+            if (estateParams.MinFloors != 1 || estateParams.MaxFloors != 50)
             {
                 estates = estates.Where(e => e.Floors >= estateParams.MinFloors && e.Floors <= estateParams.MaxFloors);
             }

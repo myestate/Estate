@@ -43,7 +43,48 @@ namespace MyEstate.Application.Tests
                     new Domain.Entities.User { Username =  "test4"}
                 };
 
+                var estates = new[]
+                {
+                    new Domain.Entities.Estate() {
+                        AdType="Selling",
+                        Title = "TestTitle1",
+                        Description = "Description1",
+                        Price = 100000,
+                        Square=50,
+                        Rooms=3,
+                        Floors=2,
+                        Country="Greece",
+                        City="Afina",
+                        Street="Firts"
+                    },
+                    new Domain.Entities.Estate() {
+                        AdType="Rent",
+                        Title = "TestTitle2",
+                        Description = "Description2",
+                        Price = 3000,
+                        Square=60,
+                        Rooms=4,
+                        Floors=1,
+                        Country="Poland",
+                        City="Wroclaw",
+                        Street="Second"
+                    },
+                    new Domain.Entities.Estate() {
+                        AdType="Daily rent",
+                        Title = "TestTitle3",
+                        Description = "Description3",
+                        Price = 600,
+                        Square=40,
+                        Rooms=2,
+                        Floors=1,
+                        Country="Ukraine",
+                        City="Lviv",
+                        Street="Shevchenka"
+                    }
+                };
+
                 context.Users.AddRange(users);
+                context.Estates.AddRange(estates);
 
                 context.SaveChanges();
             }
