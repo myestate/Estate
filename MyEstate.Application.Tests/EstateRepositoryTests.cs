@@ -36,7 +36,7 @@ namespace MyEstate.Application.Tests
         }
 
         [Test]
-        public void Filtering_TypeRent()
+        public void GetEstates_Filtering_TypeRent()
         {
             // Arrange
             var estateRepo = new EstatesRepository(_context);
@@ -49,11 +49,11 @@ namespace MyEstate.Application.Tests
             // Act
             var result = estateRepo.GetEstates(estateParams);
             // Assert
-            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+            CollectionAssert.AreEqual(resultExpected, result.Result);
         }
 
         [Test]
-        public void Filtering_TypeDailyRent()
+        public void GetEstates_Filtering_TypeDailyRent()
         {
             // Arrange
             var estateRepo = new EstatesRepository(_context);
@@ -66,11 +66,11 @@ namespace MyEstate.Application.Tests
             // Act
             var result = estateRepo.GetEstates(estateParams);
             // Assert
-            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+            CollectionAssert.AreEqual(resultExpected, result.Result);
         }
 
         [Test]
-        public void Filtering_TypeSelling()
+        public void GetEstates_Filtering_TypeSelling()
         {
             // Arrange
             var estateRepo = new EstatesRepository(_context);
@@ -83,21 +83,170 @@ namespace MyEstate.Application.Tests
             // Act
             var result = estateRepo.GetEstates(estateParams);
             // Assert
-            Assert.AreEqual(resultExpected.Count, result.Result.Count);
+            CollectionAssert.AreEqual(resultExpected, result.Result);
         }
 
         [Test]
-        public void GetEstatesById()
+        public void GetEstates_Filtering_OrderByPriceUp()
         {
             // Arrange
             var estateRepo = new EstatesRepository(_context);
 
+            EstateParams estateParams = new EstateParams(); 
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderBy(e => e.Price)
+                .ToList();
+            estateParams.OrderBy = "priceUp";
             // Act
-            var result = estateRepo.GetEstate(1);
+            var result = estateRepo.GetEstates(estateParams);
             // Assert
-            Assert.AreEqual(result.Result.Id, 1);
+            CollectionAssert.AreEqual(resultExpected, result.Result);
         }
 
+        [Test]
+        public void GetEstates_Filtering_OrderByPriceDown()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderByDescending(e => e.Price)
+                .ToList();
+            estateParams.OrderBy = "priceDown";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_OrderByRoomsUp()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderBy(e => e.Rooms)
+                .ToList();
+            estateParams.OrderBy = "roomsUp";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_OrderByRoomsDown()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderByDescending(e => e.Rooms)
+                .ToList();
+            estateParams.OrderBy = "roomsDown";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_OrderBySquareUp()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderBy(e => e.Square)
+                .ToList();
+            estateParams.OrderBy = "squareUp";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_OrderBySquareDown()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .OrderByDescending(e => e.Square)
+                .ToList();
+            estateParams.OrderBy = "squareDown";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_ByCountry()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e=>e.Country=="Ukraine")
+                .ToList();
+            estateParams.Country = "Ukraine";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_ByCity()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.City == "Lviv")
+                .ToList();
+            estateParams.City = "Lviv";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_ByStreet()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.Street == "Shevchenka")
+                .ToList();
+            estateParams.Street = "Shevchenka";
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
         private List<Domain.Entities.Estate> GetTestEstates()
         {
             var users = new List<Domain.Entities.Estate>
