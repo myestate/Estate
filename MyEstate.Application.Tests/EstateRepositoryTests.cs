@@ -247,6 +247,37 @@ namespace MyEstate.Application.Tests
             // Assert
             CollectionAssert.AreEqual(resultExpected, result.Result);
         }
+
+        [Test]
+        public void GetEstates_Pagination_OneAdToPage()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams() { PageSize=1};
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            Assert.IsTrue(result.Result.Count==1);
+        }
+
+        [Test]
+        public void GetEstates_Pagination_OneAdToPage_SecondPage()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .ToList();
+            estateParams.PageSize = 1;
+            estateParams.PageNumber = 2;
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            Assert.AreEqual(resultExpected[1], result.Result[0]);
+        }
+
         private List<Domain.Entities.Estate> GetTestEstates()
         {
             var users = new List<Domain.Entities.Estate>
