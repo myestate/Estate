@@ -58,7 +58,7 @@ namespace MyEstate.API.Controllers
             }
 
             var userFromRepo = await _repo.GetUser(id);
-            userFromRepo.Username = userForUpdateDto.Username;
+            userFromRepo.UserName = userForUpdateDto.Username;
             userFromRepo.City = userForUpdateDto.City;
             userFromRepo.Country = userForUpdateDto.Country;
             //var user = _mapper.Map<User>(userForUpdateDto);
@@ -72,7 +72,7 @@ namespace MyEstate.API.Controllers
             }
         }
 
-        [HttpPost]
+       /*  [HttpPost]
         public async Task<IActionResult> UpdateUserPassword([FromBody]UserForChangePasswordDto userForChangePassDto)
         {
             var re = Request;
@@ -111,6 +111,7 @@ namespace MyEstate.API.Controllers
 
             return Unauthorized();
         }
+        */
 
         [HttpGet]
         [Route("/api/users/getuserinfo")]

@@ -84,16 +84,12 @@ export function tokenGetter() {
       UserCabinetComponent,
       EstatesDetailComponent,
       RegisterAsAgentComponent,
-<<<<<<< HEAD
       DropdownMenuComponent,
       NotificationComponent,
       ChangepasswordComponent,
       MemberMessagesComponent,
-      TimeAgoPipe
-=======
+      TimeAgoPipe,
       AdminPanelComponent
->>>>>>> AddRole
-
    ],
    imports: [
       BrowserModule,

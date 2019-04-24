@@ -42,14 +42,11 @@ export const appRoutes: Routes = [
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
             {path: 'add_estate', component: AddEstateComponent},
-<<<<<<< HEAD
             {path: 'changepassword', component: ChangepasswordComponent},
             {path: 'registerAsAgent', component: RegisterAsAgentComponent},
-            {path: 'notification' , component: NotificationComponent}
-=======
+            {path: 'notification' , component: NotificationComponent},
             {path: 'registerAsAgent', component: RegisterAsAgentComponent},
             {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}},
->>>>>>> AddRole
 
         ]
     },
