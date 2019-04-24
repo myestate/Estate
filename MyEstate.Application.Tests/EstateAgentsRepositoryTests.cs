@@ -1,18 +1,6 @@
-<<<<<<< HEAD
-using System.Collections.Generic;
-=======
-﻿using System.Collections.Generic;
->>>>>>> 589d1eaa2cf9ea9b8b2444116769d51183e31c8e
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using MyEstate.Application.Interfaces;
 using NUnit.Framework;
-<<<<<<< HEAD
-using Persistence;
-using System;
-=======
-using Persistence.Helpers;
->>>>>>> 589d1eaa2cf9ea9b8b2444116769d51183e31c8e
+
 
 namespace MyEstate.Application.Tests
 {
@@ -23,7 +11,7 @@ namespace MyEstate.Application.Tests
         {
             // Arrange
             var agentsRepo = new EstateAgentsRepository(_context);
-            var agent = new Domain.Entities.EstateAgent {Id = 5, Name = "test" };
+            var agent = new Domain.Entities.EstateAgent {Id = 50, Name = "test" };
 
             // Act
             var result = agentsRepo.AddEstateAgent(agent);
@@ -37,27 +25,13 @@ namespace MyEstate.Application.Tests
         {
             // Arrange
             var agentsRepo = new EstateAgentsRepository(_context);
-            var agent = new Domain.Entities.EstateAgent {Id=6 };
+            var agent = new Domain.Entities.EstateAgent {Id=60 };
 
             // Act
             var result = agentsRepo.AddEstateAgent(agent);
 
             // Assert
             Assert.AreEqual(agent.Name, result.Result.Name);
-        }
-
-        [Test]
-        public void Should_ReturnAgentById_When_GetEstateAgent()
-        {
-            // Arrange
-            var agentsRepo = new EstateAgentsRepository(_context);
-            var agent = new Domain.Entities.EstateAgent { Id = 1, Name = "test" };
-
-            // Act
-            var result = agentsRepo.GetEstateAgent(1);
-
-            // Assert
-            Assert.AreEqual(agent.Id, result.Result.Id);
         }   
 
         public void AddEstateAgent_HappyPath()

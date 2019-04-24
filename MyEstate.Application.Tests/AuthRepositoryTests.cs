@@ -9,14 +9,14 @@ namespace MyEstate.Application.Tests
         {
             // Arrange
             var authRepo = new AuthRepository(_context);
-            var user = new Domain.Entities.User {Username = "test"};
+            var user = new Domain.Entities.User {UserName = "test"};
             var password = "password";
 
             // Act
             var result = authRepo.Register(user, password);
 
             // Assert
-            Assert.AreEqual(user.Username, result.Result.Username);
+            Assert.AreEqual(user.UserName, result.Result.UserName);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace MyEstate.Application.Tests
         {
             // Arrange
             var authRepo = new AuthRepository(_context);
-            var user = new Domain.Entities.User { Username = "test" };
+            var user = new Domain.Entities.User { UserName = "test" };
             var password = "password";
 
             // Act
@@ -46,7 +46,6 @@ namespace MyEstate.Application.Tests
 
             // Assert
             Assert.IsNotEmpty(register.Result.PasswordHash);
-            Assert.IsNotEmpty(register.Result.PasswordSalt);
         }
 
         [Test]

@@ -37,10 +37,10 @@ namespace MyEstate.Application.Tests
             {
                 var users = new[]
                 {
-                    new Domain.Entities.User { Username =  "test1"},
-                    new Domain.Entities.User { Username =  "test2"},
-                    new Domain.Entities.User { Username =  "test3"},
-                    new Domain.Entities.User { Username =  "test4"}
+                    new Domain.Entities.User { UserName =  "test1"},
+                    new Domain.Entities.User { UserName =  "test2"},
+                    new Domain.Entities.User { UserName =  "test3"},
+                    new Domain.Entities.User { UserName =  "test4"}
                 };
 
                 var estates = new[]
