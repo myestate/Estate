@@ -123,6 +123,63 @@ namespace MyEstate.Application.Tests
         }
 
         [Test]
+        public void GetEstates_Filtering_SquareMinMax()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.Square >= 50 && e.Square <= 100)
+                .ToList();
+            estateParams.MinSquare = 50;
+            estateParams.MaxSquare = 100;
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_RoomsMinMax()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.Rooms >= 1 && e.Rooms <= 2)
+                .ToList();
+            estateParams.MinRooms = 1;
+            estateParams.MaxRooms = 2;
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
+        public void GetEstates_Filtering_FloorsMinMax()
+        {
+            // Arrange
+            var estateRepo = new EstatesRepository(_context);
+
+            EstateParams estateParams = new EstateParams();
+            var resultExpected = estateRepo.GetEstates(estateParams)
+                .Result
+                .Where(e => e.Floors >= 1 && e.Floors <= 2)
+                .ToList();
+            estateParams.MinFloors = 1;
+            estateParams.MaxFloors = 2;
+            // Act
+            var result = estateRepo.GetEstates(estateParams);
+            // Assert
+            CollectionAssert.AreEqual(resultExpected, result.Result);
+        }
+
+        [Test]
         public void GetEstates_Filtering_OrderByRoomsUp()
         {
             // Arrange
