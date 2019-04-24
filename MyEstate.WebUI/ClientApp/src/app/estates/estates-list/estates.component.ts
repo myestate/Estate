@@ -22,7 +22,7 @@ export class EstatesComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.pagination = <Pagination>{ currentPage : 1, itemsPerPage : 10}
+    this.pagination = <Pagination>{ currentPage : 1, itemsPerPage : 10};
     this.resetEstateParams();
     this.loadEstatesToPage();
   }
@@ -34,9 +34,9 @@ export class EstatesComponent implements OnInit {
 
   resetEstateParams() {
     this.estateParams.type = this.type;
-    this.estateParams.country = "";
-    this.estateParams.city = "";
-    this.estateParams.street = "";
+    this.estateParams.country = '';
+    this.estateParams.city = '';
+    this.estateParams.street = '';
     this.estateParams.minPrice = 0;
     this.estateParams.maxPrice = 5000000;
     this.estateParams.minSquare = 0;
@@ -45,7 +45,7 @@ export class EstatesComponent implements OnInit {
     this.estateParams.maxRooms = 10;
     this.estateParams.minFloors = 1;
     this.estateParams.maxFloors = 50;
-    this.estateParams.orderBy = "created";
+    this.estateParams.orderBy = 'created';
   }
 
   loadEstates() {

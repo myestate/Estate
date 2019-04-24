@@ -8,9 +8,7 @@
     }
 }">
 <agm-info-window>
-  <img src="{{estate.photos[0]}}" alt="">
-  <h3>{{estate.title}}</h3>
-  <h4>{{estate.description}}</h4>
+ <app-estate-card [estate]="estate"></app-estate-card>
 </agm-info-window>
 </agm-marker>
 </agm-map>

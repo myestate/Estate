@@ -82,4 +82,14 @@ export class UserService {
     this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {})
     .subscribe();
   }
+
+  updateUserPassword(oldPassword: string, newPassword: string): Observable<User>  {
+    const headers = new HttpHeaders();
+
+    const token = localStorage.getItem('token');
+    headers.append('Authorization', token);
+    const passwordInfo = {oldPass: oldPassword, newPass: newPassword };
+
+    return this.http.post<User>(this.baseUrl + 'users', passwordInfo, {headers: headers});
+  }
 }

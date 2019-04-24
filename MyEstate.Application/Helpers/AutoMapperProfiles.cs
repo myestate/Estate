@@ -26,6 +26,7 @@ namespace Persistence.Helpers
             CreateMap<EstatePhoto, PhotosForDetailedDto>();
             CreateMap<EstatePhoto, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, EstatePhoto>();
+            CreateMap<UserForRegisterDto, User>();
           
             CreateMap<MessageForCreationDto, Message>().ReverseMap();
             CreateMap<Message, MessageToReturnDto>();

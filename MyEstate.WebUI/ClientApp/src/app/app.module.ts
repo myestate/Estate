@@ -40,13 +40,18 @@ import { MapComponent } from './map/map.component';
 import { EstateService } from './_services/estate/estate.service';
 import { EstatesDetailComponent } from './estates/estates-detail/estates-detail.component';
 import { MapService } from './_services/map/map.service';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { EditProfileComponent } from './UserInfo/edit-profile/edit-profile.component';
+import { UserCabinetComponent } from './UserInfo/user-cabinet/user-cabinet.component';
 import { EstateAgentService } from './_services/estateAgent/estateAgent.service';
 import { EstateCardComponent } from './estates/estate-card/estate-card.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+import { DropdownMenuComponent } from './UserInfo/dropdown-menu/dropdown-menu.component';
+import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
+import { NotificationComponent } from './UserInfo/notification/notification.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+
 
 
 
@@ -79,9 +84,12 @@ export function tokenGetter() {
       UserCabinetComponent,
       EstatesDetailComponent,
       RegisterAsAgentComponent,
+      DropdownMenuComponent,
+      NotificationComponent,
+      ChangepasswordComponent,
       MemberMessagesComponent,
-      TimeAgoPipe
-
+      TimeAgoPipe,
+      AdminPanelComponent
    ],
    imports: [
       BrowserModule,

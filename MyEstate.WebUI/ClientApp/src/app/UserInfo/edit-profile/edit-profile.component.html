@@ -1,0 +1,49 @@
+<br>
+<div class="container">
+    <div class="row border border-dark">
+        <div class="column col-4  border border-success rounded py-2" [ngStyle]='{"background-color":"#333"}'>
+            <app-dropdown-menu> </app-dropdown-menu>
+        </div>
+        
+        <div class="column col-8 py-2 text-center text-uppercase">
+          <form>
+            <div style="visibility: hidden">
+              <label for="id_">ID:</label>
+              <input class="form-control" type="text" id="id_" name="id" [(ngModel)]="user.id">
+            </div>
+            <div class="form-group">
+              <label for="name_">Name:</label>
+              <input class="form-control" type="text" id="name_" name="username" [(ngModel)]="user.username" percent="20">
+            </div>
+            <div class="form-group">
+              <label for="country_">Country:</label>
+              <input class="form-control" type="text" id="country_" name="country" [(ngModel)]="user.country" />
+            </div>
+            <div class="form-group">
+              <label for="city_id_f">City:</label>
+              <input class="form-control" type="text" id="city" name="city" [(ngModel)]="user.city">
+            </div>
+
+            <!-- <div style="visibility: hidden" id="email_check_percent">
+              <label class="label" for="email">E-mail:</label>
+              <div class="indent">
+                <div class="grid-wrap">
+                  <input type="email" id="email" name="email" readonly="" [(ngModel)]="user?.email">
+                </div>
+              </div>
+            </div> -->
+
+            <div class="form-group" id="confirm-profile-button">
+              <button type="button" class="btn btn-primary" (click)="confirm_profile_button($event)"> Confirm</button>
+            </div>
+          </form>
+          <div class="rows">
+            <br>
+            For more information, contact Customer Care
+            <br>
+            <b>0 (800) 21-00-12</b>
+          </div>
+        </div>
+    
+    </div>
+</div>

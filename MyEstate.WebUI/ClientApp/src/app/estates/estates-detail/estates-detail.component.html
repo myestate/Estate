@@ -41,9 +41,16 @@
         <p><strong>City:</strong> {{estate.city}}</p>
         <p><strong>Street:</strong> {{estate.street}}</p>
         <p><strong>Created:</strong> {{estate.created}}</p>
-        <small><strong>Owner:</strong> <a [routerLink]="['/members', user.id]">{{user.username}}</a></small>
+        <p>
+          <a [routerLink]="['/members/', estate.ownerId]" [queryParams]="{tab: 3}">
+            Write to owner
+          </a>
+        </p>
       </div>
     </div>
+    <!--<div class="col-md-2">
+      <app-member-card [user]="user"></app-member-card>
+    </div>-->
   </div>
 </div>
 
