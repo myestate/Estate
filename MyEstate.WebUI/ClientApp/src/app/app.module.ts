@@ -50,6 +50,11 @@ import { ChangepasswordComponent } from './UserInfo/changepassword/changepasswor
 import { NotificationComponent } from './UserInfo/notification/notification.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+
+
+
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -79,11 +84,15 @@ export function tokenGetter() {
       UserCabinetComponent,
       EstatesDetailComponent,
       RegisterAsAgentComponent,
+<<<<<<< HEAD
       DropdownMenuComponent,
       NotificationComponent,
       ChangepasswordComponent,
       MemberMessagesComponent,
       TimeAgoPipe
+=======
+      AdminPanelComponent
+>>>>>>> AddRole
 
    ],
    imports: [

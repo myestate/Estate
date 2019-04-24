@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MyEstate.Application.Interfaces;
@@ -12,54 +17,86 @@ using MyEstate.Domain.Entities;
 
 namespace MyEstate.API.Controllers
 {
+    [AllowAnonymous]
     [Route("/api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _singInManager;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IMapper mapper,
+            IConfiguration config,
+            UserManager<User> userManager,
+            SignInManager<User> singInManager)
         {
-            _repo = repo;
+            _userManager = userManager;
+            _singInManager = singInManager;
             _config = config;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegister)
-        {
-            userForRegister.Username = userForRegister.Username.ToLower();
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        {           
 
-            if (await _repo.UserExists(userForRegister.Username))
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+
+            var result = await _userManager.CreateAsync(userToCreate, userForRegisterDto.Password);           
+            
+            var userToReturn = _mapper.Map<UserForDetailedDto>(userToCreate);
+
+            if (result.Succeeded)
             {
-                return BadRequest("Username already exists");
+                return CreatedAtRoute("GetUser",
+                    new { controller = "Users", id = userToCreate.Id }, userToReturn);
             }
 
-            var userToCreate = new User
-            {
-                Username = userForRegister.Username
-            };
-
-            var createdUser = await _repo.Register(userToCreate, userForRegister.Password);
-
-            return StatusCode(201);
+            return BadRequest(result.Errors);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-            var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password.ToLower());
+            var user = await _userManager.FindByNameAsync(userForLoginDto.Username);
 
-            if (userFromRepo == null)
+            var result = await _singInManager
+                .CheckPasswordSignInAsync(user, userForLoginDto.Password, false);
+
+            if (result.Succeeded)
             {
-                return Unauthorized();
+                var appUser = await _userManager.Users
+                    .FirstOrDefaultAsync(u => u.NormalizedUserName == userForLoginDto.Username.ToUpper());
+
+                var userToReturn = _mapper.Map<UserForListDto>(appUser);
+
+                return Ok(new
+                {
+                    token = GenerateJwtToken(appUser).Result,
+                    user = userToReturn
+                });
             }
 
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userForLoginDto.Username)
+            return Unauthorized();
+        }
+
+        private async Task<string> GenerateJwtToken(User user)
+        {
+            var claims = new List<Claim>        
+            {           
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
             };
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
+            {
+               claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
             .GetBytes(_config.GetSection("AppSettings:Token").Value));
@@ -77,10 +114,7 @@ namespace MyEstate.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new
-            {
-                token = tokenHandler.WriteToken(token)
-            });
+            return tokenHandler.WriteToken(token);
         }
     }
 }

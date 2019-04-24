@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyEstate.Domain.Entities
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+    public class User : IdentityUser<int>
+    {      
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string KnowAs { get; set; }
@@ -22,5 +18,6 @@ namespace MyEstate.Domain.Entities
         public string PhotoUrl { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

@@ -21,6 +21,9 @@ import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.comp
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
 import { NotificationComponent } from './UserInfo/notification/notification.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+
+
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -39,9 +42,14 @@ export const appRoutes: Routes = [
             {path: 'edit-profile', component: EditProfileComponent},
             {path: 'user-cabinet', component: UserCabinetComponent},
             {path: 'add_estate', component: AddEstateComponent},
+<<<<<<< HEAD
             {path: 'changepassword', component: ChangepasswordComponent},
             {path: 'registerAsAgent', component: RegisterAsAgentComponent},
             {path: 'notification' , component: NotificationComponent}
+=======
+            {path: 'registerAsAgent', component: RegisterAsAgentComponent},
+            {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}},
+>>>>>>> AddRole
 
         ]
     },

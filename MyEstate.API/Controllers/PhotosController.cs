@@ -15,7 +15,7 @@ using Persistence.Helpers;
 
 namespace MyEstate.API.Controllers
 {
-    [Authorize]
+    
     [Route("api/estates/{userId}/photos")]
     [ApiController]
     public class PhotosControllers : ControllerBase

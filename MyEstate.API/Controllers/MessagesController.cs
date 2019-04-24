@@ -13,7 +13,7 @@ using Persistence.Helpers;
 namespace MyEstate.API.Controllers
 {
     // [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
+    
     [Route("api/users/{userId}/[controller]")]
     [ApiController]
     public class MessagesController : ControllerBase
