@@ -18,6 +18,7 @@ import { MapComponent } from './map/map.component';
 import { EditProfileComponent } from './UserInfo/edit-profile/edit-profile.component';
 import { UserCabinetComponent } from './UserInfo/user-cabinet/user-cabinet.component';
 import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.component';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
 import { NotificationComponent } from './UserInfo/notification/notification.component';
 
@@ -29,7 +30,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            {path: 'messages', component: MessagesComponent},
+            {path: 'messages', component: MessagesComponent, resolve: {messages: MessagesResolver}},
             {path: 'members', component: MemberListComponent,
                 resolve: {users: MemberListResolve}},
             {path: 'members/:id', component: MemberDetailComponent,

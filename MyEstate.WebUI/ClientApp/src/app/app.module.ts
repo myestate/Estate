@@ -8,6 +8,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TimeAgoPipe} from 'time-ago-pipe';
+
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -46,6 +48,8 @@ import { RegisterAsAgentComponent } from './registerAsAgent/registerAsAgent.comp
 import { DropdownMenuComponent } from './UserInfo/dropdown-menu/dropdown-menu.component';
 import { ChangepasswordComponent } from './UserInfo/changepassword/changepassword.component';
 import { NotificationComponent } from './UserInfo/notification/notification.component';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -77,7 +81,10 @@ export function tokenGetter() {
       RegisterAsAgentComponent,
       DropdownMenuComponent,
       NotificationComponent,
-      ChangepasswordComponent
+      ChangepasswordComponent,
+      MemberMessagesComponent,
+      TimeAgoPipe
+
    ],
    imports: [
       BrowserModule,
@@ -115,7 +122,8 @@ export function tokenGetter() {
       EstateAgentService,
       MapService,
       MemberDetailResolve,
-      MemberListResolve
+      MemberListResolve,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent
